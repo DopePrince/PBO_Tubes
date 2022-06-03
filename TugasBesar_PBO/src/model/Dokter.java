@@ -6,9 +6,7 @@
 package model;
 
 /**
- * Nama  : Kenneth Vincentius Theys
- * NPM   : 200710681
- * Kelas : PBO - B
+ * Kelompok 5
 **/
 public class Dokter {
     private String id;
