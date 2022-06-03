@@ -6,7 +6,12 @@
 package dao;
 
 /**
- * Kelompok 5
+ * Kelompok 5 :
+ * 200710534 - Nicholas Suharto
+ * 200710587 - Aldyo Putra
+ * 200710607 - Henry
+ * 200710653 - Tia Vianka Yustin
+ * 200710681 - Kenneth Vincentius Theys
 **/
 
 import connection.DbConnection;
@@ -17,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Department;
 import model.Dokter;
-
+import model.Jenis_Penyakit;
 
 public class DepartmentDAO {
     private DbConnection dbCon = new DbConnection();
@@ -38,10 +43,16 @@ public class DepartmentDAO {
             
             if(rs != null){
                 while(rs.next()){
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("id"),
+                        rs.getString("nama_penyakit"),
+                        rs.getString("keterangan")
+                    );
+                    
                     Department d = new Department(
                         rs.getInt("id"),
                         rs.getString("nama"),
-                        rs.getString("jenis_penyakit")
+                        j
                     );
                     list.add(d);
                 }
@@ -61,9 +72,9 @@ public class DepartmentDAO {
     public void insertDepartment(Department d){
         con = dbCon.makeConnection();
         
-        String sql = "INSERT INTO department(id, nama, jenis_penyakit) "
-                + "VALUES ('" + d.getId()+ "', '" + d.getNama() + "', '"
-                + d.getJenis_penyakit() + "')";
+        String sql = "INSERT INTO department(id, id_penyakit, nama) "
+                + "VALUES ('" + d.getId()+ "', '" + d.getJenisPenyakit().getId() + "', '"
+                + d.getNama() + "')";
         
         System.out.println("Adding Department...");
         
@@ -99,10 +110,16 @@ public class DepartmentDAO {
             if(rs != null){
                 while(rs.next()){
           
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("id"),
+                        rs.getString("nama_penyakit"),
+                        rs.getString("keterangan")
+                    );
+                    
                     Department d = new Department(
-                        rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        rs.getString("dp.jenis_penyakit")
+                        rs.getInt("id"),
+                        rs.getString("nama"),
+                        j
                     );
                     
                     list.add(d);
@@ -124,7 +141,7 @@ public class DepartmentDAO {
         con = dbCon.makeConnection();
         
         String sql = "UPDATE department SET nama = '" + d.getNama()+ "', "
-                + "jenis_penyakit = '" + d.getJenis_penyakit() + "'"
+                + "id_penyakit = '" + d.getJenisPenyakit().getId() + "'"
                 + "WHERE id = '" + id + "'";
         
         System.out.println("Editing Department...");
