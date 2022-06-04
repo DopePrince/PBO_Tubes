@@ -16,17 +16,17 @@ package model;
 
 public class Ruangan {
     private int no;
-    private int id_department;
     private String tipe;
     private float harga;
     private String fasilitas;
-
-    public Ruangan(int no, int id_department, String tipe, float harga, String fasilitas) {
+    private Department department;
+    
+    public Ruangan(int no, String tipe, float harga, String fasilitas, Department department) {
         this.no = no;
-        this.id_department = id_department;
         this.tipe = tipe;
         this.harga = harga;
         this.fasilitas = fasilitas;
+        this.department = department;
     }
 
     public int getNo() {
@@ -35,14 +35,6 @@ public class Ruangan {
 
     public void setNo(int no) {
         this.no = no;
-    }
-
-    public int getId_department() {
-        return id_department;
-    }
-
-    public void setId_department(int id_department) {
-        this.id_department = id_department;
     }
 
     public String getTipe() {
@@ -68,5 +60,13 @@ public class Ruangan {
     public void setFasilitas(String fasilitas) {
         this.fasilitas = fasilitas;
     }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }  
     
 }

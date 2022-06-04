@@ -108,6 +108,55 @@ public class DokterDAO {
         return list;
     }
     
+    public List<Dokter> showDokter(){
+        con = dbCon.makeConnection();
+        
+        String sql = "SELECT * FROM dokter";
+        System.out.println("Mengambil data Dokter...");
+        
+        List<Dokter> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if(rs != null){
+                while(rs.next()) {
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan") 
+                    );
+                    
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama"),
+                        j
+                    );
+                    
+                    Dokter dk = new Dokter(
+                        rs.getString("dk.id"),
+                        rs.getString("dk.nama"),
+                        rs.getString("alamat"),
+                        rs.getString("no_telepon"),
+                        rs.getString("gender"),
+                        rs.getFloat("biaya_dokter"),
+                        dp
+                    );
+                    list.add(dk);
+                }
+            }
+            rs.close();
+            statement.close();
+        } catch (Exception e){
+            System.out.println("Error reading database...");
+            System.out.println(e);
+        }
+        dbCon.closeConnection();
+        
+        return list;
+    }
+    
     public Dokter searchDokter(int id){
         con = dbCon.makeConnection();
         
@@ -180,7 +229,7 @@ public class DokterDAO {
         dbCon.closeConnection();
     }
     
-    public void deleteDokter(int id){
+    public void deleteDokter(String id){
         con = dbCon.makeConnection();
         System.out.println(id);
         
