@@ -16,14 +16,14 @@ package model;
 
 public class Pasien {
     private String id;
-    private String umur;
+    private int umur;
     private String nama;
     private String gender;
     private String alamat;
     private String no_telepon;
     private String jenis_pennyakit;
 
-    public Pasien(String id, String umur, String nama, String gender, String alamat, String no_telepon, String jenis_pennyakit) {
+    public Pasien(String id, int umur, String nama, String gender, String alamat, String no_telepon, String jenis_pennyakit) {
         this.id = id;
         this.umur = umur;
         this.nama = nama;
@@ -41,11 +41,11 @@ public class Pasien {
         this.id = id;
     }
 
-    public String getUmur() {
+    public int getUmur() {
         return umur;
     }
 
-    public void setUmur(String umur) {
+    public void setUmur(int umur) {
         this.umur = umur;
     }
 
