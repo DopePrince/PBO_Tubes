@@ -51,7 +51,7 @@ public class Department {
     }
     
     public void showDepartment(){
-        System.out.println("Id Department");
+        System.out.println("Id");
         System.out.println("Nama");
         System.out.println("Jenis penyakit");
     }

@@ -8,6 +8,7 @@ package control;
 import dao.TransaksiDAO;
 import java.util.List;
 import model.Transaksi;
+import table.TableTransaksi;
 
 /**
  * Nama  : Kenneth Vincentius Theys
@@ -21,16 +22,20 @@ public class TransaksiControl {
         dDao.insertTransaksi(tr);
     }
     
-//    public TableTransaksi showDataTransaksi(String query){
-//        
-//        List<Transaksi> dataTransaksi = dDao.showTransaksi(query);
-//        TableTransaksi tableTransaksi = new TableTransaksi(dataTransaksi);
-//        
-//        return tableTransaksi;
-//    public void insertDataTransaksi(Transaksi tr) {
-//        dDao.insertTransaksi(tr);
-//    }
+    public TableTransaksi showDataTransaksi(String query){
+        
+        List<Transaksi> dataTransaksi = dDao.showTransaksi(query);
+        TableTransaksi tableTransaksi = new TableTransaksi(dataTransaksi);
+            
+        return tableTransaksi;
+    }
     
+    public List<Transaksi> showListTransaksi(){
+        List<Transaksi> dataTransaksi = dDao.showTransaksi();
+        
+        return dataTransaksi;
+    }
+        
     public void updateDataTransaksi(Transaksi tr){
         dDao.updateTransaksi(tr);
     }
@@ -38,22 +43,5 @@ public class TransaksiControl {
     public void deleteDataTransaksi(int id){
         dDao.deleteTransaksi(id);
     }
-    
-//    
-//    public TableTransaksi showDataTransaksi(String query){
-//          
-//        List<Transaksi> dataTransaksi = dDao.showTransaksi(query);
-//        TableTransaksi tableTransaksi = new TableTransaksi(dataTransaksi);
-//          
-//        return tableTransaksi;
-//    }
-//    
-//    public void updateDataTransaksi(Transaksi tr){
-//        dDao.updateTransaksi(tr);
-//    }
-//    
-//    public void deleteDataTransaksi(int id){
-//        dDao.deleteTransaksi(id);
-//    }
     
 }
