@@ -37,14 +37,6 @@ public class Ruangan {
         this.no = no;
     }
 
-    public int getId_department() {
-        return id_department;
-    }
-
-    public void setId_department(int id_department) {
-        this.id_department = id_department;
-    }
-
     public String getTipe() {
         return tipe;
     }
