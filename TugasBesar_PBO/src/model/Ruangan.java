@@ -6,31 +6,29 @@
 package model;
 
 /**
- * Nama  : Kenneth Vincentius Theys
- * NPM   : 200710681
- * Kelas : PBO - B
+ * Kelompok 5
 **/
 public class Ruangan {
-    private int id;
+    private int no;
     private int id_department;
     private String tipe;
-    private String fasilitas;
     private float harga;
+    private String fasilitas;
 
-    public Ruangan(int id, int id_department, String tipe, String fasilitas, float harga) {
-        this.id = id;
+    public Ruangan(int no, int id_department, String tipe, float harga, String fasilitas) {
+        this.no = no;
         this.id_department = id_department;
         this.tipe = tipe;
-        this.fasilitas = fasilitas;
         this.harga = harga;
+        this.fasilitas = fasilitas;
     }
 
-    public int getId() {
-        return id;
+    public int getNo() {
+        return no;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNo(int no) {
+        this.no = no;
     }
 
     public int getId_department() {
@@ -48,15 +46,7 @@ public class Ruangan {
     public void setTipe(String tipe) {
         this.tipe = tipe;
     }
-
-    public String getFasilitas() {
-        return fasilitas;
-    }
-
-    public void setFasilitas(String fasilitas) {
-        this.fasilitas = fasilitas;
-    }
-
+    
     public float getHarga() {
         return harga;
     }
@@ -65,11 +55,12 @@ public class Ruangan {
         this.harga = harga;
     }
     
-    public void showRuangan(){
-        System.out.println("Id");
-        System.out.println("Id_department");
-        System.out.println("Tipe");
-        System.out.println("Fasilitas");
-        System.out.println("Harga");
+    public String getFasilitas() {
+        return fasilitas;
     }
+
+    public void setFasilitas(String fasilitas) {
+        this.fasilitas = fasilitas;
+    }
+    
 }

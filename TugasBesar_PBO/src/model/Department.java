@@ -7,19 +7,23 @@ package model;
 
 
 /**
- * Nama  : Kenneth Vincentius Theys
- * NPM   : 200710681
- * Kelas : PBO - B
+ * Kelompok 5 :
+ * 200710534 - Nicholas Suharto
+ * 200710587 - Aldyo Putra
+ * 200710607 - Henry
+ * 200710653 - Tia Vianka Yustin
+ * 200710681 - Kenneth Vincentius Theys
 **/
+
 public class Department {
     private int id;
     private String nama;
-    private String jenis_penyakit;
-    
-    public Department(int id, String nama, String jenis_penyakit) {
+    private Jenis_Penyakit jenisPenyakit;
+
+    public Department(int id, String nama, Jenis_Penyakit jenisPenyakit) {
         this.id = id;
         this.nama = nama;
-        this.jenis_penyakit = jenis_penyakit;
+        this.jenisPenyakit = jenisPenyakit;
     }
 
     public int getId() {
@@ -38,12 +42,12 @@ public class Department {
         this.nama = nama;
     }
 
-    public String getJenis_penyakit() {
-        return jenis_penyakit;
+    public Jenis_Penyakit getJenisPenyakit() {
+        return jenisPenyakit;
     }
 
-    public void setJenis_penyakit(String jenis_penyakit) {
-        this.jenis_penyakit = jenis_penyakit;
+    public void setJenisPenyakit(Jenis_Penyakit jenisPenyakit) {
+        this.jenisPenyakit = jenisPenyakit;
     }
     
     public void showDepartment(){
