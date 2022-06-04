@@ -6,8 +6,14 @@
 package model;
 
 /**
- * Kelompok 5
+ * Kelompok 5 :
+ * 200710534 - Nicholas Suharto
+ * 200710587 - Aldyo Putra
+ * 200710607 - Henry
+ * 200710653 - Tia Vianka Yustin
+ * 200710681 - Kenneth Vincentius Theys
 **/
+
 public class Transaksi {
     private int id;
     private String tanggal_transaksi;
