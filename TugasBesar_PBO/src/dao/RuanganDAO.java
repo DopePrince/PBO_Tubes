@@ -6,10 +6,14 @@
 package dao;
 
 /**
- * Nama  : Kenneth Vincentius Theys
- * NPM   : 200710681
- * Kelas : PBO - B
+ * Kelompok 5 :
+ * 200710534 - Nicholas Suharto
+ * 200710587 - Aldyo Putra
+ * 200710607 - Henry
+ * 200710653 - Tia Vianka Yustin
+ * 200710681 - Kenneth Vincentius Theys
 **/
+
 public class RuanganDAO {
 
 }
