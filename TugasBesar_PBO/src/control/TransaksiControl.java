@@ -17,17 +17,36 @@ import model.Transaksi;
 public class TransaksiControl {
     private TransaksiDAO dDao = new TransaksiDAO();
     
+    public void insertDataTransaksi(Transaksi tr) {
+        dDao.insertTransaksi(tr);
+    }
+    
+//    public TableTransaksi showDataTransaksi(String query){
+//        
+//        List<Transaksi> dataTransaksi = dDao.showTransaksi(query);
+//        TableTransaksi tableTransaksi = new TableTransaksi(dataTransaksi);
+//        
+//        return tableTransaksi;
 //    public void insertDataTransaksi(Transaksi tr) {
 //        dDao.insertTransaksi(tr);
 //    }
+    
+    public void updateDataTransaksi(Transaksi tr){
+        dDao.updateTransaksi(tr);
+    }
+    
+    public void deleteDataTransaksi(int id){
+        dDao.deleteTransaksi(id);
+    }
+    
 //    
-////    public TableTransaksi showDataTransaksi(String query){
-////        
-////        List<Transaksi> dataTransaksi = dDao.showTransaksi(query);
-////        TableTransaksi tableTransaksi = new TableTransaksi(dataTransaksi);
-////        
-////        return tableTransaksi;
-////    }
+//    public TableTransaksi showDataTransaksi(String query){
+//          
+//        List<Transaksi> dataTransaksi = dDao.showTransaksi(query);
+//        TableTransaksi tableTransaksi = new TableTransaksi(dataTransaksi);
+//          
+//        return tableTransaksi;
+//    }
 //    
 //    public void updateDataTransaksi(Transaksi tr){
 //        dDao.updateTransaksi(tr);
@@ -36,5 +55,5 @@ public class TransaksiControl {
 //    public void deleteDataTransaksi(int id){
 //        dDao.deleteTransaksi(id);
 //    }
-//    
+    
 }
