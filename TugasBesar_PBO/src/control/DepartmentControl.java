@@ -21,8 +21,8 @@ import model.Department;
 public class DepartmentControl {
     private DepartmentDAO dDao = new DepartmentDAO();
     
-    public void insertDataRuangan(Department d){
-        dDao.insertRuangan(d);
+    public void insertDataDepartment(Department d){
+        dDao.insertDepartment(d);
     }
     
     public List<Department> showListDepartment(){
@@ -31,8 +31,8 @@ public class DepartmentControl {
         return dataDepartment;
     }
     
-    public void updateDataDepartment(Department d){
-        dDao.updateDepartment(d);
+    public void updateDataDepartment(Department d, int id){
+        dDao.updateDepartment(d, id);
     }
     
     public void deleteDataDepartment(int id){
