@@ -41,15 +41,13 @@ public class TablePasien extends AbstractTableModel{
             case 1:
                 return list.get(rowIndex).getUmur();
             case 2:
-                return list.get(rowIndex).getGender();
+                return list.get(rowIndex).getJenis_kelamin();
             case 3:
                 return list.get(rowIndex).getAlamat();
             case 4:
                 return list.get(rowIndex).getNo_telepon();
             case 5:
-                return list.get(rowIndex).getJenis_pennyakit().getNama_penyakit();
-//            case 6:
-//                return list.get(rowIndex).getTransaksi();
+                return list.get(rowIndex).getPenyakit().getNama_penyakit();
             default:
                 return null;
         }
@@ -69,8 +67,6 @@ public class TablePasien extends AbstractTableModel{
                 return "No Telpon";
             case 5:
                 return "Diagnosa";
-//            case 6:
-//                return "Total Biaya";
             default:
                 return null;
         }
