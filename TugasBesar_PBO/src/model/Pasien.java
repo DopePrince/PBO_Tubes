@@ -21,16 +21,18 @@ public class Pasien {
     private String gender;
     private String alamat;
     private String no_telepon;
-    private String jenis_pennyakit;
+    private Jenis_Penyakit jenis_penyakit;
+    private Transaksi transaksi;
 
-    public Pasien(String id, int umur, String nama, String gender, String alamat, String no_telepon, String jenis_pennyakit) {
+    public Pasien(String id, int umur, String nama, String gender, String alamat, String no_telepon, Jenis_Penyakit jenis_penyakit, Transaksi transaksi) {
         this.id = id;
         this.umur = umur;
         this.nama = nama;
         this.gender = gender;
         this.alamat = alamat;
         this.no_telepon = no_telepon;
-        this.jenis_pennyakit = jenis_pennyakit;
+        this.jenis_penyakit = jenis_penyakit;
+        this.transaksi = transaksi;
     }
 
     public String getId() {
@@ -81,13 +83,20 @@ public class Pasien {
         this.no_telepon = no_telepon;
     }
 
-    public String getJenis_pennyakit() {
-        return jenis_pennyakit;
+    public Jenis_Penyakit getJenis_pennyakit() {
+        return jenis_penyakit;
     }
 
-    public void setJenis_pennyakit(String jenis_pennyakit) {
-        this.jenis_pennyakit = jenis_pennyakit;
+    public void setJenis_penyakit(Jenis_Penyakit jenis_penyakit) {
+        this.jenis_penyakit = jenis_penyakit;
     }
     
+    public Transaksi getTransaksi() {
+        return transaksi;
+    }
+
+    public void setTransaksi(Transaksi transaksi) {
+        this.transaksi = transaksi;
+    }
     
 }
