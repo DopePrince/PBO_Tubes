@@ -15,7 +15,7 @@ package model;
 **/
 
 public class Pasien {
-    private String id;
+        private String id;
     private int umur;
     private String nama;
     private String jenis_kelamin;
@@ -88,7 +88,5 @@ public class Pasien {
     public void setPenyakit(Jenis_Penyakit penyakit) {
         this.penyakit = penyakit;
     }
-
     
- 
 }
