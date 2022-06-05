@@ -31,12 +31,11 @@ public class PasienDAO {
     public void insertPasien(Pasien ps){
         
         con = dbCon.makeConnection();
-        
-        String sql = "INSERT INTO pasien(id, umur, nama, jenis_kelamin, alamat, no_telepon, jenis_penyakit) "
+        String sql = "INSERT INTO pasien(id, id_penyakit, umur, nama, jenis_kelamin, alamat, no_telepon) "
                 + "VALUES ('" + ps.getId()+ "', '"
+                + ps.getPenyakit().getId() + "', '"
                 + ps.getUmur()+ "', '" + ps.getNama()+ "', '"
-                + ps.getJenis_kelamin()+ "', '" + ps.getAlamat()+ "', '" + ps.getNo_telepon()+ "', '"
-                + ps.getJenis_penyakit()+ "' )";
+                + ps.getJenis_kelamin()+ "', '" + ps.getAlamat()+ "', '" + ps.getNo_telepon()+ "')";
     
         System.out.println("Adding Pasien...");
         
@@ -55,7 +54,7 @@ public class PasienDAO {
     public List<Pasien> showPasien(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM pasien WHERE (id LIKE "
+        String sql = "SELECT jp.*, p.* FROM pasien AS p JOIN jenis_penyakit AS jp ON jp.id = p.id_penyakit WHERE (id LIKE "
                 + "'%" + query + "%'"
                 + "OR umur LIKE '%" + query + "%'"
                 + "OR nama LIKE '%" + query + "%'"
@@ -70,20 +69,26 @@ public class PasienDAO {
         try{
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
-            
+// String id, int umur, String nama, String jenis_kelamin, String alamat, String no_telepon, Jenis_Penyakit penyakit           
             if(rs != null){
                 while(rs.next()){
+                    Jenis_Penyakit jp = new Jenis_Penyakit(
+                        rs.getInt("jp.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan")
+                    );
+                    
                     Pasien p = new Pasien(
                         rs.getString("id"),
                         rs.getInt("umur"),
                         rs.getString("nama"),
                         rs.getString("gender"),
                         rs.getString("alamat"),
-                        rs.getFloat("no_telepon"),
-                        rs.getString("jenis_penyakit")
+                        rs.getString("no_telepon"),
+                        jp
                     );
                     
-                    list.add(dk);
+                    list.add(p);
                 }
             }
             rs.close();
@@ -97,12 +102,12 @@ public class PasienDAO {
         return list;
     }
     
-    public Dokter searchDokter(int id){
+    public Pasien searchPasien(int id){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM dokter WHERE id = '" + id + "'";
-        System.out.println("Searching Dokter...");
-        Dokter dk = null;
+        String sql = "SELECT jp.*, p.* FROM pasien AS p JOIN jenis_penyakit AS jp ON jp.id = p.id_penyakit WHERE p.id = '" + id + "'";
+        System.out.println("Searching Pasien...");
+        Pasien p = null;
         
         try{
             Statement statement = con.createStatement();
@@ -110,26 +115,20 @@ public class PasienDAO {
             
             if(rs != null){
                 while(rs.next()){
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
+                    Jenis_Penyakit jp = new Jenis_Penyakit(
+                        rs.getInt("jp.id"), 
                         rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
+                        rs.getString("keterangan")
                     );
                     
-                    Department dp = new Department(
-                        rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
-                    );
-                   
-                    dk = new Dokter(
-                        rs.getString("dk.id"),
-                        rs.getString("dk.nama"),
+                    p = new Pasien(
+                        rs.getString("id"),
+                        rs.getInt("umur"),
+                        rs.getString("nama"),
+                        rs.getString("gender"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
-                        rs.getString("gender"),
-                        rs.getFloat("biaya_dokter"),
-                        dp
+                        jp
                     );
                 }
             }
@@ -141,48 +140,48 @@ public class PasienDAO {
         }
         dbCon.closeConnection();
         
-        return dk;
+        return p;
     }
     
-    public void updateDokter(Dokter dk){
+    public void updatePasien(Pasien p){
         con = dbCon.makeConnection();
         
-        String sql = "UPDATE dokter SET id_department = '" + dk.getDepartment().getId() +  "', " 
-                + "nama = '" + dk.getNama()+ "', "
-                + "alamat = '" + dk. getAlamat() + "', " 
-                + "no_telepon = '" + dk.getNo_telepon() + "', " 
-                + "gender = '" + dk.getGender() + "'"
-                + "biaya_dokter = '" + dk.getBiaya_dokter()+ "'"
-                + "WHERE id = '" + dk.getId() + "'";
+        String sql = "UPDATE pasien SET id_penyakit = '" + p.getPenyakit().getId() +  "', " 
+                + "umur = '" + p.getNama()+ "', "
+                + "nama = '" + p.getNama()+ "', "
+                + "gender = '" + p.getJenis_kelamin() + "', " 
+                + "alamat = '" + p.getAlamat()+ "', "
+                + "no_telepon = '" + p.getNo_telepon() + "', " 
+                + "WHERE id = '" + p.getId() + "'";
         
-        System.out.println("Editing Dokter...");
+        System.out.println("Editing Pasien...");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Edited " + result + " Dokter " + dk.getId());
+            System.out.println("Edited " + result + " Pasien " + p.getId());
             statement.close();
         }catch(Exception e){
-            System.out.println("Error editing Dokter...");
+            System.out.println("Error editing pasien...");
             System.out.println(e);
         }
         dbCon.closeConnection();
     }
     
-    public void deleteDokter(int id){
+    public void deletePasien(int id){
         con = dbCon.makeConnection();
         System.out.println(id);
         
-        String sql = "DELETE FROM dokter WHERE id = '" + id + "'";
-        System.out.println("Deleting Dokter...");
+        String sql = "DELETE FROM pasien WHERE id = '" + id + "'";
+        System.out.println("Deleting Pasien...");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Delete " + result + " Dokter " + id);
+            System.out.println("Delete " + result + " Pasien " + id);
             statement.close();
         }catch(Exception e){
-            System.out.println("Error deleting Dokter...");
+            System.out.println("Error deleting Pasien...");
             System.out.println(e);
         }
         dbCon.closeConnection();
