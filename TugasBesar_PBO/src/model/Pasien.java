@@ -18,19 +18,27 @@ public class Pasien {
     private String id;
     private int umur;
     private String nama;
-    private String gender;
+    private String jenis_kelamin;
     private String alamat;
     private String no_telepon;
+<<<<<<< Updated upstream
     private String jenis_pennyakit;
 
     public Pasien(String id, int umur, String nama, String gender, String alamat, String no_telepon, String jenis_pennyakit) {
+=======
+    private String no_ruangan;
+    private String jenis_penyakit;
+    
+    public Pasien(String id, int umur, String nama, String jenis_kelamin, String alamat, String no_telepon, String no_ruangan, String jenis_penyakit, Dokter dokter) {
+>>>>>>> Stashed changes
         this.id = id;
         this.umur = umur;
         this.nama = nama;
-        this.gender = gender;
+        this.jenis_kelamin = jenis_kelamin;
         this.alamat = alamat;
         this.no_telepon = no_telepon;
-        this.jenis_pennyakit = jenis_pennyakit;
+        this.no_ruangan = no_ruangan;
+        this.jenis_penyakit = jenis_penyakit;
     }
 
     public String getId() {
@@ -57,12 +65,12 @@ public class Pasien {
         this.nama = nama;
     }
 
-    public String getGender() {
-        return gender;
+    public String getJenis_kelamin() {
+        return jenis_kelamin;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setJenis_kelamin(String jenis_kelamin) {
+        this.jenis_kelamin = jenis_kelamin;
     }
 
     public String getAlamat() {
@@ -81,13 +89,24 @@ public class Pasien {
         this.no_telepon = no_telepon;
     }
 
-    public String getJenis_pennyakit() {
-        return jenis_pennyakit;
+    
+    public String getNo_ruangan(){
+        return no_ruangan;
+    }
+    
+    public void setNo_ruangan(String no_ruangan){
+        this.no_ruangan = no_ruangan;
+    }
+    
+    
+    
+    public String getJenis_penyakit() {
+        return jenis_penyakit;
     }
 
-    public void setJenis_pennyakit(String jenis_pennyakit) {
-        this.jenis_pennyakit = jenis_pennyakit;
+    public void setJenis_pennyakit(String jenis_penyakit) {
+        this.jenis_penyakit = jenis_penyakit;
     }
     
-    
+ 
 }
