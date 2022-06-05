@@ -15,23 +15,21 @@ package model;
 **/
 
 public class Pasien {
-        private String id;
+    private String id;
     private int umur;
     private String nama;
     private String jenis_kelamin;
     private String alamat;
     private String no_telepon;
-    private Ruangan ruangan;
     private Jenis_Penyakit penyakit;
 
-    public Pasien(String id, int umur, String nama, String jenis_kelamin, String alamat, String no_telepon, Ruangan ruangan, Jenis_Penyakit penyakit) {
+    public Pasien(String id, int umur, String nama, String jenis_kelamin, String alamat, String no_telepon, Jenis_Penyakit penyakit) {
         this.id = id;
         this.umur = umur;
         this.nama = nama;
         this.jenis_kelamin = jenis_kelamin;
         this.alamat = alamat;
         this.no_telepon = no_telepon;
-        this.ruangan = ruangan;
         this.penyakit = penyakit;
     }
 
@@ -81,14 +79,6 @@ public class Pasien {
 
     public void setNo_telepon(String no_telepon) {
         this.no_telepon = no_telepon;
-    }
-
-    public Ruangan getRuangan() {
-        return ruangan;
-    }
-
-    public void setRuangan(Ruangan ruangan) {
-        this.ruangan = ruangan;
     }
 
     public Jenis_Penyakit getPenyakit() {
