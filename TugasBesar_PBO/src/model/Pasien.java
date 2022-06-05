@@ -15,24 +15,24 @@ package model;
 **/
 
 public class Pasien {
-    private String id;
+        private String id;
     private int umur;
     private String nama;
-    private String gender;
+    private String jenis_kelamin;
     private String alamat;
     private String no_telepon;
-    private Jenis_Penyakit jenis_penyakit;
-    private Transaksi transaksi;
+    private Ruangan ruangan;
+    private Jenis_Penyakit penyakit;
 
-    public Pasien(String id, int umur, String nama, String gender, String alamat, String no_telepon, Jenis_Penyakit jenis_penyakit, Transaksi transaksi) {
+    public Pasien(String id, int umur, String nama, String jenis_kelamin, String alamat, String no_telepon, Ruangan ruangan, Jenis_Penyakit penyakit) {
         this.id = id;
         this.umur = umur;
         this.nama = nama;
-        this.gender = gender;
+        this.jenis_kelamin = jenis_kelamin;
         this.alamat = alamat;
         this.no_telepon = no_telepon;
-        this.jenis_penyakit = jenis_penyakit;
-        this.transaksi = transaksi;
+        this.ruangan = ruangan;
+        this.penyakit = penyakit;
     }
 
     public String getId() {
@@ -59,12 +59,12 @@ public class Pasien {
         this.nama = nama;
     }
 
-    public String getGender() {
-        return gender;
+    public String getJenis_kelamin() {
+        return jenis_kelamin;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setJenis_kelamin(String jenis_kelamin) {
+        this.jenis_kelamin = jenis_kelamin;
     }
 
     public String getAlamat() {
@@ -83,20 +83,20 @@ public class Pasien {
         this.no_telepon = no_telepon;
     }
 
-    public Jenis_Penyakit getJenis_pennyakit() {
-        return jenis_penyakit;
+    public Ruangan getRuangan() {
+        return ruangan;
     }
 
-    public void setJenis_penyakit(Jenis_Penyakit jenis_penyakit) {
-        this.jenis_penyakit = jenis_penyakit;
-    }
-    
-    public Transaksi getTransaksi() {
-        return transaksi;
+    public void setRuangan(Ruangan ruangan) {
+        this.ruangan = ruangan;
     }
 
-    public void setTransaksi(Transaksi transaksi) {
-        this.transaksi = transaksi;
+    public Jenis_Penyakit getPenyakit() {
+        return penyakit;
+    }
+
+    public void setPenyakit(Jenis_Penyakit penyakit) {
+        this.penyakit = penyakit;
     }
     
 }
