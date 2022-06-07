@@ -102,6 +102,50 @@ public class PasienDAO {
         return list;
     }
     
+    public List<Pasien> showPasien(){
+        con = dbCon.makeConnection();
+        
+        String sql = "SELECT * FROM pasien";
+        System.out.println("Mengambil data Pasien...");
+        
+        List<Pasien> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if(rs != null){
+                while(rs.next()){
+                    Jenis_Penyakit jp = new Jenis_Penyakit(
+                        rs.getInt("jp.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan")
+                    );
+                    
+                    Pasien p = new Pasien(
+                        rs.getString("id"),
+                        rs.getInt("umur"),
+                        rs.getString("nama"),
+                        rs.getString("gender"),
+                        rs.getString("alamat"),
+                        rs.getString("no_telepon"),
+                        jp
+                    );
+                    
+                    list.add(p);
+                }
+            }
+            rs.close();
+            statement.close();
+        } catch (Exception e){
+            System.out.println("Error reading database...");
+            System.out.println(e);
+        }
+        dbCon.closeConnection();
+        
+        return list;
+    }
+    
     public Pasien searchPasien(int id){
         con = dbCon.makeConnection();
         
@@ -168,7 +212,7 @@ public class PasienDAO {
         dbCon.closeConnection();
     }
     
-    public void deletePasien(int id){
+    public void deletePasien(String id){
         con = dbCon.makeConnection();
         System.out.println(id);
         
@@ -186,7 +230,5 @@ public class PasienDAO {
         }
         dbCon.closeConnection();
     }
-    
-    
 
 }
