@@ -31,15 +31,45 @@ public class TransaksiDAO {
     private DbConnection dbCon = new DbConnection();
     private Connection con;
     
-    // Method untuk mengambil semua data Department
-    public List<Transaksi> showTransaksi(){
+    public void insertTransaksi(Transaksi t){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM department";
-        System.out.println("Mengambil data Department...");
+        String sql = "INSERT INTO transaksi(id, id_pasien, id_dokter, no_ruangan, biaya_diagnosis, tanggal_transaksi) "
+                + "VALUES ('" + t.getId()+ "', '" + t.getPasien().getId()+ "', '"
+                + t.getDokter().getId()+ "', '" + t.getBiaya_diagnosis()+ "', '"
+                + t.getTanggal_transaksi()+ "')";
+        
+        System.out.println("Adding Transaksi...");
+        
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Added " + result + " Transaksi");
+            statement.close();
+        }catch(Exception e){
+            System.out.println("Error adding Transaksi...");
+            System.out.println(e);
+        }
+        dbCon.closeConnection();
+    }
+    
+    public List<Transaksi> showTransaksi(String query){
+        con = dbCon.makeConnection();
+        
+        String sql = "SELECT j.*, p.*, t.* FROM jenis_penyakit as j JOIN (pasien p JOIN transaksi as t ON p.id = t.id_pasien) ON j.id = p.id_pasien WHERE (p.umur LIKE "
+                + "'%" + query + "%'"
+                + "OR p.nama LIKE '%" + query + "%'"
+                + "OR p.gender LIKE '%" + query + "%'"
+                + "OR p.alamat`r LIKE '%" + query + "%'"
+                + "OR p.no_telepon LIKE '%" + query + "%'"
+                + "OR j.id LIKE '%" + query + "%'"
+                + "OR j.nama_penyakit LIKE '%" + query + "%')"
+                + "OR j.keterangan LIKE '%" + query + "%')";
+        
+        
+        System.out.println("Mengambil data Transaksi...");
         
         List<Transaksi> list = new ArrayList();
-        
         try{
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sql);
@@ -47,45 +77,58 @@ public class TransaksiDAO {
             if(rs != null){
                 while(rs.next()){
                     Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("id"),
-                        rs.getString("nama_penyakit"),
-                        rs.getString("keterangan")
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan") 
                     );
                     
                     Department dp = new Department(
-                        rs.getInt("id"),
-                        rs.getString("nama"),
-                        j       
-                            
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama"),
+                        j
                     );
-                    
+                   
                     Dokter dk = new Dokter(
-                        rs.getString("id"),
-                        rs.getString("nama"),
+                        rs.getString("dk.id"),
+                        rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
                         rs.getString("gender"),
                         rs.getFloat("biaya_dokter"),
                         dp
-                    );
+                            
                     
-                    Transaksi tr = new Transaksi (
-                        rs.getInt("int"),
-                        rs.getString("tanggal_transaksi"),
-                        
                     );
                     
                     Pasien p = new Pasien(
-                        rs.getString("id"),
-                        rs.getString("umur"),
-                    )
-    private String id;
-    private String umur;
-    private String nama;
-    private String gender;
-    private String alamat;
-    private String no_telepon;
-    private String jenis_pennyakit;    
+                        rs.getString("p.id"),
+                        rs.getInt("umur"),
+                        rs.getString("nama"),
+                        rs.getString("gender"),
+                        rs.getString("p.alamat"),
+                        rs.getString("no_telepon"),
+                        j
+                    ); 
+                    
+                        
+                    Ruangan r = new Ruangan(
+                        rs.getInt("r.no"),
+                        rs.getString("tipe"),
+                        rs.getFloat("harga"),
+                        rs.getString("fasilitas"),
+                        dp
+                    );
+                    
+                    Transaksi tr = new Transaksi(
+                        rs.getInt("r.id"),
+                        rs.getDouble("biaya_diagnosis"),
+                        rs.getString("tanggal_transaksi"),
+                        p,
+                        dk,
+                        r
+                    );
+                            
+
                     list.add(tr);
                 }
             }
@@ -100,40 +143,90 @@ public class TransaksiDAO {
         return list;
     }
     
-    // Method untuk menyimpan data department
-    public void insertDepartment(Department d){
+    public List<Transaksi> showTransaksi(){
         con = dbCon.makeConnection();
         
-        String sql = "INSERT INTO department(id, id_penyakit, nama) "
-                + "VALUES ('" + d.getId()+ "', '" + d.getJenisPenyakit().getId() + "', '"
-                + d.getNama() + "')";
+        String sql = "SELECT * FROM transaksi";
+        System.out.println("Mengambil data Transaksi...");
         
-        System.out.println("Adding Department...");
+        List<Transaksi> list = new ArrayList();
         
         try{
             Statement statement = con.createStatement();
-            int result = statement.executeUpdate(sql);
-            System.out.println("Added " + result + " Department");
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if(rs != null){
+                while(rs.next()) {
+               Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan") 
+                    );
+                    
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama"),
+                        j
+                    );
+                   
+                    Dokter dk = new Dokter(
+                        rs.getString("dk.id"),
+                        rs.getString("dk.nama"),
+                        rs.getString("alamat"),
+                        rs.getString("no_telepon"),
+                        rs.getString("gender"),
+                        rs.getFloat("biaya_dokter"),
+                        dp
+                    );
+                    
+                    Pasien p = new Pasien(
+                        rs.getString("p.id"),
+                        rs.getInt("umur"),
+                        rs.getString("nama"),
+                        rs.getString("gender"),
+                        rs.getString("p.alamat"),
+                        rs.getString("no_telepon"),
+                        j
+                    ); 
+                    
+                        
+                    Ruangan r = new Ruangan(
+                        rs.getInt("r.no"),
+                        rs.getString("tipe"),
+                        rs.getFloat("harga"),
+                        rs.getString("fasilitas"),
+                        dp
+                    );
+                    
+                    Transaksi tr = new Transaksi(
+                        rs.getInt("r.id"),
+                        rs.getDouble("biaya_diagnosis"),
+                        rs.getString("tanggal_transaksi"),
+                        p,
+                        dk,
+                        r
+                    );
+                    
+                    list.add(tr);
+                }
+            }
+            rs.close();
             statement.close();
-        }catch(Exception e){
-            System.out.println("Error adding Department...");
+        } catch (Exception e){
+            System.out.println("Error reading database...");
             System.out.println(e);
         }
         dbCon.closeConnection();
+        
+        return list;
     }
     
-    public List<Department> showDepartmentBySearch(String query){
+    public Transaksi searchTransaksi(int id){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT dp.* FROM department as dp WHERE (dp.id LIKE "
-                + "'%" + query + "%'"
-                + "OR dp.nama LIKE '%" + query + "%'"
-                + "OR dp.jenis_penyakit LIKE '%" + query + "%')";
-        
-        
-        System.out.println("Mengambil data Department...");
-        
-        List<Department> list = new ArrayList();
+        String sql = "SELECT * FROM transaksi WHERE id = '" + id + "'";
+        System.out.println("Searching Transaksi...");
+        Transaksi tr = null;
         
         try{
             Statement statement = con.createStatement();
@@ -141,20 +234,57 @@ public class TransaksiDAO {
             
             if(rs != null){
                 while(rs.next()){
-          
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("id"),
-                        rs.getString("nama_penyakit"),
-                        rs.getString("keterangan")
+                   Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan") 
                     );
                     
-                    Department d = new Department(
-                        rs.getInt("id"),
-                        rs.getString("nama"),
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama"),
                         j
                     );
+                   
+                    Dokter dk = new Dokter(
+                        rs.getString("dk.id"),
+                        rs.getString("dk.nama"),
+                        rs.getString("alamat"),
+                        rs.getString("no_telepon"),
+                        rs.getString("gender"),
+                        rs.getFloat("biaya_dokter"),
+                        dp
+                            
                     
-                    list.add(d);
+                    );
+                    
+                    Pasien p = new Pasien(
+                        rs.getString("p.id"),
+                        rs.getInt("umur"),
+                        rs.getString("nama"),
+                        rs.getString("gender"),
+                        rs.getString("p.alamat"),
+                        rs.getString("no_telepon"),
+                        j
+                    ); 
+                    
+                        
+                    Ruangan r = new Ruangan(
+                        rs.getInt("r.no"),
+                        rs.getString("tipe"),
+                        rs.getFloat("harga"),
+                        rs.getString("fasilitas"),
+                        dp
+                    );
+                    
+                    tr = new Transaksi(
+                        rs.getInt("r.id"),
+                        rs.getDouble("biaya_diagnosis"),
+                        rs.getString("tanggal_transaksi"),
+                        p,
+                        dk,
+                        r
+                    );
                 }
             }
             rs.close();
@@ -165,45 +295,46 @@ public class TransaksiDAO {
         }
         dbCon.closeConnection();
         
-        return list;
+        return tr;
     }
     
-    
-    public void updateDepartment(Department d, int id){
+    public void updateTransaksi(Transaksi tr){
         con = dbCon.makeConnection();
         
-        String sql = "UPDATE department SET nama = '" + d.getNama()+ "', "
-                + "id_penyakit = '" + d.getJenisPenyakit().getId() + "'"
-                + "WHERE id = '" + id + "'";
+        String sql = "UPDATE transaksi SET id_dokter = '" + tr.getDokter().getId() +  "', " 
+                + "id_pasien = '" + tr.getPasien().getId()+ "', "
+                + "id_ruangan = '" + tr.getRuangan() + "', " 
+                + "tanggal_transaksi = '" + tr.getTanggal_transaksi()+ "'"
+                + "WHERE id = '" + tr.getId() + "'";
         
-        System.out.println("Editing Department...");
+        System.out.println("Editing Transaksi...");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Edited " + result + " Department " + id);
+            System.out.println("Edited " + result + " Transaksi " + tr.getId());
             statement.close();
         }catch(Exception e){
-            System.out.println("Error editing Department...");
+            System.out.println("Error editing Transaksi...");
             System.out.println(e);
         }
         dbCon.closeConnection();
     }
     
-    // Method untuk menghapus data Department
-    public void deleteDepartment(int id){
+    public void deleteTransaksi(String id){
         con = dbCon.makeConnection();
+        System.out.println(id);
         
-        String sql = "DELETE FROM department WHERE id = '" + id + "'";
-        System.out.println("Deleting department...");
+        String sql = "DELETE FROM transaki WHERE id = '" + id + "'";
+        System.out.println("Deleting Transaksi...");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Delete " + result + " department " + id);
+            System.out.println("Delete " + result + " Transaksi " + id);
             statement.close();
         }catch(Exception e){
-            System.out.println("Error deleting department...");
+            System.out.println("Error deleting Transaksi...");
             System.out.println(e);
         }
         dbCon.closeConnection();
