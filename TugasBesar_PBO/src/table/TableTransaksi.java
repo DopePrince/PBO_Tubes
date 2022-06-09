@@ -18,5 +18,55 @@ import model.Transaksi;
  * 200710681 - Kenneth Vincentius Theys
 **/
 public class TableTransaksi extends AbstractTableModel{
+    private List<Transaksi> list;
     
+    public TableTransaksi(List<Transaksi> list){
+        this.list = list;
+    }
+    
+    public int getRowCount() {
+        return list.size();
+    }
+    
+    public int getColumnCount() {
+        return 5;
+    }
+    
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        switch(columnIndex) {
+            case 0:
+                return list.get(rowIndex).getId();
+            case 1:
+                return list.get(rowIndex).getDokter().getBiaya_dokter();
+            case 2:
+                return list.get(rowIndex).getPasien().getNama();
+            case 3:
+                return list.get(rowIndex).getPasien().getPenyakit();
+            case 4:
+                return list.get(rowIndex).getRuangan().getHarga();
+            case 5:
+                return list.get(rowIndex).getTanggal_transaksi();
+            default:
+                return null;
+        }
+    }
+    
+    public String getColumnName(int column) {
+        switch(column) {
+            case 0:
+                return "Nama";
+            case 1:
+                return "Umur";
+            case 2:
+                return "Gender";
+            case 3:
+                return "Alamat";
+            case 4:
+                return "No Telpon";
+            case 5:
+                return "Diagnosa";
+            default:
+                return null;
+        }
+    }
 }
