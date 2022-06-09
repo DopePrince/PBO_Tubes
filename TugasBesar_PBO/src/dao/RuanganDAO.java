@@ -105,6 +105,54 @@ public class RuanganDAO {
         return list;
     }
     
+    public List<Ruangan> showRuangan(){
+        con = dbCon.makeConnection();
+        
+        String sql = "SELECT * FROM ruangan";
+        System.out.println("Mengambil data Ruangan...");
+        
+        List<Ruangan> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if(rs != null){
+                while(rs.next()){
+                    Jenis_Penyakit jp = new Jenis_Penyakit(
+                        rs.getInt("jp.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan")
+                    );
+                    
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama"),
+                        jp
+                    );
+                    
+                    Ruangan r = new Ruangan(
+                        rs.getInt("no"),
+                            rs.getString("tipe"),
+                            rs.getDouble("harga"),
+                            rs.getString("fasilitas"),
+                            dp
+                    );
+                    
+                    list.add(r);
+                }
+            }
+            rs.close();
+            statement.close();
+        } catch (Exception e){
+            System.out.println("Error reading database...");
+            System.out.println(e);
+        }
+        dbCon.closeConnection();
+        
+        return list;
+    }
+    
     public Ruangan searchRuangan(int no){
         con = dbCon.makeConnection();
         
