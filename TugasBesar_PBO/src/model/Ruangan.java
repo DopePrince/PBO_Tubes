@@ -17,7 +17,7 @@ package model;
 public class Ruangan {
     private int no;
     private String tipe;
-    private float harga;
+    private double harga;
     private String fasilitas;
     private Department department;
     
@@ -45,11 +45,11 @@ public class Ruangan {
         this.tipe = tipe;
     }
     
-    public float getHarga() {
+    public double getHarga() {
         return harga;
     }
 
-    public void setHarga(float harga) {
+    public void setHarga(double harga) {
         this.harga = harga;
     }
     
