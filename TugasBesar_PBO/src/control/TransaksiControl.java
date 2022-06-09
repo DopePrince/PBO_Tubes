@@ -44,7 +44,7 @@ public class TransaksiControl {
         dDao.updateTransaksi(tr);
     }
     
-    public void deleteDataTransaksi(int id){
+    public void deleteDataTransaksi(String id){
         dDao.deleteTransaksi(id);
     }
     
