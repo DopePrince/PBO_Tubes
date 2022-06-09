@@ -21,7 +21,7 @@ public class Ruangan {
     private String fasilitas;
     private Department department;
     
-    public Ruangan(int no, String tipe, float harga, String fasilitas, Department department) {
+    public Ruangan(int no, String tipe, double harga, String fasilitas, Department department) {
         this.no = no;
         this.tipe = tipe;
         this.harga = harga;
