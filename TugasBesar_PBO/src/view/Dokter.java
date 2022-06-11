@@ -37,21 +37,27 @@ public class Dokter extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         containerPanel = new javax.swing.JPanel();
-        gajilabel = new javax.swing.JLabel();
-        gajiInput = new javax.swing.JTextField();
-        historyGajiLabel = new javax.swing.JLabel();
-        historyGajiInput = new javax.swing.JTextField();
-        biayaDiagnosisLabel = new javax.swing.JLabel();
-        biayaDiagnosisInput = new javax.swing.JTextField();
+        idInput = new javax.swing.JTextField();
+        namaLabel = new javax.swing.JLabel();
+        namaInput = new javax.swing.JTextField();
+        noTelpLabel = new javax.swing.JLabel();
+        noTelpInput = new javax.swing.JTextField();
+        alamatInput = new javax.swing.JTextField();
+        alamatLabel = new javax.swing.JLabel();
+        genderLabel = new javax.swing.JLabel();
+        genderInput = new javax.swing.JTextField();
+        biayaLabel = new javax.swing.JLabel();
+        biayaInput = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
         commandPannel = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        commandLabel = new javax.swing.JLabel();
         addBtn = new javax.swing.JButton();
-        editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
+        editBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         dokterTabel = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,7 +135,7 @@ public class Dokter extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
@@ -140,7 +146,7 @@ public class Dokter extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(sidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dokterPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(dokterPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         sidePanelLayout.setVerticalGroup(
@@ -155,21 +161,49 @@ public class Dokter extends javax.swing.JFrame {
 
         containerPanel.setBackground(new java.awt.Color(153, 153, 153));
 
-        gajilabel.setText("Gaji");
-
-        historyGajiLabel.setText("History Gaji");
-
-        historyGajiInput.addActionListener(new java.awt.event.ActionListener() {
+        idInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historyGajiInputActionPerformed(evt);
+                idInputActionPerformed(evt);
             }
         });
 
-        biayaDiagnosisLabel.setText("Input Biaya Diagnosis");
+        namaLabel.setText("Nama");
 
-        biayaDiagnosisInput.addActionListener(new java.awt.event.ActionListener() {
+        namaInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                biayaDiagnosisInputActionPerformed(evt);
+                namaInputActionPerformed(evt);
+            }
+        });
+
+        noTelpLabel.setText("No Telepon");
+
+        noTelpInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noTelpInputActionPerformed(evt);
+            }
+        });
+
+        alamatInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alamatInputActionPerformed(evt);
+            }
+        });
+
+        alamatLabel.setText("Alamat");
+
+        genderLabel.setText("Gender");
+
+        genderInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genderInputActionPerformed(evt);
+            }
+        });
+
+        biayaLabel.setText("Biaya Dokter");
+
+        biayaInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biayaInputActionPerformed(evt);
             }
         });
 
@@ -191,8 +225,8 @@ public class Dokter extends javax.swing.JFrame {
 
         commandPannel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray));
 
-        jLabel11.setText("Command");
-        jLabel11.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        commandLabel.setText("Command");
+        commandLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         addBtn.setBackground(new java.awt.Color(204, 204, 255));
         addBtn.setText("Tambah");
@@ -202,41 +236,41 @@ public class Dokter extends javax.swing.JFrame {
             }
         });
 
-        editBtn.setBackground(new java.awt.Color(204, 204, 255));
-        editBtn.setText("Ubah");
-
         deleteBtn.setBackground(new java.awt.Color(204, 204, 255));
         deleteBtn.setText("Hapus");
+
+        editBtn.setBackground(new java.awt.Color(204, 204, 255));
+        editBtn.setText("Ubah");
 
         javax.swing.GroupLayout commandPannelLayout = new javax.swing.GroupLayout(commandPannel);
         commandPannel.setLayout(commandPannelLayout);
         commandPannelLayout.setHorizontalGroup(
             commandPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(commandPannelLayout.createSequentialGroup()
-                .addComponent(jLabel11)
+                .addComponent(commandLabel)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commandPannelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(commandPannelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(commandPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(addBtn)
                     .addComponent(editBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commandPannelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         commandPannelLayout.setVerticalGroup(
             commandPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(commandPannelLayout.createSequentialGroup()
-                .addComponent(jLabel11)
+                .addComponent(commandLabel)
                 .addGap(57, 57, 57)
                 .addComponent(addBtn)
-                .addGap(46, 46, 46)
+                .addGap(56, 56, 56)
                 .addComponent(editBtn)
-                .addGap(48, 48, 48)
+                .addGap(38, 38, 38)
                 .addComponent(deleteBtn)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         dokterTabel.setModel(new javax.swing.table.DefaultTableModel(
@@ -252,58 +286,80 @@ public class Dokter extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(dokterTabel);
 
+        jLabel1.setText("ID");
+
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
         containerPanelLayout.setHorizontalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(biayaDiagnosisLabel)
-                    .addComponent(historyGajiLabel)
-                    .addComponent(gajilabel)
-                    .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(biayaDiagnosisInput, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(historyGajiInput, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(gajiInput, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(98, 98, 98)
-                .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
-            .addGroup(containerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                    .addGroup(containerPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
+                    .addGroup(containerPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(noTelpInput)
+                            .addComponent(alamatInput)
+                            .addComponent(namaInput, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(idInput, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(biayaInput)
+                            .addComponent(genderInput, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(containerPanelLayout.createSequentialGroup()
+                                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(genderLabel)
+                                    .addComponent(biayaLabel)
+                                    .addComponent(noTelpLabel)
+                                    .addComponent(alamatLabel)
+                                    .addComponent(namaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)
+                                    .addGroup(containerPanelLayout.createSequentialGroup()
+                                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(containerPanelLayout.createSequentialGroup()
-                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(gajilabel)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gajiInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(namaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(namaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(alamatLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(alamatInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(historyGajiLabel)
+                        .addComponent(noTelpLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(historyGajiInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(biayaDiagnosisLabel)
+                        .addComponent(noTelpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(biayaDiagnosisInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)))
+                        .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(genderInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(biayaLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(biayaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(38, 38, 38))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -317,20 +373,19 @@ public class Dokter extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void historyGajiInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyGajiInputActionPerformed
+    private void noTelpInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noTelpInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_historyGajiInputActionPerformed
-
-    private void biayaDiagnosisInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biayaDiagnosisInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_biayaDiagnosisInputActionPerformed
+    }//GEN-LAST:event_noTelpInputActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
@@ -343,6 +398,26 @@ public class Dokter extends javax.swing.JFrame {
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void biayaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biayaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_biayaInputActionPerformed
+
+    private void alamatInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alamatInputActionPerformed
+
+    private void genderInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_genderInputActionPerformed
+
+    private void idInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idInputActionPerformed
+
+    private void namaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_namaInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,20 +456,22 @@ public class Dokter extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    private javax.swing.JTextField biayaDiagnosisInput;
-    private javax.swing.JLabel biayaDiagnosisLabel;
+    private javax.swing.JTextField alamatInput;
+    private javax.swing.JLabel alamatLabel;
+    private javax.swing.JTextField biayaInput;
+    private javax.swing.JLabel biayaLabel;
     private javax.swing.JButton cancelBtn;
+    private javax.swing.JLabel commandLabel;
     private javax.swing.JPanel commandPannel;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JPanel dokterPanel;
     private javax.swing.JTable dokterTabel;
     private javax.swing.JButton editBtn;
-    private javax.swing.JTextField gajiInput;
-    private javax.swing.JLabel gajilabel;
-    private javax.swing.JTextField historyGajiInput;
-    private javax.swing.JLabel historyGajiLabel;
-    private javax.swing.JLabel jLabel11;
+    private javax.swing.JTextField genderInput;
+    private javax.swing.JLabel genderLabel;
+    private javax.swing.JTextField idInput;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -404,6 +481,10 @@ public class Dokter extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel logoDokter;
     private javax.swing.JPanel logoPanel;
+    private javax.swing.JTextField namaInput;
+    private javax.swing.JLabel namaLabel;
+    private javax.swing.JTextField noTelpInput;
+    private javax.swing.JLabel noTelpLabel;
     private javax.swing.JButton saveBtn;
     private javax.swing.JPanel sidePanel;
     // End of variables declaration//GEN-END:variables
