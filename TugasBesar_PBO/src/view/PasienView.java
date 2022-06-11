@@ -493,7 +493,7 @@ public class PasienView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Pasien().setVisible(true);
+                new PasienView().setVisible(true);
             }
         });
     }
