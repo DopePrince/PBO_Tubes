@@ -44,7 +44,6 @@ public class TransaksiView extends javax.swing.JFrame {
     public TransaksiView() {
         initComponents();
         setComponent(false);
-        setEditDeleteBtn(false);
         dokterControl = new DokterControl();
         transaksiControl = new TransaksiControl();
         pasienControl = new PasienControl();
@@ -52,15 +51,10 @@ public class TransaksiView extends javax.swing.JFrame {
         showTransaksi();
     }
 //    
-//    public void setComponent(boolean value) {
-//        bayarBtn.setEnabled(value);
-//        cancelBtn.setEnabled(value);
-//    }
-//    
-//    public void setEditDeleteBtn(boolean value) {
-//        updateBtn.setEnabled(value);
-//        deleteBtn.setEnabled(value);
-//    }
+    public void setComponent(boolean value) {
+        addBtn.setEnabled(value);
+        saveBtn.setEnabled(value);
+    }
 //    
     public void clearText() {
         showIdTran.setText("");
@@ -74,7 +68,6 @@ public class TransaksiView extends javax.swing.JFrame {
         showBiayaK.setText("");
         showBiayaD.setText("");
         showBiayaDg.setText("");
-        showTotal.setText("");
     }
 //    
     public void showTransaksi() {
@@ -91,6 +84,8 @@ public class TransaksiView extends javax.swing.JFrame {
     private void initComponents() {
 
         jSeparator1 = new javax.swing.JSeparator();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         headerPanel = new javax.swing.JPanel();
         storePanel = new javax.swing.JPanel();
         RSLabel = new javax.swing.JLabel();
@@ -115,42 +110,38 @@ public class TransaksiView extends javax.swing.JFrame {
         umurpasLabel = new javax.swing.JLabel();
         genderpasLabel = new javax.swing.JLabel();
         idtranLabel = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        showIdTran = new javax.swing.JTextArea();
         tgltranLabel = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        showTglTran = new javax.swing.JTextArea();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        showNamaP = new javax.swing.JTextArea();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        showUmurP = new javax.swing.JTextArea();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        showGenderP = new javax.swing.JTextArea();
         notelppasLabel = new javax.swing.JLabel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        showNoTelpP = new javax.swing.JTextArea();
         alamatpasLabel = new javax.swing.JLabel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        showAlamatP = new javax.swing.JTextArea();
+        showIdTran = new javax.swing.JTextField();
+        showTglTran = new javax.swing.JTextField();
+        showNamaP = new javax.swing.JTextField();
+        showUmurP = new javax.swing.JTextField();
+        showGenderP = new javax.swing.JTextField();
+        showNoTelpP = new javax.swing.JTextField();
+        showAlamatP = new javax.swing.JTextField();
         rightGrid = new javax.swing.JPanel();
         bdiagnosisLabel = new javax.swing.JLabel();
         bkamarLabel = new javax.swing.JLabel();
         bdokterLabel = new javax.swing.JLabel();
         namadokLabel = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        showNamaD = new javax.swing.JTextArea();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        showBiayaD = new javax.swing.JTextArea();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        showBiayaDg = new javax.swing.JTextArea();
-        jScrollPane12 = new javax.swing.JScrollPane();
-        showBiayaK = new javax.swing.JTextArea();
-        jScrollPane13 = new javax.swing.JScrollPane();
-        showTotal = new javax.swing.JTextArea();
         totalBiayaLabel = new javax.swing.JLabel();
-        bayarBtn = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
+        showNamaD = new javax.swing.JTextField();
+        showBiayaK = new javax.swing.JTextField();
+        showBiayaD = new javax.swing.JTextField();
+        showBiayaDg = new javax.swing.JTextField();
+        showTotal = new javax.swing.JTextField();
         identityPanel = new javax.swing.JPanel();
         identityLabel = new javax.swing.JLabel();
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -400,63 +391,49 @@ public class TransaksiView extends javax.swing.JFrame {
         idtranLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         idtranLabel.setText("Id Transaksi");
 
-        showIdTran.setBackground(new java.awt.Color(255, 255, 255));
-        showIdTran.setColumns(20);
-        showIdTran.setForeground(new java.awt.Color(0, 0, 0));
-        showIdTran.setRows(5);
-        jScrollPane2.setViewportView(showIdTran);
-
         tgltranLabel.setBackground(new java.awt.Color(255, 255, 255));
         tgltranLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         tgltranLabel.setForeground(new java.awt.Color(0, 0, 0));
         tgltranLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tgltranLabel.setText("Tgl Transaksi");
 
-        showTglTran.setBackground(new java.awt.Color(255, 255, 255));
-        showTglTran.setColumns(20);
-        showTglTran.setForeground(new java.awt.Color(0, 0, 0));
-        showTglTran.setRows(5);
-        jScrollPane4.setViewportView(showTglTran);
-
-        showNamaP.setBackground(new java.awt.Color(255, 255, 255));
-        showNamaP.setColumns(20);
-        showNamaP.setForeground(new java.awt.Color(0, 0, 0));
-        showNamaP.setRows(5);
-        jScrollPane5.setViewportView(showNamaP);
-
-        showUmurP.setBackground(new java.awt.Color(255, 255, 255));
-        showUmurP.setColumns(20);
-        showUmurP.setForeground(new java.awt.Color(0, 0, 0));
-        showUmurP.setRows(5);
-        jScrollPane6.setViewportView(showUmurP);
-
-        showGenderP.setBackground(new java.awt.Color(255, 255, 255));
-        showGenderP.setColumns(20);
-        showGenderP.setForeground(new java.awt.Color(0, 0, 0));
-        showGenderP.setRows(5);
-        jScrollPane7.setViewportView(showGenderP);
-
         notelppasLabel.setBackground(new java.awt.Color(255, 255, 255));
         notelppasLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         notelppasLabel.setForeground(new java.awt.Color(0, 0, 0));
         notelppasLabel.setText("No Telepon");
-
-        showNoTelpP.setBackground(new java.awt.Color(255, 255, 255));
-        showNoTelpP.setColumns(20);
-        showNoTelpP.setForeground(new java.awt.Color(0, 0, 0));
-        showNoTelpP.setRows(5);
-        jScrollPane8.setViewportView(showNoTelpP);
 
         alamatpasLabel.setBackground(new java.awt.Color(255, 255, 255));
         alamatpasLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         alamatpasLabel.setForeground(new java.awt.Color(0, 0, 0));
         alamatpasLabel.setText("Alamat");
 
+        showIdTran.setBackground(new java.awt.Color(255, 255, 255));
+        showIdTran.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showIdTran.setForeground(new java.awt.Color(0, 0, 0));
+
+        showTglTran.setBackground(new java.awt.Color(255, 255, 255));
+        showTglTran.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showTglTran.setForeground(new java.awt.Color(0, 0, 0));
+
+        showNamaP.setBackground(new java.awt.Color(255, 255, 255));
+        showNamaP.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showNamaP.setForeground(new java.awt.Color(0, 0, 0));
+
+        showUmurP.setBackground(new java.awt.Color(255, 255, 255));
+        showUmurP.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showUmurP.setForeground(new java.awt.Color(0, 0, 0));
+
+        showGenderP.setBackground(new java.awt.Color(255, 255, 255));
+        showGenderP.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showGenderP.setForeground(new java.awt.Color(0, 0, 0));
+
+        showNoTelpP.setBackground(new java.awt.Color(255, 255, 255));
+        showNoTelpP.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showNoTelpP.setForeground(new java.awt.Color(0, 0, 0));
+
         showAlamatP.setBackground(new java.awt.Color(255, 255, 255));
-        showAlamatP.setColumns(20);
+        showAlamatP.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
         showAlamatP.setForeground(new java.awt.Color(0, 0, 0));
-        showAlamatP.setRows(5);
-        jScrollPane9.setViewportView(showAlamatP);
 
         javax.swing.GroupLayout leftGridLayout = new javax.swing.GroupLayout(leftGrid);
         leftGrid.setLayout(leftGridLayout);
@@ -465,12 +442,6 @@ public class TransaksiView extends javax.swing.JFrame {
             .addGroup(leftGridLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(leftGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
-                    .addComponent(jScrollPane4)
-                    .addComponent(jScrollPane5)
-                    .addComponent(jScrollPane6)
-                    .addComponent(jScrollPane7)
-                    .addComponent(jScrollPane8)
                     .addGroup(leftGridLayout.createSequentialGroup()
                         .addGroup(leftGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(idtranLabel)
@@ -480,8 +451,14 @@ public class TransaksiView extends javax.swing.JFrame {
                             .addComponent(genderpasLabel)
                             .addComponent(notelppasLabel)
                             .addComponent(alamatpasLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane9))
+                        .addGap(0, 372, Short.MAX_VALUE))
+                    .addComponent(showIdTran)
+                    .addComponent(showTglTran, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(showNamaP)
+                    .addComponent(showUmurP)
+                    .addComponent(showGenderP)
+                    .addComponent(showNoTelpP)
+                    .addComponent(showAlamatP))
                 .addContainerGap())
         );
         leftGridLayout.setVerticalGroup(
@@ -490,32 +467,32 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(idtranLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showIdTran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
                 .addComponent(tgltranLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showTglTran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(namapasLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showNamaP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(umurpasLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showUmurP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(genderpasLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showGenderP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(notelppasLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showNoTelpP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(alamatpasLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(showAlamatP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         detailBox.add(leftGrid);
@@ -545,51 +522,53 @@ public class TransaksiView extends javax.swing.JFrame {
         namadokLabel.setForeground(new java.awt.Color(0, 0, 0));
         namadokLabel.setText("Dokter Pengampu");
 
-        showNamaD.setBackground(new java.awt.Color(255, 255, 255));
-        showNamaD.setColumns(20);
-        showNamaD.setForeground(new java.awt.Color(0, 0, 0));
-        showNamaD.setRows(5);
-        jScrollPane3.setViewportView(showNamaD);
-
-        showBiayaD.setBackground(new java.awt.Color(255, 255, 255));
-        showBiayaD.setColumns(20);
-        showBiayaD.setForeground(new java.awt.Color(0, 0, 0));
-        showBiayaD.setRows(5);
-        jScrollPane10.setViewportView(showBiayaD);
-
-        showBiayaDg.setBackground(new java.awt.Color(255, 255, 255));
-        showBiayaDg.setColumns(20);
-        showBiayaDg.setForeground(new java.awt.Color(0, 0, 0));
-        showBiayaDg.setRows(5);
-        jScrollPane11.setViewportView(showBiayaDg);
-
-        showBiayaK.setBackground(new java.awt.Color(255, 255, 255));
-        showBiayaK.setColumns(20);
-        showBiayaK.setForeground(new java.awt.Color(0, 0, 0));
-        showBiayaK.setRows(5);
-        jScrollPane12.setViewportView(showBiayaK);
-
-        showTotal.setBackground(new java.awt.Color(255, 255, 255));
-        showTotal.setColumns(20);
-        showTotal.setForeground(new java.awt.Color(0, 0, 0));
-        showTotal.setRows(5);
-        jScrollPane13.setViewportView(showTotal);
-
         totalBiayaLabel.setBackground(new java.awt.Color(255, 255, 255));
         totalBiayaLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
         totalBiayaLabel.setForeground(new java.awt.Color(0, 0, 0));
         totalBiayaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalBiayaLabel.setText("TOTAL BIAYA");
 
-        bayarBtn.setBackground(new java.awt.Color(0, 204, 255));
-        bayarBtn.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
-        bayarBtn.setForeground(new java.awt.Color(0, 0, 0));
-        bayarBtn.setText("Bayar");
-        bayarBtn.addActionListener(new java.awt.event.ActionListener() {
+        saveBtn.setBackground(new java.awt.Color(0, 204, 255));
+        saveBtn.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        saveBtn.setForeground(new java.awt.Color(0, 0, 0));
+        saveBtn.setText("Simpan");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bayarBtnActionPerformed(evt);
+                saveBtnActionPerformed(evt);
             }
         });
+
+        addBtn.setBackground(new java.awt.Color(0, 204, 255));
+        addBtn.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(0, 0, 0));
+        addBtn.setText("Tambah");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+
+        showNamaD.setBackground(new java.awt.Color(255, 255, 255));
+        showNamaD.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showNamaD.setForeground(new java.awt.Color(0, 0, 0));
+
+        showBiayaK.setBackground(new java.awt.Color(255, 255, 255));
+        showBiayaK.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showBiayaK.setForeground(new java.awt.Color(0, 0, 0));
+
+        showBiayaD.setBackground(new java.awt.Color(255, 255, 255));
+        showBiayaD.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showBiayaD.setForeground(new java.awt.Color(0, 0, 0));
+
+        showBiayaDg.setBackground(new java.awt.Color(255, 255, 255));
+        showBiayaDg.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        showBiayaDg.setForeground(new java.awt.Color(0, 0, 0));
+
+        showTotal.setBackground(new java.awt.Color(255, 255, 255));
+        showTotal.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        showTotal.setForeground(new java.awt.Color(0, 0, 0));
+        showTotal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        showTotal.setToolTipText("");
 
         javax.swing.GroupLayout rightGridLayout = new javax.swing.GroupLayout(rightGrid);
         rightGrid.setLayout(rightGridLayout);
@@ -598,23 +577,26 @@ public class TransaksiView extends javax.swing.JFrame {
             .addGroup(rightGridLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(rightGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bayarBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane10)
-                    .addComponent(jScrollPane11)
-                    .addComponent(jScrollPane12)
-                    .addGroup(rightGridLayout.createSequentialGroup()
-                        .addGroup(rightGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bkamarLabel)
-                            .addComponent(bdiagnosisLabel))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(rightGridLayout.createSequentialGroup()
-                        .addGroup(rightGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(namadokLabel)
-                            .addComponent(bdokterLabel))
-                        .addContainerGap(344, Short.MAX_VALUE))
+                    .addComponent(showTotal)
                     .addComponent(totalBiayaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane13)))
+                    .addGroup(rightGridLayout.createSequentialGroup()
+                        .addGroup(rightGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(rightGridLayout.createSequentialGroup()
+                                .addGap(0, 257, Short.MAX_VALUE)
+                                .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(rightGridLayout.createSequentialGroup()
+                                .addGroup(rightGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(namadokLabel)
+                                    .addComponent(bdokterLabel)
+                                    .addComponent(bkamarLabel)
+                                    .addComponent(bdiagnosisLabel)
+                                    .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addComponent(showNamaD)
+                    .addComponent(showBiayaD)
+                    .addComponent(showBiayaK)
+                    .addComponent(showBiayaDg)))
         );
         rightGridLayout.setVerticalGroup(
             rightGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -622,25 +604,27 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(namadokLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showNamaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(bkamarLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addComponent(showBiayaK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(bdokterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(showBiayaD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(bdiagnosisLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(showBiayaDg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addComponent(totalBiayaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(showTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bayarBtn)
+                .addGroup(rightGridLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveBtn)
+                    .addComponent(addBtn))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -741,83 +725,83 @@ public class TransaksiView extends javax.swing.JFrame {
         pv.setVisible(true);
     }//GEN-LAST:event_pasienPanelMouseClicked
 
-    private void bayarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bayarBtnActionPerformed
-        try{
-            int selectedIndex;
-
-            selectedIndex = computerDropdown.getSelectedIndex();
-            Computer selectedComputer = listComputer.get(selectedIndex);
-            selectedIndex = pembeliDropdown.getSelectedIndex();
-            Pembeli selectedPembeli = listPembeli.get(selectedIndex);
-
-            if(mouseCheckBox.isSelected()){ b1 = "Mouse, "; }
-            if(tasCheckBox.isSelected()){ b2 = "Tas, "; }
-            if(mousepadCheckBox.isSelected()){ b3 = "Mousepad"; }
-
-            if(action.equals("Tambah")){
-                Transaksi tr = new Transaksi(selectedId,tanggalInput.getText(),hargaInput.getText(),
-                    b1+b2+b3, selectedComputer, selectedPembeli);
-                transaksiControl.insertDataTransaksi(tr);
-            }
-            else
-            {
-                Transaksi tr = new Transaksi(selectedId,tanggalInput.getText(),hargaInput.getText(),
-                    b1+b2+b3, selectedComputer, selectedPembeli);
-                transaksiControl.updateDataTransaksi(tr);
-            }
-        } catch(InputKosongException e) {
-            JOptionPane.showMessageDialog(this, e.message());
-        }
-        clearText();
-        showTransaksi();
-        setComponent(false);
-
-        setEditDeleteBtn(false);
-    }//GEN-LAST:event_bayarBtnActionPerformed
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+//        try{
+//            int selectedIndex;
+//
+//            selectedIndex = computerDropdown.getSelectedIndex();
+//            Computer selectedComputer = listComputer.get(selectedIndex);
+//            selectedIndex = pembeliDropdown.getSelectedIndex();
+//            Pembeli selectedPembeli = listPembeli.get(selectedIndex);
+//
+//            if(mouseCheckBox.isSelected()){ b1 = "Mouse, "; }
+//            if(tasCheckBox.isSelected()){ b2 = "Tas, "; }
+//            if(mousepadCheckBox.isSelected()){ b3 = "Mousepad"; }
+//
+//            if(action.equals("Tambah")){
+//                Transaksi tr = new Transaksi(selectedId,tanggalInput.getText(),hargaInput.getText(),
+//                    b1+b2+b3, selectedComputer, selectedPembeli);
+//                transaksiControl.insertDataTransaksi(tr);
+//            }
+//            else
+//            {
+//                Transaksi tr = new Transaksi(selectedId,tanggalInput.getText(),hargaInput.getText(),
+//                    b1+b2+b3, selectedComputer, selectedPembeli);
+//                transaksiControl.updateDataTransaksi(tr);
+//            }
+//        } catch(InputKosongException e) {
+//            JOptionPane.showMessageDialog(this, e.message());
+//        }
+//        clearText();
+//        showTransaksi();
+//        setComponent(false);
+//
+//        setEditDeleteBtn(false);
+    }//GEN-LAST:event_saveBtnActionPerformed
 
     private void tableTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableTransaksiMouseClicked
-        int indexComputer = -1;
-        int indexPembeli = -1;
-        setEditDeleteBtn(true);
-
-        setComponent(false);
-
-        int clickedRow = tableTransaksi.getSelectedRow();
-        TableModel tableModel = tableTransaksi.getModel();
-
-        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 8).toString());
-        tanggalInput.setText(tableModel.getValueAt(clickedRow, 3).toString());
-        hargaInput.setText(tableModel.getValueAt(clickedRow, 4).toString());
-
-        String bonus = tableModel.getValueAt(clickedRow, 5).toString();
-        if((bonus.substring(0,1).equals("-")) == false)
-        {
-            mouseCheckBox.setSelected(true);
-        }
-        if(bonus.contains("Tas"))
-        {
-            tasCheckBox.setSelected(true);
-        }
-        if(bonus.contains("Mousepad"))
-        {
-            mousepadCheckBox.setSelected(true);
-        }
-
-        String id_c = tableModel.getValueAt(clickedRow, 9).toString();
-        for(Computer computer : listComputer){
-            if(computer.getID().equals(id_c)) {
-                indexComputer = listComputer.indexOf(computer);
-            }
-        }
-        computerDropdown.setSelectedIndex(indexComputer);
-
-        String id_p = tableModel.getValueAt(clickedRow, 10).toString();
-        for(Pembeli pembeli : listPembeli){
-            if(pembeli.getId() == Integer.parseInt(id_p)) {
-                indexPembeli = listPembeli.indexOf(pembeli);
-            }
-        }
-        pembeliDropdown.setSelectedIndex(indexPembeli);
+//        int indexComputer = -1;
+//        int indexPembeli = -1;
+//        setEditDeleteBtn(true);
+//
+//        setComponent(false);
+//
+//        int clickedRow = tableTransaksi.getSelectedRow();
+//        TableModel tableModel = tableTransaksi.getModel();
+//
+//        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 8).toString());
+//        tanggalInput.setText(tableModel.getValueAt(clickedRow, 3).toString());
+//        hargaInput.setText(tableModel.getValueAt(clickedRow, 4).toString());
+//
+//        String bonus = tableModel.getValueAt(clickedRow, 5).toString();
+//        if((bonus.substring(0,1).equals("-")) == false)
+//        {
+//            mouseCheckBox.setSelected(true);
+//        }
+//        if(bonus.contains("Tas"))
+//        {
+//            tasCheckBox.setSelected(true);
+//        }
+//        if(bonus.contains("Mousepad"))
+//        {
+//            mousepadCheckBox.setSelected(true);
+//        }
+//
+//        String id_c = tableModel.getValueAt(clickedRow, 9).toString();
+//        for(Computer computer : listComputer){
+//            if(computer.getID().equals(id_c)) {
+//                indexComputer = listComputer.indexOf(computer);
+//            }
+//        }
+//        computerDropdown.setSelectedIndex(indexComputer);
+//
+//        String id_p = tableModel.getValueAt(clickedRow, 10).toString();
+//        for(Pembeli pembeli : listPembeli){
+//            if(pembeli.getId() == Integer.parseInt(id_p)) {
+//                indexPembeli = listPembeli.indexOf(pembeli);
+//            }
+//        }
+//        pembeliDropdown.setSelectedIndex(indexPembeli);
     }//GEN-LAST:event_tableTransaksiMouseClicked
 
     private void dokterPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dokterPanelMouseClicked
@@ -825,6 +809,13 @@ public class TransaksiView extends javax.swing.JFrame {
         this.dispose();
         dv.setVisible(true);
     }//GEN-LAST:event_dokterPanelMouseClicked
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        setComponent(true);
+        
+        clearText();
+        action = "Tambah";
+    }//GEN-LAST:event_addBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -866,10 +857,10 @@ public class TransaksiView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel RSLabel;
+    private javax.swing.JButton addBtn;
     private javax.swing.JLabel adminLabel;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel alamatpasLabel;
-    private javax.swing.JButton bayarBtn;
     private javax.swing.JLabel bdiagnosisLabel;
     private javax.swing.JLabel bdokterLabel;
     private javax.swing.JLabel bkamarLabel;
@@ -883,19 +874,9 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JLabel identityLabel;
     private javax.swing.JPanel identityPanel;
     private javax.swing.JLabel idtranLabel;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel judulLabel;
     private javax.swing.JPanel judulPanel;
@@ -907,18 +888,19 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JLabel pasienLabel;
     private javax.swing.JPanel pasienPanel;
     private javax.swing.JPanel rightGrid;
-    private javax.swing.JTextArea showAlamatP;
-    private javax.swing.JTextArea showBiayaD;
-    private javax.swing.JTextArea showBiayaDg;
-    private javax.swing.JTextArea showBiayaK;
-    private javax.swing.JTextArea showGenderP;
-    private javax.swing.JTextArea showIdTran;
-    private javax.swing.JTextArea showNamaD;
-    private javax.swing.JTextArea showNamaP;
-    private javax.swing.JTextArea showNoTelpP;
-    private javax.swing.JTextArea showTglTran;
-    private javax.swing.JTextArea showTotal;
-    private javax.swing.JTextArea showUmurP;
+    private javax.swing.JButton saveBtn;
+    private javax.swing.JTextField showAlamatP;
+    private javax.swing.JTextField showBiayaD;
+    private javax.swing.JTextField showBiayaDg;
+    private javax.swing.JTextField showBiayaK;
+    private javax.swing.JTextField showGenderP;
+    private javax.swing.JTextField showIdTran;
+    private javax.swing.JTextField showNamaD;
+    private javax.swing.JTextField showNamaP;
+    private javax.swing.JTextField showNoTelpP;
+    private javax.swing.JTextField showTglTran;
+    private javax.swing.JTextField showTotal;
+    private javax.swing.JTextField showUmurP;
     private javax.swing.JPanel storePanel;
     private javax.swing.JPanel systemPanel;
     private javax.swing.JPanel tableContainer;
