@@ -54,17 +54,17 @@ public class TableTransaksi extends AbstractTableModel{
     public String getColumnName(int column) {
         switch(column) {
             case 0:
-                return "Nama";
+                return "Id Transaksi";
             case 1:
-                return "Umur";
+                return "Tgl Transaksi";
             case 2:
-                return "Gender";
+                return "Nama Pasien";
             case 3:
-                return "Alamat";
-            case 4:
-                return "No Telpon";
-            case 5:
                 return "Diagnosa";
+            case 4:
+                return "Harga Ruangan";
+            case 5:
+                return "Biaya Dokter";
             default:
                 return null;
         }
