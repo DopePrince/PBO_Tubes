@@ -4,17 +4,64 @@
  */
 package view;
 
+import control.DokterControl;
+import javax.swing.JOptionPane;
+import java.util.List;
+import table.TableDokter;
+import javax.swing.table.TableModel;
+import model.Department;
+import model.Dokter;
+
 /**
  *
  * @author Nixx
  */
-public class Dokter extends javax.swing.JFrame {
-
+public class DokterView extends javax.swing.JFrame {
+    private DokterControl dokterControl;
+    String action = null;
+    List<Dokter> listDokter;
+    List<Department> listDepartment;
+    String selectedId = null;
+    
     /**
      * Creates new form Dokter
      */
-    public Dokter() {
+    public DokterView() {
         initComponents();
+        setComponent(false);
+        setEditDeleteBtn(false);
+        dokterControl = new DokterControl();
+        showDataDokter();
+    }
+    
+    public void setComponent(boolean value){
+        idInput.setEnabled(value);
+        namaInput.setEnabled(value);
+        alamatInput.setEnabled(value);
+        noTelpInput.setEnabled(value);
+        genderInput.setEnabled(value);
+        departmentDropDown.setEnabled(value);
+        
+        saveBtn.setEnabled(value);
+        cancelBtn.setEnabled(value);
+    }
+    
+    public void setEditDeleteBtn(boolean value){
+       editBtn.setEnabled(value);
+       deleteBtn.setEnabled(value);
+   }
+   
+    public void clearText(){
+        idInput.setText("");
+        namaInput.setText("");
+        alamatInput.setText("");
+        noTelpInput.setText("");
+        genderInput.setText("");
+        
+    }
+    
+    public void showDataDokter(){
+        dokterTabel.setModel(dokterControl.showDataDokter(""));
     }
 
     /**
@@ -47,17 +94,19 @@ public class Dokter extends javax.swing.JFrame {
         genderLabel = new javax.swing.JLabel();
         genderInput = new javax.swing.JTextField();
         biayaLabel = new javax.swing.JLabel();
-        biayaInput = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
         commandPannel = new javax.swing.JPanel();
         commandLabel = new javax.swing.JLabel();
         addBtn = new javax.swing.JButton();
-        deleteBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         dokterTabel = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
+        deleteBtn = new javax.swing.JButton();
+        biayaInput = new javax.swing.JTextField();
+        departmentLabel = new javax.swing.JLabel();
+        departmentDropDown = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,7 +184,7 @@ public class Dokter extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout sidePanelLayout = new javax.swing.GroupLayout(sidePanel);
@@ -201,12 +250,6 @@ public class Dokter extends javax.swing.JFrame {
 
         biayaLabel.setText("Biaya Dokter");
 
-        biayaInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                biayaInputActionPerformed(evt);
-            }
-        });
-
         saveBtn.setText("Simpan");
         saveBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black, java.awt.Color.black));
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -236,11 +279,13 @@ public class Dokter extends javax.swing.JFrame {
             }
         });
 
-        deleteBtn.setBackground(new java.awt.Color(204, 204, 255));
-        deleteBtn.setText("Hapus");
-
         editBtn.setBackground(new java.awt.Color(204, 204, 255));
         editBtn.setText("Ubah");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout commandPannelLayout = new javax.swing.GroupLayout(commandPannel);
         commandPannel.setLayout(commandPannelLayout);
@@ -249,10 +294,6 @@ public class Dokter extends javax.swing.JFrame {
             .addGroup(commandPannelLayout.createSequentialGroup()
                 .addComponent(commandLabel)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commandPannelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(commandPannelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(commandPannelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,11 +307,9 @@ public class Dokter extends javax.swing.JFrame {
                 .addComponent(commandLabel)
                 .addGap(57, 57, 57)
                 .addComponent(addBtn)
-                .addGap(56, 56, 56)
+                .addGap(52, 52, 52)
                 .addComponent(editBtn)
-                .addGap(38, 38, 38)
-                .addComponent(deleteBtn)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         dokterTabel.setModel(new javax.swing.table.DefaultTableModel(
@@ -286,7 +325,23 @@ public class Dokter extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(dokterTabel);
 
-        jLabel1.setText("ID");
+        idLabel.setText("ID");
+
+        deleteBtn.setBackground(new java.awt.Color(204, 204, 255));
+        deleteBtn.setText("Hapus");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
+        biayaInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                biayaInputActionPerformed(evt);
+            }
+        });
+
+        departmentLabel.setText("Department");
 
         javax.swing.GroupLayout containerPanelLayout = new javax.swing.GroupLayout(containerPanel);
         containerPanel.setLayout(containerPanelLayout);
@@ -296,32 +351,47 @@ public class Dokter extends javax.swing.JFrame {
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(containerPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE))
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(12, 12, 12)
                         .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(noTelpInput)
-                            .addComponent(alamatInput)
-                            .addComponent(namaInput, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(idInput, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(biayaInput)
-                            .addComponent(genderInput, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(containerPanelLayout.createSequentialGroup()
+                                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(containerPanelLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(genderLabel)
-                                    .addComponent(biayaLabel)
-                                    .addComponent(noTelpLabel)
-                                    .addComponent(alamatLabel)
-                                    .addComponent(namaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
+                                        .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(noTelpInput, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(alamatInput, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(namaInput)
+                                            .addComponent(idInput)
+                                            .addComponent(genderInput)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, containerPanelLayout.createSequentialGroup()
+                                                .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(genderLabel)
+                                                    .addComponent(biayaLabel)
+                                                    .addComponent(noTelpLabel)
+                                                    .addComponent(alamatLabel)
+                                                    .addComponent(namaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(idLabel))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(biayaInput, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(containerPanelLayout.createSequentialGroup()
-                                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(departmentLabel)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, containerPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(departmentDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(174, 174, 174))
         );
         containerPanelLayout.setVerticalGroup(
             containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +399,10 @@ public class Dokter extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(containerPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82))
+                    .addGroup(containerPanelLayout.createSequentialGroup()
+                        .addComponent(idLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -343,23 +416,28 @@ public class Dokter extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(noTelpLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(noTelpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(containerPanelLayout.createSequentialGroup()
+                                .addComponent(noTelpInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(genderLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(deleteBtn))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(genderInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(biayaLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(biayaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(biayaInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(departmentLabel)
+                        .addGap(10, 10, 10)
+                        .addComponent(departmentDropDown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(38, 38, 38))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -368,16 +446,16 @@ public class Dokter extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(containerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -389,19 +467,39 @@ public class Dokter extends javax.swing.JFrame {
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
+        int departmentSelected = departmentDropDown.getSelectedIndex();
+        Department selectedDepartment = listDepartment.get(departmentSelected);
+        
+        if(action.equals("Tambah")){
+            Dokter dr = new Dokter(
+                    namaInput.getText(), 
+                    alamatInput.getText(), genderInput.getText(),
+                    noTelpInput.getText(), Float.parseFloat(biayaInput.getText()), selectedDepartment );
+            dokterControl.insertDataDokter(dr);
+        }else{
+            Dokter dr = new Dokter(selectedId, namaInput.getText(), alamatInput.getText(), genderInput.getText(),
+                    noTelpInput.getText(), Float.parseFloat(biayaInput.getText()), selectedDepartment );
+            dokterControl.updateDataDokter(dr);
+        }
+            clearText();
+            showDataDokter();
+            setEditDeleteBtn(false);
+            setComponent(false);
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
+        setComponent(false);
+        setEditDeleteBtn(false);
+        clearText();
     }//GEN-LAST:event_cancelBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
+        setComponent(true);
+        clearText();
+        action = "Tambah";
     }//GEN-LAST:event_addBtnActionPerformed
-
-    private void biayaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biayaInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_biayaInputActionPerformed
 
     private void alamatInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alamatInputActionPerformed
         // TODO add your handling code here:
@@ -418,6 +516,33 @@ public class Dokter extends javax.swing.JFrame {
     private void namaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_namaInputActionPerformed
+
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        // TODO add your handling code here:
+        setComponent(true);
+        action = "Ubah";
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane, "Apakah yakin ingin menghapus data ?",
+                "Konfirmasi", JOptionPane.YES_NO_OPTION);
+         switch (getAnswer) {
+            case 0: //jika jawaban user adalah Yes
+                dokterControl.deleteDataDokter(selectedId);
+                setComponent(false);
+                setEditDeleteBtn(false);
+                clearText();
+                showDataDokter();
+            break;
+            case 1:
+            break;
+        }   
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void biayaInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biayaInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_biayaInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,13 +590,15 @@ public class Dokter extends javax.swing.JFrame {
     private javax.swing.JPanel commandPannel;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JButton deleteBtn;
+    private javax.swing.JComboBox<Department> departmentDropDown;
+    private javax.swing.JLabel departmentLabel;
     private javax.swing.JPanel dokterPanel;
     private javax.swing.JTable dokterTabel;
     private javax.swing.JButton editBtn;
     private javax.swing.JTextField genderInput;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JTextField idInput;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
