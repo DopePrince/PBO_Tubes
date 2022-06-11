@@ -120,15 +120,15 @@ public class TransaksiView extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         headerPanel = new javax.swing.JPanel();
         storePanel = new javax.swing.JPanel();
-        uLabel = new javax.swing.JLabel();
+        RSLabel = new javax.swing.JLabel();
         judulPanel = new javax.swing.JPanel();
         mouseclickPanel = new javax.swing.JPanel();
-        computerPanel = new javax.swing.JPanel();
-        computerIcon = new javax.swing.JLabel();
-        transaksiPanel = new javax.swing.JPanel();
-        transaksiIcon = new javax.swing.JLabel();
-        pembeliPanel = new javax.swing.JPanel();
-        pembeliIcon = new javax.swing.JLabel();
+        adminPanel = new javax.swing.JPanel();
+        adminLabel = new javax.swing.JLabel();
+        dokterPanel = new javax.swing.JPanel();
+        dokterLabel = new javax.swing.JLabel();
+        pasienPanel = new javax.swing.JPanel();
+        pasienLabel = new javax.swing.JLabel();
         judulLabel = new javax.swing.JLabel();
         containerPanel = new javax.swing.JPanel();
         tableContainer = new javax.swing.JPanel();
@@ -194,11 +194,11 @@ public class TransaksiView extends javax.swing.JFrame {
         storePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         storePanel.setForeground(new java.awt.Color(0, 0, 0));
 
-        uLabel.setBackground(new java.awt.Color(0, 204, 204));
-        uLabel.setFont(new java.awt.Font("Castellar", 0, 22)); // NOI18N
-        uLabel.setForeground(new java.awt.Color(0, 0, 0));
-        uLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        uLabel.setText("rumah sakit");
+        RSLabel.setBackground(new java.awt.Color(0, 204, 204));
+        RSLabel.setFont(new java.awt.Font("Castellar", 0, 22)); // NOI18N
+        RSLabel.setForeground(new java.awt.Color(0, 0, 0));
+        RSLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RSLabel.setText("rumah sakit");
 
         javax.swing.GroupLayout storePanelLayout = new javax.swing.GroupLayout(storePanel);
         storePanel.setLayout(storePanelLayout);
@@ -206,14 +206,14 @@ public class TransaksiView extends javax.swing.JFrame {
             storePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, storePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(uLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RSLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         storePanelLayout.setVerticalGroup(
             storePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, storePanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(uLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RSLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
         );
 
@@ -224,102 +224,102 @@ public class TransaksiView extends javax.swing.JFrame {
         mouseclickPanel.setForeground(new java.awt.Color(0, 0, 0));
         mouseclickPanel.setLayout(new java.awt.GridLayout(1, 0));
 
-        computerPanel.setBackground(new java.awt.Color(0, 255, 153));
-        computerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        computerPanel.setForeground(new java.awt.Color(0, 0, 0));
-        computerPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        adminPanel.setBackground(new java.awt.Color(0, 255, 153));
+        adminPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        adminPanel.setForeground(new java.awt.Color(0, 0, 0));
+        adminPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                computerPanelMouseClicked(evt);
+                adminPanelMouseClicked(evt);
             }
         });
 
-        computerIcon.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        computerIcon.setForeground(new java.awt.Color(0, 0, 0));
-        computerIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        computerIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/computer.png"))); // NOI18N
-        computerIcon.setText("Admin");
+        adminLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        adminLabel.setForeground(new java.awt.Color(0, 0, 0));
+        adminLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        adminLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/computer.png"))); // NOI18N
+        adminLabel.setText("Admin");
 
-        javax.swing.GroupLayout computerPanelLayout = new javax.swing.GroupLayout(computerPanel);
-        computerPanel.setLayout(computerPanelLayout);
-        computerPanelLayout.setHorizontalGroup(
-            computerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(computerPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout adminPanelLayout = new javax.swing.GroupLayout(adminPanel);
+        adminPanel.setLayout(adminPanelLayout);
+        adminPanelLayout.setHorizontalGroup(
+            adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(adminPanelLayout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(computerIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(adminLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(65, 65, 65))
         );
-        computerPanelLayout.setVerticalGroup(
-            computerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, computerPanelLayout.createSequentialGroup()
+        adminPanelLayout.setVerticalGroup(
+            adminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, adminPanelLayout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(computerIcon)
+                .addComponent(adminLabel)
                 .addGap(14, 14, 14))
         );
 
-        mouseclickPanel.add(computerPanel);
+        mouseclickPanel.add(adminPanel);
 
-        transaksiPanel.setBackground(new java.awt.Color(0, 255, 153));
-        transaksiPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        transaksiPanel.setForeground(new java.awt.Color(0, 0, 0));
+        dokterPanel.setBackground(new java.awt.Color(0, 255, 153));
+        dokterPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        dokterPanel.setForeground(new java.awt.Color(0, 0, 0));
 
-        transaksiIcon.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        transaksiIcon.setForeground(new java.awt.Color(0, 0, 0));
-        transaksiIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        transaksiIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/transaksi.png"))); // NOI18N
-        transaksiIcon.setText("Dokter");
+        dokterLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        dokterLabel.setForeground(new java.awt.Color(0, 0, 0));
+        dokterLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        dokterLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/transaksi.png"))); // NOI18N
+        dokterLabel.setText("Dokter");
 
-        javax.swing.GroupLayout transaksiPanelLayout = new javax.swing.GroupLayout(transaksiPanel);
-        transaksiPanel.setLayout(transaksiPanelLayout);
-        transaksiPanelLayout.setHorizontalGroup(
-            transaksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(transaksiPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout dokterPanelLayout = new javax.swing.GroupLayout(dokterPanel);
+        dokterPanel.setLayout(dokterPanelLayout);
+        dokterPanelLayout.setHorizontalGroup(
+            dokterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dokterPanelLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addComponent(transaksiIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(dokterLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(68, 68, 68))
         );
-        transaksiPanelLayout.setVerticalGroup(
-            transaksiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, transaksiPanelLayout.createSequentialGroup()
+        dokterPanelLayout.setVerticalGroup(
+            dokterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dokterPanelLayout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(transaksiIcon)
+                .addComponent(dokterLabel)
                 .addGap(15, 15, 15))
         );
 
-        mouseclickPanel.add(transaksiPanel);
+        mouseclickPanel.add(dokterPanel);
 
-        pembeliPanel.setBackground(new java.awt.Color(0, 255, 153));
-        pembeliPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pembeliPanel.setForeground(new java.awt.Color(0, 0, 0));
-        pembeliPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        pasienPanel.setBackground(new java.awt.Color(0, 255, 153));
+        pasienPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pasienPanel.setForeground(new java.awt.Color(0, 0, 0));
+        pasienPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pembeliPanelMouseClicked(evt);
+                pasienPanelMouseClicked(evt);
             }
         });
 
-        pembeliIcon.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
-        pembeliIcon.setForeground(new java.awt.Color(0, 0, 0));
-        pembeliIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pembeliIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/pembeli.png"))); // NOI18N
-        pembeliIcon.setText("Pasien");
+        pasienLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        pasienLabel.setForeground(new java.awt.Color(0, 0, 0));
+        pasienLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pasienLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/pembeli.png"))); // NOI18N
+        pasienLabel.setText("Pasien");
 
-        javax.swing.GroupLayout pembeliPanelLayout = new javax.swing.GroupLayout(pembeliPanel);
-        pembeliPanel.setLayout(pembeliPanelLayout);
-        pembeliPanelLayout.setHorizontalGroup(
-            pembeliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pembeliPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout pasienPanelLayout = new javax.swing.GroupLayout(pasienPanel);
+        pasienPanel.setLayout(pasienPanelLayout);
+        pasienPanelLayout.setHorizontalGroup(
+            pasienPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pasienPanelLayout.createSequentialGroup()
                 .addGap(76, 76, 76)
-                .addComponent(pembeliIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pasienLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(62, 62, 62))
         );
-        pembeliPanelLayout.setVerticalGroup(
-            pembeliPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pembeliPanelLayout.createSequentialGroup()
+        pasienPanelLayout.setVerticalGroup(
+            pasienPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pasienPanelLayout.createSequentialGroup()
                 .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(pembeliIcon)
+                .addComponent(pasienLabel)
                 .addGap(14, 14, 14))
         );
 
-        mouseclickPanel.add(pembeliPanel);
+        mouseclickPanel.add(pasienPanel);
 
         judulLabel.setBackground(new java.awt.Color(0, 204, 204));
         judulLabel.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
@@ -849,17 +849,17 @@ public class TransaksiView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void computerPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_computerPanelMouseClicked
+    private void adminPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminPanelMouseClicked
         ComputerView cv = new ComputerView();
         this.dispose();
         cv.setVisible(true);
-    }//GEN-LAST:event_computerPanelMouseClicked
+    }//GEN-LAST:event_adminPanelMouseClicked
 
-    private void pembeliPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pembeliPanelMouseClicked
+    private void pasienPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pasienPanelMouseClicked
         PembeliView pv = new PembeliView();
         this.dispose();
         pv.setVisible(true);
-    }//GEN-LAST:event_pembeliPanelMouseClicked
+    }//GEN-LAST:event_pasienPanelMouseClicked
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         setComponent(true);
@@ -1018,13 +1018,16 @@ public class TransaksiView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Transaksi().setVisible(true);
+                new TransaksiView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel RSLabel;
     private javax.swing.JButton addBtn;
+    private javax.swing.JLabel adminLabel;
+    private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel alamatpasLabel;
     private javax.swing.JLabel bdiagnosisLabel;
     private javax.swing.JLabel bdokterLabel;
@@ -1032,10 +1035,10 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel commandBox;
     private javax.swing.JPanel commandContainer;
-    private javax.swing.JLabel computerIcon;
-    private javax.swing.JPanel computerPanel;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JButton deleteBtn;
+    private javax.swing.JLabel dokterLabel;
+    private javax.swing.JPanel dokterPanel;
     private javax.swing.JPanel formBox;
     private javax.swing.JPanel formContainer;
     private javax.swing.JLabel genderpasLabel;
@@ -1064,8 +1067,8 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JLabel namadokLabel;
     private javax.swing.JLabel namapasLabel;
     private javax.swing.JLabel notelppasLabel;
-    private javax.swing.JLabel pembeliIcon;
-    private javax.swing.JPanel pembeliPanel;
+    private javax.swing.JLabel pasienLabel;
+    private javax.swing.JPanel pasienPanel;
     private javax.swing.JPanel rightGrid;
     private javax.swing.JButton saveBtn;
     private javax.swing.JTextArea showAlamatP;
@@ -1086,9 +1089,6 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JTable tableTransaksi;
     private javax.swing.JLabel tgltranLabel;
     private javax.swing.JLabel totalBiayaLabel;
-    private javax.swing.JLabel transaksiIcon;
-    private javax.swing.JPanel transaksiPanel;
-    private javax.swing.JLabel uLabel;
     private javax.swing.JLabel umurpasLabel;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
