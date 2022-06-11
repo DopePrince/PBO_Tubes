@@ -328,6 +328,11 @@ public class DokterView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        dokterTabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dokterTabelMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(dokterTabel);
 
         idLabel.setText("ID");
@@ -549,6 +554,10 @@ public class DokterView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_biayaInputActionPerformed
 
+    private void dokterTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dokterTabelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dokterTabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -579,7 +588,7 @@ public class DokterView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dokter().setVisible(true);
+                new DokterView().setVisible(true);
             }
         });
     }
