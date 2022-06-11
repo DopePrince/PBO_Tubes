@@ -13,9 +13,14 @@ import model.Department;
 import model.Dokter;
 
 /**
- *
- * @author Nixx
- */
+ * Kelompok 5 :
+ * 200710534 - Nicholas Suharto
+ * 200710587 - Aldyo Putra
+ * 200710607 - Henry
+ * 200710653 - Tia Vianka Yustin
+ * 200710681 - Kenneth Vincentius Theys
+**/
+
 public class DokterView extends javax.swing.JFrame {
     private DokterControl dokterControl;
     String action = null;

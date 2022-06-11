@@ -20,11 +20,16 @@ import model.Ruangan;
 import model.Department;
 import model.Jenis_Penyakit;
 import table.TableTransaksi;
+
 /**
- *
- * @author VINCENTIUS THEYS
- */
-public class Transaksi extends javax.swing.JFrame {
+ * Kelompok 5 :
+ * 200710534 - Nicholas Suharto
+ * 200710587 - Aldyo Putra
+ * 200710607 - Henry
+ * 200710653 - Tia Vianka Yustin
+ * 200710681 - Kenneth Vincentius Theys
+**/
+public class TransaksiView extends javax.swing.JFrame {
     
 //    private ComputerControl computerControl;
 //    private TransaksiControl transaksiControl;
