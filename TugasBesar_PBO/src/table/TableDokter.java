@@ -71,5 +71,6 @@ public class TableDokter extends AbstractTableModel{
             default:
                 return null;
         }
-    }
+    }  
+    
 }

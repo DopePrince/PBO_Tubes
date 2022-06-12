@@ -33,7 +33,14 @@ public class Dokter {
         this.department = department;
     }
 
-    
+    public Dokter( String nama, String alamat, String no_telepon, String gender, float biaya_dokter, Department department) {   
+        this.nama = nama;
+        this.alamat = alamat;
+        this.no_telepon = no_telepon;
+        this.gender = gender;
+        this.biaya_dokter = biaya_dokter;
+        this.department = department;
+    }
 
     public String getId() {
         return id;
