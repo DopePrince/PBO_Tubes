@@ -40,16 +40,24 @@ public class AdminView extends javax.swing.JFrame {
         addBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
-        namaPembeliLabel = new javax.swing.JLabel();
-        namaPembeliTextField = new javax.swing.JTextField();
-        alamatLabel = new javax.swing.JLabel();
-        alamatTextField = new javax.swing.JTextField();
+        inputJenisPenyakitLabel = new javax.swing.JLabel();
+        inputJenisPenyakitTextField = new javax.swing.JTextField();
+        inputDokterLabel = new javax.swing.JLabel();
+        inputDokterTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
         tableAdmin = new javax.swing.JTable();
         departmentLabel = new javax.swing.JLabel();
         nomorTelponTextField = new javax.swing.JTextField();
         ruanganLabel = new javax.swing.JLabel();
         alamatTextField1 = new javax.swing.JTextField();
+=======
+        table = new javax.swing.JTable();
+        inputDepartmentLabel = new javax.swing.JLabel();
+        inputDepartmentTextField = new javax.swing.JTextField();
+        inputRuanganLabel = new javax.swing.JLabel();
+        inputRuanganTextField = new javax.swing.JTextField();
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
         saveBtn = new javax.swing.JButton();
         cancelBtn = new javax.swing.JButton();
 
@@ -131,10 +139,17 @@ public class AdminView extends javax.swing.JFrame {
                 .addComponent(adminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(adminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(logoAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+=======
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, Short.MAX_VALUE)
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
         );
 
         containerPanel.setBackground(new java.awt.Color(204, 204, 204));
@@ -186,13 +201,13 @@ public class AdminView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        namaPembeliLabel.setText("Input Jenis Penyakit");
+        inputJenisPenyakitLabel.setText("Input Jenis Penyakit");
 
-        namaPembeliTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inputJenisPenyakitTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        alamatLabel.setText("Input Dokter");
+        inputDokterLabel.setText("Input Dokter");
 
-        alamatTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inputDokterTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         tableAdmin.setBackground(new java.awt.Color(204, 255, 204));
         tableAdmin.setModel(new javax.swing.table.DefaultTableModel(
@@ -208,18 +223,26 @@ public class AdminView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableAdmin);
 
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
         departmentLabel.setText("Input Department");
+=======
+        inputDepartmentLabel.setText("Input Department");
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
 
-        nomorTelponTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        nomorTelponTextField.addActionListener(new java.awt.event.ActionListener() {
+        inputDepartmentTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inputDepartmentTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomorTelponTextFieldActionPerformed(evt);
+                inputDepartmentTextFieldActionPerformed(evt);
             }
         });
 
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
         ruanganLabel.setText("Input Ruangan");
+=======
+        inputRuanganLabel.setText("Input Ruangan");
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
 
-        alamatTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        inputRuanganTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         saveBtn.setBackground(new java.awt.Color(0, 0, 0));
         saveBtn.setText("Simpan");
@@ -237,6 +260,7 @@ public class AdminView extends javax.swing.JFrame {
                     .addGroup(containerPanelLayout.createSequentialGroup()
                         .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
                         .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(containerPanelLayout.createSequentialGroup()
@@ -255,6 +279,26 @@ public class AdminView extends javax.swing.JFrame {
                                     .addGap(37, 37, 37)
                                     .addComponent(alamatTextField1)))
                             .addGroup(containerPanelLayout.createSequentialGroup()
+=======
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(inputDokterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(inputJenisPenyakitLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(inputDepartmentLabel))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(inputDepartmentTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                                        .addComponent(inputDokterTextField)
+                                        .addComponent(inputJenisPenyakitTextField)))
+                                .addGroup(jPanel7Layout.createSequentialGroup()
+                                    .addComponent(inputRuanganLabel)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(inputRuanganTextField)))
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
                                 .addComponent(saveBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cancelBtn)))
@@ -270,6 +314,7 @@ public class AdminView extends javax.swing.JFrame {
                     .addComponent(commandPannel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(containerPanelLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
                         .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(namaPembeliTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(namaPembeliLabel))
@@ -285,6 +330,23 @@ public class AdminView extends javax.swing.JFrame {
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ruanganLabel)
                     .addComponent(alamatTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+=======
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputJenisPenyakitTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputJenisPenyakitLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputDokterTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputDokterLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputDepartmentLabel)
+                            .addComponent(inputDepartmentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputRuanganLabel)
+                    .addComponent(inputRuanganTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
                 .addGap(28, 28, 28)
                 .addGroup(containerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveBtn)
@@ -320,9 +382,9 @@ public class AdminView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addBtnActionPerformed
 
-    private void nomorTelponTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomorTelponTextFieldActionPerformed
+    private void inputDepartmentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputDepartmentTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomorTelponTextFieldActionPerformed
+    }//GEN-LAST:event_inputDepartmentTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,29 +424,46 @@ public class AdminView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
     private javax.swing.JLabel adminLabel;
     private javax.swing.JPanel adminPanel;
     private javax.swing.JLabel alamatLabel;
     private javax.swing.JTextField alamatTextField;
     private javax.swing.JTextField alamatTextField1;
+=======
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
     private javax.swing.JButton cancelBtn;
     private javax.swing.JPanel commandPannel;
     private javax.swing.JPanel containerPanel;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel departmentLabel;
     private javax.swing.JButton editBtn;
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
     private javax.swing.JPanel headerPanel;
+=======
+    private javax.swing.JLabel inputDepartmentLabel;
+    private javax.swing.JTextField inputDepartmentTextField;
+    private javax.swing.JLabel inputDokterLabel;
+    private javax.swing.JTextField inputDokterTextField;
+    private javax.swing.JLabel inputJenisPenyakitLabel;
+    private javax.swing.JTextField inputJenisPenyakitTextField;
+    private javax.swing.JLabel inputRuanganLabel;
+    private javax.swing.JTextField inputRuanganTextField;
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+<<<<<<< Updated upstream:TugasBesar_PBO/src/view/AdminView.java
     private javax.swing.JPanel logoAdminPanel;
     private javax.swing.JLabel namaPembeliLabel;
     private javax.swing.JTextField namaPembeliTextField;
     private javax.swing.JTextField nomorTelponTextField;
     private javax.swing.JLabel ruanganLabel;
+=======
+>>>>>>> Stashed changes:TugasBesar_PBO/src/view/Admin.java
     private javax.swing.JButton saveBtn;
     private javax.swing.JTable tableAdmin;
     // End of variables declaration//GEN-END:variables
