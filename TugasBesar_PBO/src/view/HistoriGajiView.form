@@ -33,7 +33,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel2" pref="600" max="32767" attributes="0"/>
+          <Component id="jPanel2" pref="603" max="32767" attributes="0"/>
           <Component id="jPanel1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
@@ -650,7 +650,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="labeldaftarR" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelDaftarHistori" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator1" pref="724" max="32767" attributes="0"/>
                               </Group>
@@ -678,7 +678,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="labeldaftarR" min="-2" max="-2" attributes="0"/>
+                      <Component id="labelDaftarHistori" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -730,7 +730,7 @@
         </Container>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
         </Component>
-        <Component class="javax.swing.JLabel" name="labeldaftarR">
+        <Component class="javax.swing.JLabel" name="labelDaftarHistori">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Roboto" size="14" style="1"/>

@@ -58,7 +58,7 @@ public class HistoriGajiView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelhistoriGaji = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
-        labeldaftarR = new javax.swing.JLabel();
+        labelDaftarHistori = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -479,9 +479,9 @@ public class HistoriGajiView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelhistoriGaji);
 
-        labeldaftarR.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        labeldaftarR.setForeground(new java.awt.Color(20, 20, 20));
-        labeldaftarR.setText("Daftar Histori ");
+        labelDaftarHistori.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelDaftarHistori.setForeground(new java.awt.Color(20, 20, 20));
+        labelDaftarHistori.setText("Daftar Histori ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -493,7 +493,7 @@ public class HistoriGajiView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(labeldaftarR)
+                                .addComponent(labelDaftarHistori)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -513,7 +513,7 @@ public class HistoriGajiView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labeldaftarR))
+                    .addComponent(labelDaftarHistori))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(212, 212, 212)
@@ -537,7 +537,7 @@ public class HistoriGajiView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -686,7 +686,7 @@ public class HistoriGajiView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JLabel labeldaftarR;
+    private javax.swing.JLabel labelDaftarHistori;
     private javax.swing.JPanel panelDepartment;
     private javax.swing.JPanel panelDokter;
     private javax.swing.JPanel panelHistoriGaji;
