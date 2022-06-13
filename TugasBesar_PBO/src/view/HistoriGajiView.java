@@ -4,6 +4,8 @@
  */
 package view;
 
+import java.awt.Color;
+
 /**
  *
  * @author henry
@@ -51,10 +53,12 @@ public class HistoriGajiView extends javax.swing.JFrame {
         panelHistoriGaji = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        ruanganLabel = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelhistoriGaji = new javax.swing.JTable();
+        jSeparator2 = new javax.swing.JSeparator();
+        labeldaftarR = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,8 +71,18 @@ public class HistoriGajiView extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Hospital");
 
-        panelJenisPenyakit.setBackground(new java.awt.Color(224, 224, 224));
+        panelJenisPenyakit.setBackground(new java.awt.Color(255, 255, 255));
         panelJenisPenyakit.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelJenisPenyakit.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                panelJenisPenyakitMouseMoved(evt);
+            }
+        });
+        panelJenisPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelJenisPenyakitMouseExited(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -95,6 +109,14 @@ public class HistoriGajiView extends javax.swing.JFrame {
 
         panelDepartment.setBackground(new java.awt.Color(224, 224, 224));
         panelDepartment.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelDepartmentMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelDepartmentMouseExited(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
@@ -121,6 +143,14 @@ public class HistoriGajiView extends javax.swing.JFrame {
 
         panelDokter.setBackground(new java.awt.Color(224, 224, 224));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelDokterMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelDokterMouseExited(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
@@ -147,6 +177,14 @@ public class HistoriGajiView extends javax.swing.JFrame {
 
         panelPasien.setBackground(new java.awt.Color(224, 224, 224));
         panelPasien.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelPasien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelPasienMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelPasienMouseExited(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
@@ -173,6 +211,14 @@ public class HistoriGajiView extends javax.swing.JFrame {
 
         panelRuangan.setBackground(new java.awt.Color(224, 224, 224));
         panelRuangan.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelRuangan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelRuanganMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelRuanganMouseExited(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
@@ -207,6 +253,14 @@ public class HistoriGajiView extends javax.swing.JFrame {
 
         panelTransaksi.setBackground(new java.awt.Color(224, 224, 224));
         panelTransaksi.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelTransaksiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelTransaksiMouseExited(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
@@ -233,6 +287,14 @@ public class HistoriGajiView extends javax.swing.JFrame {
 
         panelHistoriTransaksi.setBackground(new java.awt.Color(224, 224, 224));
         panelHistoriTransaksi.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelHistoriTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelHistoriTransaksiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelHistoriTransaksiMouseExited(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
@@ -261,8 +323,16 @@ public class HistoriGajiView extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
         jLabel13.setText("Gaji Dokter");
 
-        panelTampilGaji.setBackground(new java.awt.Color(255, 255, 255));
+        panelTampilGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelTampilGaji.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelTampilGaji.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelTampilGajiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelTampilGajiMouseExited(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
@@ -277,7 +347,7 @@ public class HistoriGajiView extends javax.swing.JFrame {
             .addGroup(panelTampilGajiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,6 +359,14 @@ public class HistoriGajiView extends javax.swing.JFrame {
 
         panelHistoriGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelHistoriGaji.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelHistoriGaji.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelHistoriGajiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelHistoriGajiMouseExited(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 102, 102));
@@ -380,15 +458,15 @@ public class HistoriGajiView extends javax.swing.JFrame {
                 .addComponent(panelTampilGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelHistoriGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel1.setText("Histori Gaji ");
+        ruanganLabel.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        ruanganLabel.setText("Histori Gaji");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelhistoriGaji.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -399,7 +477,11 @@ public class HistoriGajiView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelhistoriGaji);
+
+        labeldaftarR.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labeldaftarR.setForeground(new java.awt.Color(20, 20, 20));
+        labeldaftarR.setText("Daftar Histori ");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -409,23 +491,38 @@ public class HistoriGajiView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labeldaftarR)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 816, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ruanganLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(ruanganLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labeldaftarR))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(307, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -434,17 +531,90 @@ public class HistoriGajiView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
+        
+    }//GEN-LAST:event_panelJenisPenyakitMouseMoved
+
+    private void panelJenisPenyakitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseExited
+        
+    }//GEN-LAST:event_panelJenisPenyakitMouseExited
+
+    private void panelDepartmentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseEntered
+        panelDepartment.setBackground(Color.white);
+    }//GEN-LAST:event_panelDepartmentMouseEntered
+
+    private void panelDepartmentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseExited
+        panelDepartment.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelDepartmentMouseExited
+
+    private void panelDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseEntered
+        panelDokter.setBackground(Color.white);
+    }//GEN-LAST:event_panelDokterMouseEntered
+
+    private void panelDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseExited
+        panelDokter.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelDokterMouseExited
+
+    private void panelPasienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseEntered
+        panelPasien.setBackground(Color.white);
+    }//GEN-LAST:event_panelPasienMouseEntered
+
+    private void panelPasienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseExited
+        panelPasien.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelPasienMouseExited
+
+    private void panelRuanganMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseEntered
+        panelRuangan.setBackground(Color.white);
+    }//GEN-LAST:event_panelRuanganMouseEntered
+
+    private void panelRuanganMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseExited
+        panelRuangan.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelRuanganMouseExited
+
+    private void panelTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseEntered
+        panelTransaksi.setBackground(Color.white);
+    }//GEN-LAST:event_panelTransaksiMouseEntered
+
+    private void panelTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseExited
+        panelTransaksi.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelTransaksiMouseExited
+
+    private void panelHistoriTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriTransaksiMouseEntered
+        panelHistoriTransaksi.setBackground(Color.white);
+    }//GEN-LAST:event_panelHistoriTransaksiMouseEntered
+
+    private void panelHistoriTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriTransaksiMouseExited
+        panelHistoriTransaksi.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelHistoriTransaksiMouseExited
+
+    private void panelTampilGajiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseEntered
+        panelTampilGaji.setBackground(Color.white);
+    }//GEN-LAST:event_panelTampilGajiMouseEntered
+
+    private void panelTampilGajiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseExited
+        panelTampilGaji.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelTampilGajiMouseExited
+
+    private void panelHistoriGajiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriGajiMouseEntered
+        panelHistoriGaji.setBackground(Color.white);
+    }//GEN-LAST:event_panelHistoriGajiMouseEntered
+
+    private void panelHistoriGajiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriGajiMouseExited
+        panelHistoriGaji.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelHistoriGajiMouseExited
 
     /**
      * @param args the command line arguments
@@ -473,6 +643,20 @@ public class HistoriGajiView extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -483,7 +667,6 @@ public class HistoriGajiView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -502,7 +685,8 @@ public class HistoriGajiView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel labeldaftarR;
     private javax.swing.JPanel panelDepartment;
     private javax.swing.JPanel panelDokter;
     private javax.swing.JPanel panelHistoriGaji;
@@ -512,5 +696,7 @@ public class HistoriGajiView extends javax.swing.JFrame {
     private javax.swing.JPanel panelRuangan;
     private javax.swing.JPanel panelTampilGaji;
     private javax.swing.JPanel panelTransaksi;
+    private javax.swing.JLabel ruanganLabel;
+    private javax.swing.JTable tabelhistoriGaji;
     // End of variables declaration//GEN-END:variables
 }
