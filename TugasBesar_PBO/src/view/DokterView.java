@@ -6,12 +6,12 @@ package view;
 
 /**
  *
- * @author Nixx
+ * @author henry
  */
 public class DokterView extends javax.swing.JFrame {
 
     /**
-     * Creates new form DokterView
+     * Creates new form GajiView
      */
     public DokterView() {
         initComponents();
@@ -27,8 +27,8 @@ public class DokterView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        siloamLabel = new javax.swing.JLabel();
-        hospitalLabel = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         panelJenisPenyakit = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         panelDepartment = new javax.swing.JPanel();
@@ -39,13 +39,13 @@ public class DokterView extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         panelRuangan = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
-        inputLabel = new javax.swing.JLabel();
-        transaksiPasienLabel = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         panelTransaksi = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         panelHistoriTransaksi = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        gajiDokterLabel = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         panelTampilGaji = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         panelHistoriGaji = new javax.swing.JPanel();
@@ -53,7 +53,7 @@ public class DokterView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         labelId = new javax.swing.JLabel();
         dokterLabel = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         labelNamaDokter = new javax.swing.JLabel();
         inputNamaDokter = new javax.swing.JTextField();
         buttonTambah = new javax.swing.JButton();
@@ -62,7 +62,7 @@ public class DokterView extends javax.swing.JFrame {
         buttonBatal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelDaftarDokter = new javax.swing.JTable();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
         labelDaftarDokter = new javax.swing.JLabel();
         labelAlamat = new javax.swing.JLabel();
         labelNomorTelepon = new javax.swing.JLabel();
@@ -72,30 +72,22 @@ public class DokterView extends javax.swing.JFrame {
         labelBiayaDokter = new javax.swing.JLabel();
         inputBiayaDokter = new javax.swing.JTextField();
         inputGender = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(224, 224, 224));
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 0));
 
-        siloamLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        siloamLabel.setText("Siloam");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Siloam");
 
-        hospitalLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        hospitalLabel.setText("Hospital");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Hospital");
 
         panelJenisPenyakit.setBackground(new java.awt.Color(224, 224, 224));
         panelJenisPenyakit.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelJenisPenyakit.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                panelJenisPenyakitMouseMoved(evt);
-            }
-        });
-        panelJenisPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelJenisPenyakitMouseExited(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -122,14 +114,6 @@ public class DokterView extends javax.swing.JFrame {
 
         panelDepartment.setBackground(new java.awt.Color(224, 224, 224));
         panelDepartment.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelDepartmentMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelDepartmentMouseExited(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
@@ -144,7 +128,7 @@ public class DokterView extends javax.swing.JFrame {
             .addGroup(panelDepartmentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,14 +140,6 @@ public class DokterView extends javax.swing.JFrame {
 
         panelDokter.setBackground(new java.awt.Color(255, 255, 255));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelDokter.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelDokterMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelDokterMouseExited(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
@@ -190,14 +166,6 @@ public class DokterView extends javax.swing.JFrame {
 
         panelPasien.setBackground(new java.awt.Color(224, 224, 224));
         panelPasien.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelPasien.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelPasienMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelPasienMouseExited(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
@@ -224,14 +192,6 @@ public class DokterView extends javax.swing.JFrame {
 
         panelRuangan.setBackground(new java.awt.Color(224, 224, 224));
         panelRuangan.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelRuangan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelRuanganMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelRuanganMouseExited(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
@@ -256,24 +216,16 @@ public class DokterView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        inputLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        inputLabel.setForeground(new java.awt.Color(51, 51, 51));
-        inputLabel.setText("Input");
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel9.setText("Input");
 
-        transaksiPasienLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        transaksiPasienLabel.setForeground(new java.awt.Color(51, 51, 51));
-        transaksiPasienLabel.setText("Transaksi Pasien");
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setText("Transaksi Pasien");
 
         panelTransaksi.setBackground(new java.awt.Color(224, 224, 224));
         panelTransaksi.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelTransaksiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelTransaksiMouseExited(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
@@ -300,14 +252,6 @@ public class DokterView extends javax.swing.JFrame {
 
         panelHistoriTransaksi.setBackground(new java.awt.Color(224, 224, 224));
         panelHistoriTransaksi.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelHistoriTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelHistoriTransaksiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelHistoriTransaksiMouseExited(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
@@ -322,7 +266,7 @@ public class DokterView extends javax.swing.JFrame {
             .addGroup(panelHistoriTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,20 +276,12 @@ public class DokterView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        gajiDokterLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        gajiDokterLabel.setForeground(new java.awt.Color(51, 51, 51));
-        gajiDokterLabel.setText("Gaji Dokter");
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setText("Gaji Dokter");
 
         panelTampilGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelTampilGaji.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelTampilGaji.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelTampilGajiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelTampilGajiMouseExited(evt);
-            }
-        });
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
@@ -360,7 +296,7 @@ public class DokterView extends javax.swing.JFrame {
             .addGroup(panelTampilGajiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,14 +308,6 @@ public class DokterView extends javax.swing.JFrame {
 
         panelHistoriGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelHistoriGaji.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelHistoriGaji.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelHistoriGajiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelHistoriGajiMouseExited(evt);
-            }
-        });
 
         jLabel15.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 102, 102));
@@ -394,7 +322,7 @@ public class DokterView extends javax.swing.JFrame {
             .addGroup(panelHistoriGajiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         panelHistoriGajiLayout.setVerticalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,11 +343,11 @@ public class DokterView extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(58, 58, 58)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                    .addComponent(hospitalLabel)
-                                    .addComponent(siloamLabel)))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(inputLabel)))
+                                .addComponent(jLabel9)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -435,8 +363,8 @@ public class DokterView extends javax.swing.JFrame {
                             .addComponent(panelHistoriGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(transaksiPasienLabel)
-                                    .addComponent(gajiDokterLabel))
+                                    .addComponent(jLabel10)
+                                    .addComponent(jLabel13))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -444,11 +372,11 @@ public class DokterView extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(siloamLabel)
+                .addComponent(jLabel2)
                 .addGap(0, 0, 0)
-                .addComponent(hospitalLabel)
+                .addComponent(jLabel3)
                 .addGap(14, 14, 14)
-                .addComponent(inputLabel)
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelJenisPenyakit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -460,18 +388,18 @@ public class DokterView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(transaksiPasienLabel)
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(gajiDokterLabel)
+                .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTampilGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelHistoriGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -578,50 +506,51 @@ public class DokterView extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(dokterLabel)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelId)
-                                .addComponent(inputId, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelGender)
-                                .addComponent(inputGender, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelNamaDokter)
-                                .addComponent(inputNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelNomorTelepon)
-                                .addComponent(inputNomorTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelBiayaDokter)
-                                .addComponent(inputBiayaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jSeparator2))
-                    .addComponent(labelDaftarDokter)
-                    .addComponent(labelAlamat))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator3)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(dokterLabel))
+                            .addComponent(labelId)
+                            .addComponent(inputId, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelGender)
+                            .addComponent(inputGender, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelDaftarDokter)
+                            .addComponent(labelAlamat))
+                        .addGap(246, 246, 246)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNamaDokter)
+                            .addComponent(inputNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelNomorTelepon)
+                            .addComponent(inputNomorTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelBiayaDokter)
+                            .addComponent(inputBiayaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jSeparator4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(dokterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelId)
                         .addGap(3, 3, 3)
@@ -652,11 +581,13 @@ public class DokterView extends javax.swing.JFrame {
                     .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelDaftarDokter)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -666,93 +597,30 @@ public class DokterView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
-
-    }//GEN-LAST:event_panelJenisPenyakitMouseMoved
-
-    private void panelJenisPenyakitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseExited
-
-    }//GEN-LAST:event_panelJenisPenyakitMouseExited
-
-    private void panelDepartmentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseEntered
-        panelDepartment.setBackground(Color.white);
-    }//GEN-LAST:event_panelDepartmentMouseEntered
-
-    private void panelDepartmentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseExited
-        panelDepartment.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelDepartmentMouseExited
-
-    private void panelDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseEntered
-        panelDokter.setBackground(Color.white);
-    }//GEN-LAST:event_panelDokterMouseEntered
-
-    private void panelDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseExited
-        panelDokter.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelDokterMouseExited
-
-    private void panelPasienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseEntered
-        panelPasien.setBackground(Color.white);
-    }//GEN-LAST:event_panelPasienMouseEntered
-
-    private void panelPasienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseExited
-        panelPasien.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelPasienMouseExited
-
-    private void panelRuanganMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseEntered
-        panelRuangan.setBackground(Color.white);
-    }//GEN-LAST:event_panelRuanganMouseEntered
-
-    private void panelRuanganMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseExited
-        panelRuangan.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelRuanganMouseExited
-
-    private void panelTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseEntered
-        panelTransaksi.setBackground(Color.white);
-    }//GEN-LAST:event_panelTransaksiMouseEntered
-
-    private void panelTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseExited
-        panelTransaksi.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelTransaksiMouseExited
-
-    private void panelHistoriTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriTransaksiMouseEntered
-        panelHistoriTransaksi.setBackground(Color.white);
-    }//GEN-LAST:event_panelHistoriTransaksiMouseEntered
-
-    private void panelHistoriTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriTransaksiMouseExited
-        panelHistoriTransaksi.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelHistoriTransaksiMouseExited
-
-    private void panelTampilGajiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseEntered
-        panelTampilGaji.setBackground(Color.white);
-    }//GEN-LAST:event_panelTampilGajiMouseEntered
-
-    private void panelTampilGajiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseExited
-        panelTampilGaji.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelTampilGajiMouseExited
-
-    private void panelHistoriGajiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriGajiMouseEntered
-        panelHistoriGaji.setBackground(Color.white);
-    }//GEN-LAST:event_panelHistoriGajiMouseEntered
-
-    private void panelHistoriGajiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriGajiMouseExited
-        panelHistoriGaji.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelHistoriGajiMouseExited
 
     private void inputNamaDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaDokterActionPerformed
         // TODO add your handling code here:
@@ -800,6 +668,9 @@ public class DokterView extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(DokterView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -814,29 +685,33 @@ public class DokterView extends javax.swing.JFrame {
     private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonTambah;
     private javax.swing.JLabel dokterLabel;
-    private javax.swing.JLabel gajiDokterLabel;
-    private javax.swing.JLabel hospitalLabel;
     private javax.swing.JTextField inputAlamat;
     private javax.swing.JTextField inputBiayaDokter;
     private javax.swing.JTextField inputGender;
     private javax.swing.JTextField inputId;
-    private javax.swing.JLabel inputLabel;
     private javax.swing.JTextField inputNamaDokter;
     private javax.swing.JTextField inputNomorTelepon;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JLabel labelAlamat;
     private javax.swing.JLabel labelBiayaDokter;
     private javax.swing.JLabel labelDaftarDokter;
@@ -853,8 +728,6 @@ public class DokterView extends javax.swing.JFrame {
     private javax.swing.JPanel panelRuangan;
     private javax.swing.JPanel panelTampilGaji;
     private javax.swing.JPanel panelTransaksi;
-    private javax.swing.JLabel siloamLabel;
     private javax.swing.JTable tabelDaftarDokter;
-    private javax.swing.JLabel transaksiPasienLabel;
     // End of variables declaration//GEN-END:variables
 }

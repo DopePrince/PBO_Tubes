@@ -6,12 +6,12 @@ package view;
 
 /**
  *
- * @author Nixx
+ * @author henry
  */
 public class PasienView extends javax.swing.JFrame {
 
     /**
-     * Creates new form PasienView
+     * Creates new form GajiView
      */
     public PasienView() {
         initComponents();
@@ -51,27 +51,28 @@ public class PasienView extends javax.swing.JFrame {
         panelHistoriGaji = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        labelId = new javax.swing.JLabel();
-        LabelPasien = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        labelNama = new javax.swing.JLabel();
-        inputNama = new javax.swing.JTextField();
-        buttonTambah = new javax.swing.JButton();
-        buttonEdit = new javax.swing.JButton();
-        InputID = new javax.swing.JTextField();
-        buttonBatal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelJenisPenyakit = new javax.swing.JTable();
-        jSeparator2 = new javax.swing.JSeparator();
-        labelDaftarPasien = new javax.swing.JLabel();
+        buttonBatal = new javax.swing.JButton();
+        InputID = new javax.swing.JTextField();
+        labelNama = new javax.swing.JLabel();
         labelUmur = new javax.swing.JLabel();
-        labelGender = new javax.swing.JLabel();
-        inputNoTelepon = new javax.swing.JTextField();
-        inputUmur1 = new javax.swing.JTextField();
-        labelAlamat = new javax.swing.JLabel();
-        labelNoTelepon = new javax.swing.JLabel();
-        inputAlamat = new javax.swing.JTextField();
         inputGender1 = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        inputAlamat = new javax.swing.JTextField();
+        labelDaftarPasien = new javax.swing.JLabel();
+        labelNoTelepon = new javax.swing.JLabel();
+        LabelPasien = new javax.swing.JLabel();
+        labelAlamat = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        buttonEdit = new javax.swing.JButton();
+        labelId = new javax.swing.JLabel();
+        inputUmur1 = new javax.swing.JTextField();
+        buttonTambah = new javax.swing.JButton();
+        inputNoTelepon = new javax.swing.JTextField();
+        inputNama = new javax.swing.JTextField();
+        labelGender = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,16 +87,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelJenisPenyakit.setBackground(new java.awt.Color(224, 224, 224));
         panelJenisPenyakit.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelJenisPenyakit.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                panelJenisPenyakitMouseMoved(evt);
-            }
-        });
-        panelJenisPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelJenisPenyakitMouseExited(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -122,14 +113,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelDepartment.setBackground(new java.awt.Color(224, 224, 224));
         panelDepartment.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelDepartmentMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelDepartmentMouseExited(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
@@ -144,7 +127,7 @@ public class PasienView extends javax.swing.JFrame {
             .addGroup(panelDepartmentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,14 +139,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelDokter.setBackground(new java.awt.Color(224, 224, 224));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelDokter.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelDokterMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelDokterMouseExited(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
@@ -190,14 +165,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelPasien.setBackground(new java.awt.Color(255, 255, 255));
         panelPasien.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelPasien.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelPasienMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelPasienMouseExited(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(102, 102, 102));
@@ -224,14 +191,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelRuangan.setBackground(new java.awt.Color(224, 224, 224));
         panelRuangan.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelRuangan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelRuanganMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelRuanganMouseExited(evt);
-            }
-        });
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
@@ -266,14 +225,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelTransaksi.setBackground(new java.awt.Color(224, 224, 224));
         panelTransaksi.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelTransaksiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelTransaksiMouseExited(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
@@ -300,14 +251,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelHistoriTransaksi.setBackground(new java.awt.Color(224, 224, 224));
         panelHistoriTransaksi.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelHistoriTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelHistoriTransaksiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelHistoriTransaksiMouseExited(evt);
-            }
-        });
 
         jLabel12.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
@@ -322,7 +265,7 @@ public class PasienView extends javax.swing.JFrame {
             .addGroup(panelHistoriTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,14 +281,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelTampilGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelTampilGaji.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelTampilGaji.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelTampilGajiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelTampilGajiMouseExited(evt);
-            }
-        });
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
@@ -360,7 +295,7 @@ public class PasienView extends javax.swing.JFrame {
             .addGroup(panelTampilGajiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,14 +307,6 @@ public class PasienView extends javax.swing.JFrame {
 
         panelHistoriGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelHistoriGaji.setPreferredSize(new java.awt.Dimension(170, 30));
-        panelHistoriGaji.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelHistoriGajiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelHistoriGajiMouseExited(evt);
-            }
-        });
 
         jLabel15.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(102, 102, 102));
@@ -394,7 +321,7 @@ public class PasienView extends javax.swing.JFrame {
             .addGroup(panelHistoriGajiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         panelHistoriGajiLayout.setVerticalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,74 +398,10 @@ public class PasienView extends javax.swing.JFrame {
                 .addComponent(panelTampilGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelHistoriGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        labelId.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        labelId.setForeground(new java.awt.Color(153, 153, 153));
-        labelId.setText("ID");
-
-        LabelPasien.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        LabelPasien.setText("Pasien");
-
-        labelNama.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        labelNama.setForeground(new java.awt.Color(153, 153, 153));
-        labelNama.setText("Nama");
-
-        inputNama.setAlignmentX(50.0F);
-        inputNama.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        inputNama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputNamaActionPerformed(evt);
-            }
-        });
-
-        buttonTambah.setBackground(new java.awt.Color(51, 102, 255));
-        buttonTambah.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonTambah.setForeground(new java.awt.Color(255, 255, 255));
-        buttonTambah.setText("Tambah");
-        buttonTambah.setBorder(null);
-        buttonTambah.setBorderPainted(false);
-        buttonTambah.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        buttonTambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonTambahActionPerformed(evt);
-            }
-        });
-
-        buttonEdit.setBackground(new java.awt.Color(255, 204, 0));
-        buttonEdit.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonEdit.setForeground(new java.awt.Color(255, 255, 255));
-        buttonEdit.setText("Edit");
-        buttonEdit.setBorder(null);
-        buttonEdit.setBorderPainted(false);
-        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEditActionPerformed(evt);
-            }
-        });
-
-        InputID.setAlignmentX(50.0F);
-        InputID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        InputID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputIDActionPerformed(evt);
-            }
-        });
-
-        buttonBatal.setBackground(new java.awt.Color(255, 51, 51));
-        buttonBatal.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonBatal.setForeground(new java.awt.Color(255, 255, 255));
-        buttonBatal.setText("Batal");
-        buttonBatal.setBorder(null);
-        buttonBatal.setBorderPainted(false);
-        buttonBatal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBatalActionPerformed(evt);
-            }
-        });
 
         tabelJenisPenyakit.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -553,121 +416,193 @@ public class PasienView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelJenisPenyakit);
 
-        labelDaftarPasien.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        labelDaftarPasien.setForeground(new java.awt.Color(20, 20, 20));
-        labelDaftarPasien.setText("Daftar Pasien");
+        buttonBatal.setBackground(new java.awt.Color(255, 51, 51));
+        buttonBatal.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonBatal.setForeground(new java.awt.Color(255, 255, 255));
+        buttonBatal.setText("Batal");
+        buttonBatal.setBorder(null);
+        buttonBatal.setBorderPainted(false);
+        buttonBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBatalActionPerformed(evt);
+            }
+        });
+
+        InputID.setAlignmentX(50.0F);
+        InputID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        InputID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputIDActionPerformed(evt);
+            }
+        });
+
+        labelNama.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelNama.setForeground(new java.awt.Color(153, 153, 153));
+        labelNama.setText("Nama");
 
         labelUmur.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
         labelUmur.setForeground(new java.awt.Color(153, 153, 153));
         labelUmur.setText("Umur");
 
-        labelGender.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        labelGender.setForeground(new java.awt.Color(153, 153, 153));
-        labelGender.setText("Gender");
+        labelDaftarPasien.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelDaftarPasien.setForeground(new java.awt.Color(20, 20, 20));
+        labelDaftarPasien.setText("Daftar Pasien");
+
+        labelNoTelepon.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelNoTelepon.setForeground(new java.awt.Color(153, 153, 153));
+        labelNoTelepon.setText("No Telepon");
+
+        LabelPasien.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        LabelPasien.setText("Pasien");
 
         labelAlamat.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
         labelAlamat.setForeground(new java.awt.Color(153, 153, 153));
         labelAlamat.setText("Alamat");
 
-        labelNoTelepon.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        labelNoTelepon.setForeground(new java.awt.Color(153, 153, 153));
-        labelNoTelepon.setText("No Telepon");
+        buttonEdit.setBackground(new java.awt.Color(255, 204, 0));
+        buttonEdit.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonEdit.setForeground(new java.awt.Color(255, 255, 255));
+        buttonEdit.setText("Edit");
+        buttonEdit.setBorder(null);
+        buttonEdit.setBorderPainted(false);
+        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEditActionPerformed(evt);
+            }
+        });
+
+        labelId.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelId.setForeground(new java.awt.Color(153, 153, 153));
+        labelId.setText("ID");
+
+        buttonTambah.setBackground(new java.awt.Color(51, 102, 255));
+        buttonTambah.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonTambah.setForeground(new java.awt.Color(255, 255, 255));
+        buttonTambah.setText("Tambah");
+        buttonTambah.setBorder(null);
+        buttonTambah.setBorderPainted(false);
+        buttonTambah.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTambahActionPerformed(evt);
+            }
+        });
+
+        inputNama.setAlignmentX(50.0F);
+        inputNama.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        inputNama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputNamaActionPerformed(evt);
+            }
+        });
+
+        labelGender.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelGender.setForeground(new java.awt.Color(153, 153, 153));
+        labelGender.setText("Gender");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(LabelPasien)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(labelId)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(308, 308, 308)
-                                    .addComponent(labelNama)
-                                    .addGap(0, 0, Short.MAX_VALUE))))
-                        .addComponent(jSeparator2)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelUmur)
-                                .addComponent(inputUmur1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelGender)
-                                .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelNoTelepon)
-                                .addComponent(inputGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(labelDaftarPasien)
-                    .addComponent(labelAlamat)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(inputNoTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(3, 3, 3)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(LabelPasien)
+                            .addGap(601, 601, 601))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jSeparator3)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(labelId)
+                                            .addGap(308, 308, 308)
+                                            .addComponent(labelNama))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(labelUmur)
+                                                .addComponent(inputUmur1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(labelGender)
+                                                .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(labelNoTelepon)
+                                                .addComponent(inputGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(0, 9, Short.MAX_VALUE)))
+                            .addComponent(labelDaftarPasien)
+                            .addComponent(labelAlamat)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(inputNoTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(3, 3, 3)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(LabelPasien)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelNama)
-                        .addGap(38, 38, 38)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelUmur)
-                    .addComponent(labelGender))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputUmur1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelAlamat)
-                    .addComponent(labelNoTelepon))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputNoTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(labelDaftarPasien)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
+                .addGap(52, 52, 52)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(LabelPasien)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(labelId)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(labelNama)
+                            .addGap(38, 38, 38)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelUmur)
+                        .addComponent(labelGender))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(inputUmur1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelAlamat)
+                        .addComponent(labelNoTelepon))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(inputNoTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(18, 18, 18)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(labelDaftarPasien)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -678,12 +613,12 @@ public class PasienView extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -692,97 +627,25 @@ public class PasienView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
-
-    }//GEN-LAST:event_panelJenisPenyakitMouseMoved
-
-    private void panelJenisPenyakitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseExited
-
-    }//GEN-LAST:event_panelJenisPenyakitMouseExited
-
-    private void panelDepartmentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseEntered
-        panelDepartment.setBackground(Color.white);
-    }//GEN-LAST:event_panelDepartmentMouseEntered
-
-    private void panelDepartmentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseExited
-        panelDepartment.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelDepartmentMouseExited
-
-    private void panelDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseEntered
-        panelDokter.setBackground(Color.white);
-    }//GEN-LAST:event_panelDokterMouseEntered
-
-    private void panelDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseExited
-        panelDokter.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelDokterMouseExited
-
-    private void panelPasienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseEntered
-        panelPasien.setBackground(Color.white);
-    }//GEN-LAST:event_panelPasienMouseEntered
-
-    private void panelPasienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseExited
-        panelPasien.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelPasienMouseExited
-
-    private void panelRuanganMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseEntered
-        panelRuangan.setBackground(Color.white);
-    }//GEN-LAST:event_panelRuanganMouseEntered
-
-    private void panelRuanganMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseExited
-        panelRuangan.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelRuanganMouseExited
-
-    private void panelTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseEntered
-        panelTransaksi.setBackground(Color.white);
-    }//GEN-LAST:event_panelTransaksiMouseEntered
-
-    private void panelTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseExited
-        panelTransaksi.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelTransaksiMouseExited
-
-    private void panelHistoriTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriTransaksiMouseEntered
-        panelHistoriTransaksi.setBackground(Color.white);
-    }//GEN-LAST:event_panelHistoriTransaksiMouseEntered
-
-    private void panelHistoriTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriTransaksiMouseExited
-        panelHistoriTransaksi.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelHistoriTransaksiMouseExited
-
-    private void panelTampilGajiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseEntered
-        panelTampilGaji.setBackground(Color.white);
-    }//GEN-LAST:event_panelTampilGajiMouseEntered
-
-    private void panelTampilGajiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseExited
-        panelTampilGaji.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelTampilGajiMouseExited
-
-    private void panelHistoriGajiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriGajiMouseEntered
-        panelHistoriGaji.setBackground(Color.white);
-    }//GEN-LAST:event_panelHistoriGajiMouseEntered
-
-    private void panelHistoriGajiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelHistoriGajiMouseExited
-        panelHistoriGaji.setBackground(Color.getColor("E0E0E0"));
-    }//GEN-LAST:event_panelHistoriGajiMouseExited
-
-    private void inputNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaActionPerformed
+    private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputNamaActionPerformed
-
-    private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonTambahActionPerformed
-
-    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonEditActionPerformed
+    }//GEN-LAST:event_buttonBatalActionPerformed
 
     private void InputIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InputIDActionPerformed
 
-    private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
+    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_buttonBatalActionPerformed
+    }//GEN-LAST:event_buttonEditActionPerformed
+
+    private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonTambahActionPerformed
+
+    private void inputNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNamaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -809,6 +672,7 @@ public class PasienView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(PasienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -849,6 +713,7 @@ public class PasienView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JLabel labelAlamat;
     private javax.swing.JLabel labelDaftarPasien;
     private javax.swing.JLabel labelGender;
