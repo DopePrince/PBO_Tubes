@@ -37,7 +37,7 @@ public class TableTransaksi extends AbstractTableModel{
             case 0:
                 return list.get(rowIndex).getId();
             case 1:
-                return list.get(rowIndex).getDokter().getBiaya_dokter();
+                return list.get(rowIndex).getTanggal_transaksi();
             case 2:
                 return list.get(rowIndex).getPasien().getNama();
             case 3:
@@ -45,7 +45,9 @@ public class TableTransaksi extends AbstractTableModel{
             case 4:
                 return list.get(rowIndex).getRuangan().getHarga();
             case 5:
-                return list.get(rowIndex).getTanggal_transaksi();
+                return list.get(rowIndex).getBiaya_diagnosis();
+            case 6:
+                return list.get(rowIndex).getDokter().getBiaya_dokter();
             default:
                 return null;
         }
@@ -64,6 +66,8 @@ public class TableTransaksi extends AbstractTableModel{
             case 4:
                 return "Harga Ruangan";
             case 5:
+                return "Biaya Diagnosis";
+            case 6:
                 return "Biaya Dokter";
             default:
                 return null;

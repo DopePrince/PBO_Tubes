@@ -151,6 +151,7 @@ public class TransaksiView extends javax.swing.JFrame {
 
         RSLabel.setBackground(new java.awt.Color(0, 204, 204));
         RSLabel.setFont(new java.awt.Font("Castellar", 0, 22)); // NOI18N
+        RSLabel.setForeground(new java.awt.Color(0, 0, 0));
         RSLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         RSLabel.setText("rumah sakit");
 
@@ -185,6 +186,7 @@ public class TransaksiView extends javax.swing.JFrame {
         });
 
         adminLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        adminLabel.setForeground(new java.awt.Color(0, 0, 0));
         adminLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         adminLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/computer.png"))); // NOI18N
         adminLabel.setText("Admin");
@@ -217,6 +219,7 @@ public class TransaksiView extends javax.swing.JFrame {
         });
 
         dokterLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        dokterLabel.setForeground(new java.awt.Color(0, 0, 0));
         dokterLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         dokterLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/transaksi.png"))); // NOI18N
         dokterLabel.setText("Dokter");
@@ -249,6 +252,7 @@ public class TransaksiView extends javax.swing.JFrame {
         });
 
         pasienLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        pasienLabel.setForeground(new java.awt.Color(0, 0, 0));
         pasienLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pasienLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets_icon_B/pembeli.png"))); // NOI18N
         pasienLabel.setText("Pasien");
@@ -274,6 +278,7 @@ public class TransaksiView extends javax.swing.JFrame {
 
         judulLabel.setBackground(new java.awt.Color(0, 204, 204));
         judulLabel.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        judulLabel.setForeground(new java.awt.Color(0, 0, 0));
         judulLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         judulLabel.setText("TRANSAKSI");
 
@@ -348,41 +353,49 @@ public class TransaksiView extends javax.swing.JFrame {
         detailContainer.setBackground(new java.awt.Color(0, 0, 0));
 
         detailPanel.setBackground(new java.awt.Color(255, 255, 255));
-        detailPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Detail", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP));
+        detailPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Detail", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Segoe UI", 0, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         detailPanel.setLayout(new java.awt.GridLayout(1, 0));
 
         leftGrid.setBackground(new java.awt.Color(255, 255, 255));
 
         namaPasienLabel.setBackground(new java.awt.Color(255, 255, 255));
         namaPasienLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        namaPasienLabel.setForeground(new java.awt.Color(0, 0, 0));
         namaPasienLabel.setText("Nama Pasien");
 
         umurPasienLabel.setBackground(new java.awt.Color(255, 255, 255));
         umurPasienLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        umurPasienLabel.setForeground(new java.awt.Color(0, 0, 0));
         umurPasienLabel.setText("Umur Pasien");
 
         genderLabel.setBackground(new java.awt.Color(255, 255, 255));
         genderLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        genderLabel.setForeground(new java.awt.Color(0, 0, 0));
         genderLabel.setText("Gender");
 
         idTransaksiLabel.setBackground(new java.awt.Color(255, 255, 255));
         idTransaksiLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        idTransaksiLabel.setForeground(new java.awt.Color(0, 0, 0));
         idTransaksiLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         idTransaksiLabel.setText("Id Transaksi");
 
         tglTransaksiLabel.setBackground(new java.awt.Color(255, 255, 255));
         tglTransaksiLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        tglTransaksiLabel.setForeground(new java.awt.Color(0, 0, 0));
         tglTransaksiLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tglTransaksiLabel.setText("Tgl Transaksi");
 
         noTeleponLabel.setBackground(new java.awt.Color(255, 255, 255));
         noTeleponLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        noTeleponLabel.setForeground(new java.awt.Color(0, 0, 0));
         noTeleponLabel.setText("No Telepon");
 
         alamatLabel.setBackground(new java.awt.Color(255, 255, 255));
         alamatLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        alamatLabel.setForeground(new java.awt.Color(0, 0, 0));
         alamatLabel.setText("Alamat");
 
+        idTransaksiTextField.setBackground(new java.awt.Color(204, 204, 204));
         idTransaksiTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
         idTransaksiTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -390,16 +403,22 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
 
+        tglTransaksiTextField.setBackground(new java.awt.Color(204, 204, 204));
         tglTransaksiTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        namaPasienTextField.setBackground(new java.awt.Color(204, 204, 204));
         namaPasienTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        umurPasienTextField.setBackground(new java.awt.Color(204, 204, 204));
         umurPasienTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        genderTextField.setBackground(new java.awt.Color(204, 204, 204));
         genderTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        noTeleponTextField.setBackground(new java.awt.Color(204, 204, 204));
         noTeleponTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        alamatTextField.setBackground(new java.awt.Color(204, 204, 204));
         alamatTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout leftGridLayout = new javax.swing.GroupLayout(leftGrid);
@@ -468,30 +487,36 @@ public class TransaksiView extends javax.swing.JFrame {
 
         biayaDiagnosisLabel.setBackground(new java.awt.Color(255, 255, 255));
         biayaDiagnosisLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        biayaDiagnosisLabel.setForeground(new java.awt.Color(0, 0, 0));
         biayaDiagnosisLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         biayaDiagnosisLabel.setText("Biaya Diagnosis");
 
         biayaKamarLabel.setBackground(new java.awt.Color(255, 255, 255));
         biayaKamarLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        biayaKamarLabel.setForeground(new java.awt.Color(0, 0, 0));
         biayaKamarLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         biayaKamarLabel.setText("Biaya Kamar");
 
         biayaDokterLabel.setBackground(new java.awt.Color(255, 255, 255));
         biayaDokterLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        biayaDokterLabel.setForeground(new java.awt.Color(0, 0, 0));
         biayaDokterLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         biayaDokterLabel.setText("Biaya Dokter");
 
         dokterPengampuLabel.setBackground(new java.awt.Color(255, 255, 255));
         dokterPengampuLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
+        dokterPengampuLabel.setForeground(new java.awt.Color(0, 0, 0));
         dokterPengampuLabel.setText("Dokter Pengampu");
 
         totalBiayaLabel.setBackground(new java.awt.Color(255, 255, 255));
         totalBiayaLabel.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 24)); // NOI18N
+        totalBiayaLabel.setForeground(new java.awt.Color(0, 0, 0));
         totalBiayaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalBiayaLabel.setText("TOTAL BIAYA");
 
         saveBtn.setBackground(new java.awt.Color(0, 204, 255));
         saveBtn.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        saveBtn.setForeground(new java.awt.Color(0, 0, 0));
         saveBtn.setText("Simpan");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -501,6 +526,7 @@ public class TransaksiView extends javax.swing.JFrame {
 
         addBtn.setBackground(new java.awt.Color(0, 204, 255));
         addBtn.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(0, 0, 0));
         addBtn.setText("Tambah");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -508,14 +534,19 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
 
+        dokterPengampuTextField.setBackground(new java.awt.Color(204, 204, 204));
         dokterPengampuTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        biayaKamarTextField.setBackground(new java.awt.Color(204, 204, 204));
         biayaKamarTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        biayaDokterTextField.setBackground(new java.awt.Color(204, 204, 204));
         biayaDokterTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        biayaDiagnosisTextField.setBackground(new java.awt.Color(204, 204, 204));
         biayaDiagnosisTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 12)); // NOI18N
 
+        totalBiayaTextField.setBackground(new java.awt.Color(204, 204, 204));
         totalBiayaTextField.setFont(new java.awt.Font("Berlin Sans FB Demi", 0, 14)); // NOI18N
         totalBiayaTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         totalBiayaTextField.setToolTipText("");
