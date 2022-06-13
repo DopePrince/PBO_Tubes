@@ -54,19 +54,18 @@ public class TransaksiView extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         labelGajiDokter2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        labelTransaksi = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         labelGajiDokter5 = new javax.swing.JLabel();
-        inputbiayaDiagnosis = new javax.swing.JTextField();
+        inputBiayaDiagnosis = new javax.swing.JTextField();
         labelGajiDokter6 = new javax.swing.JLabel();
         buttonTambah = new javax.swing.JButton();
         buttonEdit = new javax.swing.JButton();
         InputID = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelJenisPenyakit = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         labelGajiDokter7 = new javax.swing.JLabel();
+        inputTanggalTransaksi = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -466,7 +465,7 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addComponent(panelTampilGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelHistoriGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -475,18 +474,18 @@ public class TransaksiView extends javax.swing.JFrame {
         labelGajiDokter2.setForeground(new java.awt.Color(153, 153, 153));
         labelGajiDokter2.setText("ID");
 
-        jLabel1.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
-        jLabel1.setText("Transaksi");
+        labelTransaksi.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
+        labelTransaksi.setText("Transaksi");
 
         labelGajiDokter5.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
         labelGajiDokter5.setForeground(new java.awt.Color(153, 153, 153));
         labelGajiDokter5.setText("Biaya Diagnosis");
 
-        inputbiayaDiagnosis.setAlignmentX(50.0F);
-        inputbiayaDiagnosis.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        inputbiayaDiagnosis.addActionListener(new java.awt.event.ActionListener() {
+        inputBiayaDiagnosis.setAlignmentX(50.0F);
+        inputBiayaDiagnosis.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        inputBiayaDiagnosis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputbiayaDiagnosisActionPerformed(evt);
+                inputBiayaDiagnosisActionPerformed(evt);
             }
         });
 
@@ -539,22 +538,8 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
 
-        tabelJenisPenyakit.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tabelJenisPenyakit);
-
         labelGajiDokter7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         labelGajiDokter7.setForeground(new java.awt.Color(20, 20, 20));
-        labelGajiDokter7.setText("Daftar Jenis Penyakit");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -566,7 +551,6 @@ public class TransaksiView extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
@@ -581,20 +565,23 @@ public class TransaksiView extends javax.swing.JFrame {
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(labelGajiDokter5)
-                                        .addComponent(inputbiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(labelGajiDokter6)
                                 .addComponent(jSeparator2))
                             .addComponent(labelGajiDokter7)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(labelTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(labelTransaksi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -606,10 +593,12 @@ public class TransaksiView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelGajiDokter5)
                         .addGap(2, 2, 2)
-                        .addComponent(inputbiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(labelGajiDokter6)
-                .addGap(110, 110, 110)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -618,9 +607,7 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelGajiDokter7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -635,7 +622,7 @@ public class TransaksiView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -649,9 +636,9 @@ public class TransaksiView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonTambahActionPerformed
 
-    private void inputbiayaDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputbiayaDiagnosisActionPerformed
+    private void inputBiayaDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBiayaDiagnosisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputbiayaDiagnosisActionPerformed
+    }//GEN-LAST:event_inputBiayaDiagnosisActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         // TODO add your handling code here:
@@ -784,8 +771,8 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JButton buttonBatal;
     private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonTambah;
-    private javax.swing.JTextField inputbiayaDiagnosis;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField inputBiayaDiagnosis;
+    private javax.swing.JTextField inputTanggalTransaksi;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -802,13 +789,13 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelGajiDokter2;
     private javax.swing.JLabel labelGajiDokter5;
     private javax.swing.JLabel labelGajiDokter6;
     private javax.swing.JLabel labelGajiDokter7;
+    private javax.swing.JLabel labelTransaksi;
     private javax.swing.JPanel panelDepartment;
     private javax.swing.JPanel panelDokter;
     private javax.swing.JPanel panelHistoriGaji;
@@ -818,6 +805,5 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JPanel panelRuangan;
     private javax.swing.JPanel panelTampilGaji;
     private javax.swing.JPanel panelTransaksi;
-    private javax.swing.JTable tabelJenisPenyakit;
     // End of variables declaration//GEN-END:variables
 }
