@@ -8,14 +8,102 @@ package view;
  *
  * @author henry
  */
+import control.TransaksiControl;
+import control.DepartmentControl;
+import control.Jenis_PenyakitControl;
+import control.PasienControl;
+import control.RuanganControl;
+import control.DokterControl;
+
+import java.awt.event.KeyEvent;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+
+
+import model.Department;
+import model.Jenis_Penyakit;
+import model.Dokter;
+        
+import table.TableDokter;
+import table.TableJenis_Penyakit;
+
+
+
 public class DokterView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GajiView
-     */
+   
+    private DepartmentControl departmentControl;
+    private Jenis_PenyakitControl jenis_PenyakitControl;
+    private DokterControl dokterControl;
+    List<Department> listDepartment;
+    List<Jenis_Penyakit> listJenis_Penyakit;
+    List<Dokter> listDokter;
+   
+    String action = null;
+    int selectedId = 0;
+    
     public DokterView() {
-        initComponents();
+        try{
+            initComponents();
+            departmentControl = new DepartmentControl();
+            jenis_PenyakitControl = new Jenis_PenyakitControl();
+            dokterControl = new DokterControl();
+            setComponent(false);
+            setEditDeleteBtn(false);
+            showDokter();
+            setDepartmentToDropdown();
+         
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
+    
+    public void setComponent(boolean value){
+        buttonTambah1.setEnabled(value);
+        buttonBatal.setEnabled(value);
+        buttonEdit.setEnabled(value);
+        
+        inputId.setEnabled(value);
+        inputAlamat.setEnabled(value);
+        inputGender.setEnabled(value);
+        inputNamaDokter.setEnabled(value);
+        inputNomorTelepon.setEnabled(value);
+        inputBiayaDokter.setEnabled(value);
+        DComboBox.setEnabled(value);
+                
+       
+    }
+    
+    public void setEditDeleteBtn(boolean value){
+        buttonBatal.setEnabled(value);
+        buttonEdit.setEnabled(value);
+    }
+    
+     public void showDokter(){
+        tabelDaftarDokter.setModel(dokterControl.showDataDokter(""));
+    }
+     
+     public void setDepartmentToDropdown(){
+        listDepartment = departmentControl.showListDepartment();
+        for (int i = 0; i < listDepartment.size(); i++) {
+            DComboBox.addItem(listDepartment.get(i));
+        }
+    }
+     
+     public void clearText(){
+        DComboBox.setSelectedItem(ABORT);
+        inputId.setText("");
+        inputAlamat.setText("");
+        inputGender.setText("");
+        inputNamaDokter.setText("");
+        inputNomorTelepon.setText("");
+        inputBiayaDokter.setText("");
+        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +144,6 @@ public class DokterView extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         labelNamaDokter = new javax.swing.JLabel();
         inputNamaDokter = new javax.swing.JTextField();
-        buttonTambah = new javax.swing.JButton();
         buttonEdit = new javax.swing.JButton();
         inputId = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
@@ -73,6 +160,9 @@ public class DokterView extends javax.swing.JFrame {
         inputBiayaDokter = new javax.swing.JTextField();
         inputGender = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        buttonTambah1 = new javax.swing.JButton();
+        DComboBox = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -399,7 +489,7 @@ public class DokterView extends javax.swing.JFrame {
                 .addComponent(panelTampilGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelHistoriGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -420,19 +510,6 @@ public class DokterView extends javax.swing.JFrame {
         inputNamaDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputNamaDokterActionPerformed(evt);
-            }
-        });
-
-        buttonTambah.setBackground(new java.awt.Color(51, 102, 255));
-        buttonTambah.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonTambah.setForeground(new java.awt.Color(255, 255, 255));
-        buttonTambah.setText("Tambah");
-        buttonTambah.setBorder(null);
-        buttonTambah.setBorderPainted(false);
-        buttonTambah.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        buttonTambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonTambahActionPerformed(evt);
             }
         });
 
@@ -501,45 +578,68 @@ public class DokterView extends javax.swing.JFrame {
         labelBiayaDokter.setForeground(new java.awt.Color(153, 153, 153));
         labelBiayaDokter.setText("Biaya Dokter");
 
+        buttonTambah1.setBackground(new java.awt.Color(51, 102, 255));
+        buttonTambah1.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonTambah1.setForeground(new java.awt.Color(255, 255, 255));
+        buttonTambah1.setText("Tambah");
+        buttonTambah1.setBorder(null);
+        buttonTambah1.setBorderPainted(false);
+        buttonTambah1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonTambah1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTambah1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel1.setText("Department");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator3)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(dokterLabel))
-                            .addComponent(labelId)
-                            .addComponent(inputId, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelGender)
-                            .addComponent(inputGender, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelDaftarDokter)
-                            .addComponent(labelAlamat))
-                        .addGap(246, 246, 246)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNamaDokter)
-                            .addComponent(inputNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNomorTelepon)
-                            .addComponent(inputNomorTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelBiayaDokter)
-                            .addComponent(inputBiayaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labelDaftarDokter)
+                    .addComponent(buttonTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jSeparator3)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(dokterLabel))
+                                .addComponent(labelId)
+                                .addComponent(inputId, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelGender)
+                                .addComponent(inputGender, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelAlamat))
+                            .addGap(246, 246, 246)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(labelNamaDokter)
+                                .addComponent(inputNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelNomorTelepon)
+                                .addComponent(inputNomorTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelBiayaDokter)
+                                .addComponent(inputBiayaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGap(59, 59, 59)
+                            .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(33, 33, 33)
+                                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(DComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -575,16 +675,20 @@ public class DokterView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputBiayaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(inputGender, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(78, 78, 78)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelDaftarDokter)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
@@ -608,15 +712,15 @@ public class DokterView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 342, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 342, Short.MAX_VALUE)))
         );
 
         pack();
@@ -625,10 +729,6 @@ public class DokterView extends javax.swing.JFrame {
     private void inputNamaDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaDokterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNamaDokterActionPerformed
-
-    private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         // TODO add your handling code here:
@@ -641,6 +741,10 @@ public class DokterView extends javax.swing.JFrame {
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonBatalActionPerformed
+
+    private void buttonTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambah1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonTambah1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -681,9 +785,10 @@ public class DokterView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<Department> DComboBox;
     private javax.swing.JButton buttonBatal;
     private javax.swing.JButton buttonEdit;
-    private javax.swing.JButton buttonTambah;
+    private javax.swing.JButton buttonTambah1;
     private javax.swing.JLabel dokterLabel;
     private javax.swing.JTextField inputAlamat;
     private javax.swing.JTextField inputBiayaDokter;
@@ -691,6 +796,7 @@ public class DokterView extends javax.swing.JFrame {
     private javax.swing.JTextField inputId;
     private javax.swing.JTextField inputNamaDokter;
     private javax.swing.JTextField inputNomorTelepon;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
