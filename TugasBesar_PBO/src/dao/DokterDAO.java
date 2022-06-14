@@ -129,8 +129,8 @@ public class DokterDAO {
                     
                     Department dp = new Department(
                         rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("dp.nama")
+                        
                     );
                     
                     Dokter dk = new Dokter(
@@ -177,8 +177,8 @@ public class DokterDAO {
                     
                     Department dp = new Department(
                         rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("dp.nama")
+                        
                     );
                    
                     dk = new Dokter(

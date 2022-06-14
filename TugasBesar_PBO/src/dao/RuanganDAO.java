@@ -75,12 +75,11 @@ public class RuanganDAO {
                         rs.getString("nama_penyakit"), 
                         rs.getString("keterangan") 
                     );
-                    
-                    
+                         
                     Department dp = new Department(
                         rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("dp.nama")
+                        
                     );
                    
                     Ruangan r = new Ruangan(
@@ -127,8 +126,8 @@ public class RuanganDAO {
                     
                     Department dp = new Department(
                         rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        jp
+                        rs.getString("dp.nama")
+                        
                     );
                     
                     Ruangan r = new Ruangan(
@@ -174,8 +173,8 @@ public class RuanganDAO {
                     
                     Department dp = new Department(
                         rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("dp.nama")
+                       
                     );
                    
                     r = new Ruangan(
