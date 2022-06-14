@@ -39,8 +39,8 @@ public class DepartmentControl {
         return tableDepartment;
     }
     
-    public void updateDataDepartment(Department d, int id){
-        dDao.updateDepartment(d, id);
+    public void updateDataDepartment(Department d){
+        dDao.updateDepartment(d);
     }
     
     public void deleteDataDepartment(int id){

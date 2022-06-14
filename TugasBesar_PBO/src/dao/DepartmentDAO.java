@@ -93,7 +93,7 @@ public class DepartmentDAO {
                 + "OR dp.nama LIKE '%" + query + "%')";
         
         
-        System.out.println("4Mengambil data Department...");
+        System.out.println("Mengambil data Department...");
         
         List<Department> list = new ArrayList();
         
@@ -125,18 +125,18 @@ public class DepartmentDAO {
     }
     
 
-    public void updateDepartment(Department d, int id){
+    public void updateDepartment(Department d){
         con = dbCon.makeConnection();
         
         String sql = "UPDATE department SET nama = '" + d.getNama()+ "'"
-                + "WHERE id = '" + id + "'";
+                + "WHERE id = '" + d.getId() + "'";
         
         System.out.println("Editing Department...");
         
         try{
             Statement statement = con.createStatement();
             int result = statement.executeUpdate(sql);
-            System.out.println("Edited " + result + " Department " + id);
+            System.out.println("Edited " + result + " Department " + d.getId());
             statement.close();
         }catch(Exception e){
             System.out.println("1test");
