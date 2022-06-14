@@ -7,7 +7,9 @@ package control;
 
 import dao.RuanganDAO;
 import java.util.List;
+import model.Dokter;
 import model.Ruangan;
+import table.TableRuangan;
 
 /**
  * Kelompok 5 :
@@ -24,7 +26,13 @@ public class RuanganControl {
     public void insertDataRuangan(Ruangan r){
         dDao.insertRuangan(r);
     }
-    
+      public TableRuangan showDataRuangan(String query){
+        
+        List<Ruangan> dataRuangan = dDao.showRuangan(query);
+        TableRuangan tableruangan = new TableRuangan(dataRuangan);
+            
+        return tableruangan;
+    }
     public List<Ruangan> showListRuangan(){
         List<Ruangan> dataRuangan = dDao.showRuangan();
         

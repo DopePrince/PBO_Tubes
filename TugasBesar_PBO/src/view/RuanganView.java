@@ -4,21 +4,87 @@
  */
 package view;
 
+import control.DepartmentControl;
+import control.RuanganControl;
+
 import java.awt.Color;
+import java.util.List;
+import javax.swing.JOptionPane;
+import model.Department;
+import model.Ruangan;
+import table.TableRuangan;
+
 
 /**
  *
  * @author henry
  */
 public class RuanganView extends javax.swing.JFrame {
+    private DepartmentControl departmentControl;
+    private RuanganControl ruanganControl;
+    List<Department> listDepartment;
+    List<Ruangan> listRuangan;
 
+    String action = null;
+    int selectedId = 0;
+    
     /**
      * Creates new form GajiView
      */
     public RuanganView() {
-        initComponents();
+        try{
+            initComponents();
+            departmentControl = new DepartmentControl();
+            ruanganControl = new RuanganControl();
+            setComponent(false);
+            setEditDeleteBtn(false);
+            showRuangan();
+            setDepartmentToDropdown();
+         
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
+     public void setComponent(boolean value){
+        buttonTambah.setEnabled(value);
+        buttonBatal.setEnabled(value);
+        buttonEdit.setEnabled(value);
+        
+        InputRuangan.setEnabled(value);
+        Inputharga.setEnabled(value);
+        inputTipeR.setEnabled(value);
+        Inputfasilitas.setEnabled(value);
+        DComboBox.setEnabled(value);
+                
+       
+    }
+     
+      public void setEditDeleteBtn(boolean value){
+        buttonBatal.setEnabled(value);
+        buttonEdit.setEnabled(value);
+    }
+      
+      public void showRuangan(){
+        tabelRuangan.setModel(ruanganControl.showDataRuangan(""));
+    }
+      
+       public void setDepartmentToDropdown(){
+        listDepartment = departmentControl.showListDepartment();
+        for (int i = 0; i < listDepartment.size(); i++) {
+            DComboBox.addItem(listDepartment.get(i));
+        }
+    }
+        public void clearText(){
+        DComboBox.setSelectedItem(ABORT);
+        InputRuangan.setText("");
+        Inputharga.setText("");
+        inputTipeR.setText("");
+        Inputfasilitas.setText("");
+        
+    }
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,6 +94,7 @@ public class RuanganView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        searchBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -64,14 +131,19 @@ public class RuanganView extends javax.swing.JFrame {
         Inputharga = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelJenisPenyakit = new javax.swing.JTable();
+        tabelRuangan = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         labeldaftarR = new javax.swing.JLabel();
-        InputNo1 = new javax.swing.JTextField();
+        InputRuangan = new javax.swing.JTextField();
         labelharga1 = new javax.swing.JLabel();
         Inputfasilitas = new javax.swing.JTextField();
-        dprtComboBox = new javax.swing.JComboBox<>();
+        DComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        searchField = new javax.swing.JTextField();
+        searchBtn1 = new javax.swing.JButton();
+
+        searchBtn.setBackground(new java.awt.Color(0, 153, 204));
+        searchBtn.setText("Cari");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -544,7 +616,7 @@ public class RuanganView extends javax.swing.JFrame {
             }
         });
 
-        tabelJenisPenyakit.setModel(new javax.swing.table.DefaultTableModel(
+        tabelRuangan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -555,17 +627,17 @@ public class RuanganView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabelJenisPenyakit);
+        jScrollPane1.setViewportView(tabelRuangan);
 
         labeldaftarR.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         labeldaftarR.setForeground(new java.awt.Color(20, 20, 20));
         labeldaftarR.setText("Daftar Ruangan");
 
-        InputNo1.setAlignmentX(50.0F);
-        InputNo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        InputNo1.addActionListener(new java.awt.event.ActionListener() {
+        InputRuangan.setAlignmentX(50.0F);
+        InputRuangan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        InputRuangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputNo1ActionPerformed(evt);
+                InputRuanganActionPerformed(evt);
             }
         });
 
@@ -581,10 +653,18 @@ public class RuanganView extends javax.swing.JFrame {
             }
         });
 
-        dprtComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        DComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Dapartmenet");
+
+        searchBtn1.setBackground(new java.awt.Color(0, 153, 204));
+        searchBtn1.setText("Cari");
+        searchBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtn1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -608,7 +688,7 @@ public class RuanganView extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(labelNo, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(InputNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(InputRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(labelharga, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -617,26 +697,38 @@ public class RuanganView extends javax.swing.JFrame {
                                         .addComponent(inputTipeR, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(labeldaftarR)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(ruanganLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Inputharga, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Inputfasilitas, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(dprtComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(DComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(ruanganLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchBtn1)
+                .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ruanganLabel)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ruanganLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchBtn1))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -649,7 +741,7 @@ public class RuanganView extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(inputTipeR, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(InputNo1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(InputRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelharga)
                     .addComponent(labelharga1))
@@ -660,7 +752,7 @@ public class RuanganView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addGap(3, 3, 3)
-                .addComponent(dprtComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -671,7 +763,7 @@ public class RuanganView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labeldaftarR)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -698,7 +790,13 @@ public class RuanganView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
-        // TODO add your handling code here:
+
+        setComponent(true);
+        
+        clearText();
+        searchField.setText("");
+        action = "Tambah";
+        DComboBox.setSelectedIndex(0);
     }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void inputTipeRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTipeRActionPerformed
@@ -706,7 +804,9 @@ public class RuanganView extends javax.swing.JFrame {
     }//GEN-LAST:event_inputTipeRActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
+        setComponent(true);
+        action = "ubah";
+        Boolean value = false;
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
@@ -789,13 +889,35 @@ public class RuanganView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonBatalActionPerformed
 
-    private void InputNo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputNo1ActionPerformed
+    private void InputRuanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputRuanganActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InputNo1ActionPerformed
+    }//GEN-LAST:event_InputRuanganActionPerformed
 
     private void InputfasilitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputfasilitasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_InputfasilitasActionPerformed
+
+    private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
+        setEditDeleteBtn(false);
+        
+        setComponent(false);
+        
+        try{
+            TableRuangan ruangan = ruanganControl.showDataRuangan(searchField.getText());
+            
+            if(ruangan.getRowCount() == 0){
+                clearText();
+                setEditDeleteBtn(false);
+                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                tabelRuangan.setModel(ruangan);
+            }
+            
+            clearText();
+        }catch (Exception e){
+            System.out.println("Error : " + e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtn1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -840,13 +962,13 @@ public class RuanganView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField InputNo1;
+    private javax.swing.JComboBox<Department> DComboBox;
+    private javax.swing.JTextField InputRuangan;
     private javax.swing.JTextField Inputfasilitas;
     private javax.swing.JTextField Inputharga;
     private javax.swing.JButton buttonBatal;
     private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonTambah;
-    private javax.swing.JComboBox<String> dprtComboBox;
     private javax.swing.JTextField inputTipeR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -883,6 +1005,9 @@ public class RuanganView extends javax.swing.JFrame {
     private javax.swing.JPanel panelTampilGaji;
     private javax.swing.JPanel panelTransaksi;
     private javax.swing.JLabel ruanganLabel;
-    private javax.swing.JTable tabelJenisPenyakit;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JButton searchBtn1;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JTable tabelRuangan;
     // End of variables declaration//GEN-END:variables
 }
