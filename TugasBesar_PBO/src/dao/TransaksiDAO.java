@@ -89,7 +89,7 @@ public class TransaksiDAO {
                     );
                    
                     Dokter dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
@@ -101,7 +101,7 @@ public class TransaksiDAO {
                     );
                     
                     Pasien p = new Pasien(
-                        rs.getString("p.id"),
+                        rs.getInt("p.id"),
                         rs.getInt("umur"),
                         rs.getString("nama"),
                         rs.getString("gender"),
@@ -170,7 +170,7 @@ public class TransaksiDAO {
                     );
                    
                     Dokter dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
@@ -180,7 +180,7 @@ public class TransaksiDAO {
                     );
                     
                     Pasien p = new Pasien(
-                        rs.getString("p.id"),
+                        rs.getInt("p.id"),
                         rs.getInt("umur"),
                         rs.getString("nama"),
                         rs.getString("gender"),
@@ -247,7 +247,7 @@ public class TransaksiDAO {
                     );
                    
                     Dokter dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
@@ -259,7 +259,7 @@ public class TransaksiDAO {
                     );
                     
                     Pasien p = new Pasien(
-                        rs.getString("p.id"),
+                        rs.getInt("p.id"),
                         rs.getInt("umur"),
                         rs.getString("nama"),
                         rs.getString("gender"),

@@ -54,7 +54,7 @@ public class Jenis_PenyakitDAO {
             rs.close();
             statement.close();
         }catch(Exception e){
-            System.out.println("test Error reading database...");
+            System.out.println("Error reading database...");
             e.printStackTrace();
         }
         dbCon.closeConnection();
@@ -64,8 +64,8 @@ public class Jenis_PenyakitDAO {
     public void insertJenis_Penyakit(Jenis_Penyakit jp){
         con = dbCon.makeConnection();
         
-        String sql = "INSERT INTO jenis_penyakit(id,nama_penyakit,keterangan)"
-                + "VALUES('"+ jp.getId()+ "','" + jp.getNama_penyakit()
+        String sql = "INSERT INTO jenis_penyakit(id, id_department, nama_penyakit,keterangan)"
+                + "VALUES('"+ jp.getId()+ "','" + jp.getDepartment().getId() + "','" + jp.getNama_penyakit()
                 + "','" + jp.getKeterangan()+ "')";
         
         System.out.println("Adding Jenis_Penyakit");
@@ -85,8 +85,8 @@ public class Jenis_PenyakitDAO {
     
     public void updateJenis_Penyakit(Jenis_Penyakit jp) {
         con = dbCon.makeConnection();
-        
-        String sql = "UPDATE jenis_penyakit SET id = '" + jp.getId()+ "',nama_penyakit = '" + jp.getNama_penyakit()+ "',keterangan= '" + jp.getKeterangan()+ "' "
+             
+        String sql = "UPDATE jenis_penyakit SET id = '" + jp.getId()+ "',id_department = '" + jp.getDepartment().getId() + "',nama_penyakit = '" + jp.getNama_penyakit()+ "',keterangan= '" + jp.getKeterangan()+ "' "
                 + "WHERE id = '" + jp.getId() + "'"; 
         System.out.println("Editing Jenis_Penyakit...");
         
@@ -102,33 +102,34 @@ public class Jenis_PenyakitDAO {
         dbCon.closeConnection();
     }
     
-    public void deleteJenis_Penyakit(int id) {
+    public void deleteJenis_Penyakit(int id){
         con = dbCon.makeConnection();
+        System.out.println(id);
         
-        String sql = "DELETE FROM jenis_penyakit WHERE id = " + id + "";
-        System.out.println("Deleting Jenis_Penyakit..");
+        String sql = "DELETE FROM jenis_penyakit WHERE id = '" + id + "'";
+        System.out.println("Deleting Jenis Penyakit...");
         
-        try {
-            Statement statement = con.createStatement ();
-            int result=statement.executeUpdate (sql);
-            System.out.println ("Delete" + result +" Jenis_penyakit " + id);
-            statement.close ();
-        } catch (Exception e) {
-            System.out.println("Error deleting Jenis_Penyakit");
+        try{
+            Statement statement = con.createStatement();
+            int result = statement.executeUpdate(sql);
+            System.out.println("Delete " + result + " Jenis Penyakit " + id);
+            statement.close();
+        }catch(Exception e){
+            System.out.println("Error deleting Jenis Penyakit...");
             System.out.println(e);
         }
+        dbCon.closeConnection();
     }
     
     public List<Jenis_Penyakit> showListJenis_Penyakit(String query){
         con = dbCon.makeConnection();
-        System.out.println("teset");
         String sql = "SELECT dp.*, p.* FROM department as dp JOIN jenis_penyakit as p ON dp.id = p.id_department WHERE (p.id LIKE "
                 + "'%" + query + "%'"
                 + "OR p.nama_penyakit LIKE '%" + query + "%'"
                 + "OR dp.nama LIKE '%" + query + "%')";
         
         
-        System.out.println("testMengambil data Jenis Penyakit...");
+        System.out.println("Mengambil data Jenis Penyakit...");
         
         List<Jenis_Penyakit> list = new ArrayList();
         
@@ -137,9 +138,7 @@ public class Jenis_PenyakitDAO {
             ResultSet rs = statement.executeQuery(sql);
             
             if(rs != null){
-                System.out.println("test");
                 while(rs.next()){
-                    System.out.println("test");
                     Department d = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
@@ -158,7 +157,7 @@ public class Jenis_PenyakitDAO {
             rs.close();
             statement.close();
         }catch(Exception e){
-            System.out.println("test Error reading database...");
+            System.out.println("Error reading database...");
             System.out.println(e);
         }
         dbCon.closeConnection();

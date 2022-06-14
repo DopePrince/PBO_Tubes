@@ -85,7 +85,7 @@ public class PasienDAO {
                     );
                     
                     Pasien p = new Pasien(
-                        rs.getString("id"),
+                        rs.getInt("p.id"),
                         rs.getInt("umur"),
                         rs.getString("nama"),
                         rs.getString("gender"),
@@ -135,7 +135,7 @@ public class PasienDAO {
                     );
                     
                     Pasien p = new Pasien(
-                        rs.getString("id"),
+                        rs.getInt("p.id"),
                         rs.getInt("umur"),
                         rs.getString("nama"),
                         rs.getString("gender"),
@@ -184,7 +184,7 @@ public class PasienDAO {
                     );
                     
                     p = new Pasien(
-                        rs.getString("id"),
+                        rs.getInt("p.id"),
                         rs.getInt("umur"),
                         rs.getString("nama"),
                         rs.getString("gender"),
@@ -230,7 +230,7 @@ public class PasienDAO {
         dbCon.closeConnection();
     }
     
-    public void deletePasien(String id){
+    public void deletePasien(int id){
         con = dbCon.makeConnection();
         System.out.println(id);
         

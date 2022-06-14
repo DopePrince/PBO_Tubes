@@ -15,7 +15,7 @@ package model;
 **/
 
 public class Pasien {
-    private String id;
+    private int id;
     private int umur;
     private String nama;
     private String jenis_kelamin;
@@ -23,7 +23,7 @@ public class Pasien {
     private String no_telepon;
     private Jenis_Penyakit penyakit;
 
-    public Pasien(String id, int umur, String nama, String jenis_kelamin, String alamat, String no_telepon, Jenis_Penyakit penyakit) {
+    public Pasien(int id, int umur, String nama, String jenis_kelamin, String alamat, String no_telepon, Jenis_Penyakit penyakit) {
         this.id = id;
         this.umur = umur;
         this.nama = nama;
@@ -33,11 +33,11 @@ public class Pasien {
         this.penyakit = penyakit;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
