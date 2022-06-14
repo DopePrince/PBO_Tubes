@@ -712,9 +712,11 @@ public class DepartmentView extends javax.swing.JFrame {
     
     public void lastID(){
         listDepartment =  departmentControl.showListDepartment();
-        
-        int size = listDepartment.size()+1;
-        InputID.setText(String.valueOf(size));
+        int i=0;
+        for(Department d:listDepartment){
+            i = d.getId();
+        }
+        InputID.setText(String.valueOf(i+1));
     }
     
     public void resetButton(){

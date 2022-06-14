@@ -17,11 +17,21 @@ public class Jenis_Penyakit {
     private int id;
     private String nama_penyakit;
     private String keterangan;
+    private Department department;
 
-    public Jenis_Penyakit(int id, String nama_penyakit, String keterangan) {
+    public Jenis_Penyakit(int id, String nama_penyakit, String keterangan, Department department) {
         this.id = id;
         this.nama_penyakit = nama_penyakit;
         this.keterangan = keterangan;
+        this.department = department;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public int getId() {

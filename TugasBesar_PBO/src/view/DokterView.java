@@ -220,11 +220,12 @@ public class DokterView extends javax.swing.JFrame {
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDepartmentLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
-        );
 
+                .addContainerGap(11, Short.MAX_VALUE)
+
+                .addContainerGap(13, Short.MAX_VALUE)
+            )
+        );
         panelDokter.setBackground(new java.awt.Color(255, 255, 255));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
 
@@ -353,7 +354,7 @@ public class DokterView extends javax.swing.JFrame {
             .addGroup(panelHistoriTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
