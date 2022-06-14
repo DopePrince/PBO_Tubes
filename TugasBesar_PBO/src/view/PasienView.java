@@ -772,11 +772,28 @@ public class PasienView extends javax.swing.JFrame {
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
         // TODO add your handling code here:
-        setComponent(true);
-
-        clearText();
-        action = "Tambah";
-        jenisPenyakitDropdown.setSelectedIndex(0);
+        try{
+            inputKosongException();
+            
+            int selectedIndexJenisPenyakit = jenisPenyakitDropdown.getSelectedIndex();
+            Jenis_Penyakit selectedJenis_Penyakit = listJenis_Penyakit.get(selectedIndexJenisPenyakit);
+            
+            if(action.equals("edit")){
+                Pasien p = new Pasien(Integer.parseInt(InputID.getText()), Integer.parseInt(inputUmur1.getText()), inputNama.getText(), inputGender1.getText(), inputAlamat.getText(), inputNoTelepon.getText(),selectedJenis_Penyakit);
+                pasienControl.updateDataPasien(p);
+            }else if(action.equals("tambah")){
+                Pasien p = new Pasien(Integer.parseInt(InputID.getText()),Integer.parseInt(inputUmur1.getText()), inputNama.getText(), inputGender1.getText(), inputAlamat.getText(), inputNoTelepon.getText(), selectedJenis_Penyakit);
+                pasienControl.insertDataPasien(p);
+            }
+            
+               
+           clearText();
+           resetButton();
+           showPasien();
+           
+       }catch (InputKosongException e){
+           JOptionPane.showMessageDialog(this, e.message());
+       }
     }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void InputIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputIDActionPerformed
