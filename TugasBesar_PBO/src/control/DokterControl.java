@@ -39,22 +39,6 @@ public class DokterControl {
         
         return dataDokter;
     }
-    
-    public int generateIDDokter(){
-        List<Dokter> dataDokter = dDao.showDokter();
-        
-        String current = null;
-        for(int i=0; i < dataDokter.size() ; i++){
-            current = dataDokter.get(i).getId();
-        }
-        
-        if(current == null){
-            return 1;
-        }
-        else{
-            return Integer.parseInt(current.substring(4)) + 1;
-        }
-    }
         
     public void updateDataDokter(Dokter dr){
         dDao.updateDokter(dr);

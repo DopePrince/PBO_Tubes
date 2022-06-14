@@ -48,4 +48,9 @@ public class Department {
         System.out.println("Id");
         System.out.println("Nama");
     }
+    
+    @Override
+    public String toString(){
+        return nama;
+    }
 }

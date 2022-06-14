@@ -69,6 +69,7 @@ public class DokterView extends javax.swing.JFrame {
     }
     
      public void showDokter(){
+        lastID();
         tabelDaftarDokter.setModel(dokterControl.showDataDokter(""));
     }
      
@@ -791,13 +792,13 @@ public class DokterView extends javax.swing.JFrame {
             Department selectedDepartment = listDepartment.get(selectedIndex);
             
             if(action.equals("Tambah")) {
-                Dokter dk = new Dokter(String.valueOf(selectedId), inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
+                Dokter dk = new Dokter(selectedId, inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
                         Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
                 dokterControl.insertDataDokter(dk);
             }
             else
             {
-                Dokter dk = new Dokter(String.valueOf(selectedId), inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
+                Dokter dk = new Dokter(selectedId, inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
                         Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
                 dokterControl.updateDataDokter(dk);
             }
@@ -901,6 +902,15 @@ public class DokterView extends javax.swing.JFrame {
                 new DokterView().setVisible(true);
             }
         });
+    }
+    
+    public void lastID(){
+        listDokter =  dokterControl.showListDokter();
+        int i=0;
+        for(Dokter d:listDokter){
+            i = d.getId();
+        }
+        inputId.setText(String.valueOf(i+1));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -53,7 +53,7 @@ public class DokterDAO {
     public List<Dokter> showDokter(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT dk.*, dp.*, j.* FROM dokter as dk JOIN (department as dp JOIN jenis_penyakit as j ON dp.id = j.id_department) ON dp.id = dk.id_department WHERE (dk.nama LIKE "
+        String sql = "SELECT dk.*, dp.*, j.* FROM dokter as dk JOIN (department as dp JOIN jenis_penyakit as j ON dp.id = j.id_department) ON dk.id_department = dp.id WHERE (dk.nama LIKE "
                 + "'%" + query + "%'"
                 + "OR dk.alamat LIKE '%" + query + "%'"
                 + "OR dk.no_telepon LIKE '%" + query + "%'"
@@ -61,7 +61,6 @@ public class DokterDAO {
                 + "OR dk.biaya_dokter LIKE '%" + query + "%'"
                 + "OR dp.nama LIKE '%" + query + "%'"
                 + "OR j.nama_penyakit LIKE '%" + query + "%')";
-        
         
         System.out.println("Mengambil data Dokter...");
         
@@ -85,7 +84,7 @@ public class DokterDAO {
                     );
                                         
                     Dokter dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
@@ -135,7 +134,7 @@ public class DokterDAO {
                     );
                     
                     Dokter dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
@@ -183,7 +182,7 @@ public class DokterDAO {
                     );
                    
                     dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
