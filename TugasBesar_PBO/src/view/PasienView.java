@@ -57,9 +57,6 @@ public class PasienView extends javax.swing.JFrame {
     }
     
     public void setComponent(boolean value){
-        buttonTambah.setEnabled(value);
-        buttonBatal.setEnabled(value);
-        buttonEdit.setEnabled(value);
         
         InputID.setEnabled(value);
         inputGender1.setEnabled(value);
@@ -68,8 +65,6 @@ public class PasienView extends javax.swing.JFrame {
         inputNama.setEnabled(value);
         inputNoTelepon.setEnabled(value);
         jenisPenyakitDropdown.setEnabled(value);
-        
-        
     }
     
     public void setEditDeleteBtn(boolean value){
@@ -813,6 +808,8 @@ public class PasienView extends javax.swing.JFrame {
         inputAlamat.setText(tableModel.getValueAt(clickedRow, 5).toString());
         inputNoTelepon.setText(tableModel.getValueAt(clickedRow, 6).toString());
         System.out.println(selectedId);
+        
+        String namaPenyakit = tableModel.getValueAt(clickedRow, 7).toString();
         for(Jenis_Penyakit jp:listJenis_Penyakit){
             if(jp.getNama_penyakit().equals(tableModel.getValueAt(clickedRow, 0).toString())){
                 indexJenisPenyakit = listJenis_Penyakit.indexOf(jp);
