@@ -50,9 +50,7 @@ public class RuanganView extends javax.swing.JFrame {
     }
 
      public void setComponent(boolean value){
-        buttonTambah.setEnabled(value);
-        buttonBatal.setEnabled(value);
-        buttonEdit.setEnabled(value);
+        
         
         InputRuangan.setEnabled(value);
         Inputharga.setEnabled(value);
@@ -806,12 +804,7 @@ public class RuanganView extends javax.swing.JFrame {
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
 
-        setComponent(true);
         
-        clearText();
-        searchField.setText("");
-        action = "Tambah";
-        DComboBox.setSelectedIndex(0);
     }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void inputTipeRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTipeRActionPerformed

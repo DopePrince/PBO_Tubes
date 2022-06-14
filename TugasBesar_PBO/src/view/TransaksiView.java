@@ -4,21 +4,115 @@
  */
 package view;
 
-import java.awt.Color;
+import control.PasienControl;
+import control.DokterControl;
+import control.RuanganControl;
+import control.TransaksiControl;
+import exception.InputKosongException;
 
+import java.awt.Color;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+
+
+import model.Pasien;
+import model.Dokter;
+import model.Ruangan;
+import model.Transaksi;
+import table.TableDokter;
+
+import table.TableTransaksi;
 /**
  *
  * @author henry
  */
 public class TransaksiView extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GajiView
-     */
+    private PasienControl pasienControl;
+    private RuanganControl ruanganControl;
+    private DokterControl dokterControl;
+    private TransaksiControl transaksiControl;
+    List<Pasien> listPasien;
+    List<Ruangan> listRuangan;
+    List<Dokter> listDokter;
+    List<Transaksi> listTransaksi;
+   
+    String action = null;
+    int selectedId = 0;
+    
     public TransaksiView() {
         initComponents();
+        pasienControl = new PasienControl();
+        ruanganControl = new RuanganControl();
+        dokterControl = new DokterControl();
+        setComponent(false);
+        setEditDeleteBtn(false);
+        setPasienToDropdown();
+        setDokterToDropdown();
+        setRuanganToDropdown();
+        
+        
     }
+    
+    public void setComponent(boolean value){
+       buttonTambah.setEnabled(value);
+       buttonBatal.setEnabled(value);
+       buttonEdit.setEnabled(value);
+       
+       InputID.setEnabled(value);
+       inputBiayaDiagnosis.setEnabled(value);
+       inputTanggalTransaksi.setEnabled(value);
+       pasienComboBox.setEnabled(value);
+       dokterComboBox.setEnabled(value);
+       ruanganComboBox.setEnabled(value);
+       
+    }
+   
+    public void setEditDeleteBtn(boolean value){
+        buttonBatal.setEnabled(value);
+        buttonEdit.setEnabled(value);
+    }
+    
+    
+    public void clearText(){
+        pasienComboBox.setSelectedItem(ABORT);
+        dokterComboBox.setSelectedItem(ABORT);
+        ruanganComboBox.setSelectedItem(ABORT);
 
+        InputID.setText("");
+        inputBiayaDiagnosis.setText("");
+        inputTanggalTransaksi.setText("");
+        
+    }
+    
+    public void setPasienToDropdown(){
+        listPasien = pasienControl.showListPasien();
+        
+        for(int i = 0; i <listPasien.size();i++){
+            pasienComboBox.addItem(listPasien.get(i));
+        }
+    }
+    
+    public void setDokterToDropdown(){
+        listDokter = dokterControl.showListDokter();
+        
+        for(int i = 0; i <listDokter.size();i++){
+            dokterComboBox.addItem(listDokter.get(i));
+        }
+    }
+    
+    public void setRuanganToDropdown(){
+        listRuangan = ruanganControl.showListRuangan();
+        
+        for(int i = 0; i <listRuangan.size();i++){
+            ruanganComboBox.addItem(listRuangan.get(i));
+        }
+    }
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +160,12 @@ public class TransaksiView extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         labelGajiDokter7 = new javax.swing.JLabel();
         inputTanggalTransaksi = new javax.swing.JTextField();
+        dokterComboBox = new javax.swing.JComboBox<>();
+        pasienComboBox = new javax.swing.JComboBox<>();
+        ruanganComboBox = new javax.swing.JComboBox<>();
+        ruanganLabel = new javax.swing.JLabel();
+        pasienLabel = new javax.swing.JLabel();
+        dokterLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -541,6 +641,18 @@ public class TransaksiView extends javax.swing.JFrame {
         labelGajiDokter7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         labelGajiDokter7.setForeground(new java.awt.Color(20, 20, 20));
 
+        pasienComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pasienComboBoxActionPerformed(evt);
+            }
+        });
+
+        ruanganLabel.setText("Ruangan");
+
+        pasienLabel.setText("Pasien");
+
+        dokterLabel.setText("Dokter");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -549,33 +661,51 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelGajiDokter2)
-                                        .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelGajiDokter5)
-                                        .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(labelGajiDokter6)
-                                .addComponent(jSeparator2))
-                            .addComponent(labelGajiDokter7)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelGajiDokter2)
+                                    .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelGajiDokter5)
+                                    .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(labelGajiDokter6)
+                            .addComponent(jSeparator2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelGajiDokter7)
+                                .addGap(570, 570, 570))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(labelTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(labelTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(dokterComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
+                    .addComponent(dokterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(pasienLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pasienComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ruanganComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(46, 46, 46))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(ruanganLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,19 +725,31 @@ public class TransaksiView extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(labelGajiDokter6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelGajiDokter6)
+                    .addComponent(ruanganLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ruanganComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pasienLabel)
+                    .addComponent(dokterLabel))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dokterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pasienComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(112, 112, 112)
                 .addComponent(labelGajiDokter7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -633,7 +775,32 @@ public class TransaksiView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
-        // TODO add your handling code here:
+       try{
+            int selectedIndex;
+            //InputKosongException();
+            
+            selectedIndex = dokterComboBox.getSelectedIndex();
+            Dokter selectedDokter = listDokter.get(selectedIndex);
+            
+            if(action.equals("Tambah")) {
+                Dokter dk = new Dokter(String.valueOf(selectedIndex), inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
+                        Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
+                dokterControl.insertDataDokter(dk);
+            }
+            else
+            {
+                Dokter dk = new Dokter(inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
+                        Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
+                dokterControl.updateDataDokter(dk);
+            }
+        } catch (InputKosongException e) {
+            JOptionPane.showMessageDialog(this, e.message());
+        }
+        clearText();
+        showDokter();
+        setComponent(false);
+        
+        setEditDeleteBtn(false);
     }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void inputBiayaDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBiayaDiagnosisActionPerformed
@@ -641,7 +808,8 @@ public class TransaksiView extends javax.swing.JFrame {
     }//GEN-LAST:event_inputBiayaDiagnosisActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
+        setComponent(true);
+        action = "ubah";
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
@@ -721,8 +889,14 @@ public class TransaksiView extends javax.swing.JFrame {
     }//GEN-LAST:event_InputIDActionPerformed
 
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
-        // TODO add your handling code here:
+        setComponent(false);
+        setEditDeleteBtn(false);
+        clearText();
     }//GEN-LAST:event_buttonBatalActionPerformed
+
+    private void pasienComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasienComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pasienComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -771,6 +945,8 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JButton buttonBatal;
     private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonTambah;
+    private javax.swing.JComboBox<Dokter> dokterComboBox;
+    private javax.swing.JLabel dokterLabel;
     private javax.swing.JTextField inputBiayaDiagnosis;
     private javax.swing.JTextField inputTanggalTransaksi;
     private javax.swing.JLabel jLabel10;
@@ -805,5 +981,9 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JPanel panelRuangan;
     private javax.swing.JPanel panelTampilGaji;
     private javax.swing.JPanel panelTransaksi;
+    private javax.swing.JComboBox<Pasien> pasienComboBox;
+    private javax.swing.JLabel pasienLabel;
+    private javax.swing.JComboBox<Ruangan> ruanganComboBox;
+    private javax.swing.JLabel ruanganLabel;
     // End of variables declaration//GEN-END:variables
 }
