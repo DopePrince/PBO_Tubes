@@ -1,4 +1,4 @@
-/*
+/**
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -33,23 +33,24 @@ public class DokterView extends javax.swing.JFrame {
     List<Jenis_Penyakit> listJenis_Penyakit;
     List<Dokter> listDokter;
    
-    String action = null;
+    String action = "tambah";
     int selectedId = 0;
     
     public DokterView() {
         initComponents();
         departmentControl = new DepartmentControl();
         dokterControl = new DokterControl();
-        setComponent(false);
+        setComponent(true);
+        inputId.setEnabled(false);
         setEditDeleteBtn(false);
         showDokter();
         setDepartmentToDropdown();
     }
         
     public void setComponent(boolean value){
-        buttonTambah1.setEnabled(value);
+        buttonSimpan.setEnabled(value);
         buttonBatal.setEnabled(value);
-        buttonEdit.setEnabled(value);
+        buttonUbah.setEnabled(value);
         
         inputId.setEnabled(value);
         inputAlamat.setEnabled(value);
@@ -64,7 +65,7 @@ public class DokterView extends javax.swing.JFrame {
     
     public void setEditDeleteBtn(boolean value){
         buttonBatal.setEnabled(value);
-        buttonEdit.setEnabled(value);
+        buttonUbah.setEnabled(value);
     }
     
      public void showDokter(){
@@ -139,7 +140,7 @@ public class DokterView extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         labelNamaDokter = new javax.swing.JLabel();
         inputNamaDokter = new javax.swing.JTextField();
-        buttonEdit = new javax.swing.JButton();
+        buttonUbah = new javax.swing.JButton();
         inputId = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -155,11 +156,12 @@ public class DokterView extends javax.swing.JFrame {
         inputBiayaDokter = new javax.swing.JTextField();
         inputGender = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        buttonTambah1 = new javax.swing.JButton();
+        buttonSimpan = new javax.swing.JButton();
         DComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
+        buttonTambah = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -220,12 +222,11 @@ public class DokterView extends javax.swing.JFrame {
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDepartmentLayout.createSequentialGroup()
-
-                .addContainerGap(11, Short.MAX_VALUE)
-
                 .addContainerGap(13, Short.MAX_VALUE)
-            )
+                .addComponent(jLabel5)
+                .addContainerGap())
         );
+
         panelDokter.setBackground(new java.awt.Color(255, 255, 255));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
 
@@ -511,15 +512,15 @@ public class DokterView extends javax.swing.JFrame {
             }
         });
 
-        buttonEdit.setBackground(new java.awt.Color(255, 204, 0));
-        buttonEdit.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonEdit.setForeground(new java.awt.Color(255, 255, 255));
-        buttonEdit.setText("Edit");
-        buttonEdit.setBorder(null);
-        buttonEdit.setBorderPainted(false);
-        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
+        buttonUbah.setBackground(new java.awt.Color(0, 255, 0));
+        buttonUbah.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonUbah.setForeground(new java.awt.Color(255, 255, 255));
+        buttonUbah.setText("Ubah");
+        buttonUbah.setBorder(null);
+        buttonUbah.setBorderPainted(false);
+        buttonUbah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEditActionPerformed(evt);
+                buttonUbahActionPerformed(evt);
             }
         });
 
@@ -581,16 +582,16 @@ public class DokterView extends javax.swing.JFrame {
         labelBiayaDokter.setForeground(new java.awt.Color(153, 153, 153));
         labelBiayaDokter.setText("Biaya Dokter");
 
-        buttonTambah1.setBackground(new java.awt.Color(51, 102, 255));
-        buttonTambah1.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonTambah1.setForeground(new java.awt.Color(255, 255, 255));
-        buttonTambah1.setText("Tambah");
-        buttonTambah1.setBorder(null);
-        buttonTambah1.setBorderPainted(false);
-        buttonTambah1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        buttonTambah1.addActionListener(new java.awt.event.ActionListener() {
+        buttonSimpan.setBackground(new java.awt.Color(51, 102, 255));
+        buttonSimpan.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        buttonSimpan.setText("Simpan");
+        buttonSimpan.setBorder(null);
+        buttonSimpan.setBorderPainted(false);
+        buttonSimpan.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonTambah1ActionPerformed(evt);
+                buttonSimpanActionPerformed(evt);
             }
         });
 
@@ -605,6 +606,18 @@ public class DokterView extends javax.swing.JFrame {
             }
         });
 
+        buttonTambah.setBackground(new java.awt.Color(255, 204, 0));
+        buttonTambah.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonTambah.setForeground(new java.awt.Color(255, 255, 255));
+        buttonTambah.setText("Tambah");
+        buttonTambah.setBorder(null);
+        buttonTambah.setBorderPainted(false);
+        buttonTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTambahActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -613,7 +626,14 @@ public class DokterView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelDaftarDokter)
-                    .addComponent(buttonTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -649,12 +669,7 @@ public class DokterView extends javax.swing.JFrame {
                             .addGap(59, 59, 59)
                             .addComponent(jSeparator4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(33, 33, 33)
-                                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 694, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(DComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -706,9 +721,10 @@ public class DokterView extends javax.swing.JFrame {
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonTambah1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelDaftarDokter)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -727,9 +743,9 @@ public class DokterView extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 286, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 286, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,10 +767,10 @@ public class DokterView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNamaDokterActionPerformed
 
-    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
+    private void buttonUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonUbahActionPerformed
         setComponent(true);
         action = "ubah";
-    }//GEN-LAST:event_buttonEditActionPerformed
+    }//GEN-LAST:event_buttonUbahActionPerformed
 
     private void inputIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIdActionPerformed
         // TODO add your handling code here:
@@ -766,7 +782,7 @@ public class DokterView extends javax.swing.JFrame {
         clearText();
     }//GEN-LAST:event_buttonBatalActionPerformed
 
-    private void buttonTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambah1ActionPerformed
+    private void buttonSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSimpanActionPerformed
         try{
             int selectedIndex;
             InputKosongException();
@@ -777,8 +793,6 @@ public class DokterView extends javax.swing.JFrame {
             if(action.equals("Tambah")) {
                 Dokter dk = new Dokter(String.valueOf(selectedIndex), inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
                         Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
-                inputId.setText("DOK-" + Integer.toString(dokterControl.generateIDDokter()));
-                
                 dokterControl.insertDataDokter(dk);
             }
             else
@@ -795,7 +809,7 @@ public class DokterView extends javax.swing.JFrame {
         setComponent(false);
         
         setEditDeleteBtn(false);
-    }//GEN-LAST:event_buttonTambah1ActionPerformed
+    }//GEN-LAST:event_buttonSimpanActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         setEditDeleteBtn(false);
@@ -820,13 +834,14 @@ public class DokterView extends javax.swing.JFrame {
         int indexDepartment = -1;
         setEditDeleteBtn(true);
         
-        setComponent(false);
+        setComponent(true);
         
         int clickedRow = tabelDaftarDokter.getSelectedRow();
         TableModel tableModel = tabelDaftarDokter.getModel();
         
         selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 6).toString());
         
+        inputId.setText(tableModel.getValueAt(clickedRow, 6).toString());
         inputAlamat.setText(tableModel.getValueAt(clickedRow, 2).toString());
         inputGender.setText(tableModel.getValueAt(clickedRow, 4).toString());
         inputNamaDokter.setText(tableModel.getValueAt(clickedRow, 1).toString());
@@ -841,6 +856,14 @@ public class DokterView extends javax.swing.JFrame {
         }
         DComboBox.setSelectedIndex(indexDepartment);
     }//GEN-LAST:event_tabelDaftarDokterMouseClicked
+
+    private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
+        setComponent(true);
+        
+        clearText();
+        action = "Tambah";
+        DComboBox.setSelectedIndex(0);
+    }//GEN-LAST:event_buttonTambahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -883,8 +906,9 @@ public class DokterView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Department> DComboBox;
     private javax.swing.JButton buttonBatal;
-    private javax.swing.JButton buttonEdit;
-    private javax.swing.JButton buttonTambah1;
+    private javax.swing.JButton buttonSimpan;
+    private javax.swing.JButton buttonTambah;
+    private javax.swing.JButton buttonUbah;
     private javax.swing.JLabel dokterLabel;
     private javax.swing.JTextField inputAlamat;
     private javax.swing.JTextField inputBiayaDokter;

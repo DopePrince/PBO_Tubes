@@ -53,7 +53,7 @@ public class DokterDAO {
     public List<Dokter> showDokter(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT dk.*, dp.*, j.* FROM dokter as dk JOIN (department as dp JOIN jenis_penyakit as j ON as.id_penyakit = j.id)ON dp.id = dk.id_department WHERE (dk.nama LIKE "
+        String sql = "SELECT dk.*, dp.*, j.* FROM dokter as dk JOIN (department as dp JOIN jenis_penyakit as j ON dp.id = j.id_department) ON dp.id = dk.id_department WHERE (dk.nama LIKE "
                 + "'%" + query + "%'"
                 + "OR dk.alamat LIKE '%" + query + "%'"
                 + "OR dk.no_telepon LIKE '%" + query + "%'"
