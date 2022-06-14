@@ -8,14 +8,12 @@ package view;
  *
  * @author henry
  */
-import control.TransaksiControl;
+
 import control.DepartmentControl;
-import control.Jenis_PenyakitControl;
-import control.PasienControl;
-import control.RuanganControl;
 import control.DokterControl;
 
-import java.awt.event.KeyEvent;
+import exception.InputKosongException;
+
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
@@ -26,16 +24,10 @@ import model.Jenis_Penyakit;
 import model.Dokter;
         
 import table.TableDokter;
-import table.TableJenis_Penyakit;
-import table.TableTransaksi;
-
-
 
 public class DokterView extends javax.swing.JFrame {
 
-   
     private DepartmentControl departmentControl;
-    private Jenis_PenyakitControl jenis_PenyakitControl;
     private DokterControl dokterControl;
     List<Department> listDepartment;
     List<Jenis_Penyakit> listJenis_Penyakit;
@@ -45,20 +37,13 @@ public class DokterView extends javax.swing.JFrame {
     int selectedId = 0;
     
     public DokterView() {
-        try{
-            initComponents();
-            departmentControl = new DepartmentControl();
-            jenis_PenyakitControl = new Jenis_PenyakitControl();
-            dokterControl = new DokterControl();
-            setComponent(false);
-            setEditDeleteBtn(false);
-            showDokter();
-            setDepartmentToDropdown();
-         
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        initComponents();
+        departmentControl = new DepartmentControl();
+        dokterControl = new DokterControl();
+        setComponent(false);
+        setEditDeleteBtn(false);
+        showDokter();
+        setDepartmentToDropdown();
     }
     
     public void setComponent(boolean value){
@@ -88,8 +73,18 @@ public class DokterView extends javax.swing.JFrame {
     
      
      
+    public void InputKosongException() throws InputKosongException {
+        if(DComboBox.getSelectedIndex() == -1 || inputAlamat.getText().isEmpty() || inputGender.getText().isEmpty()
+                || inputNamaDokter.getText().isEmpty() || inputNomorTelepon.getText().isEmpty()
+                || inputBiayaDokter.getText().isEmpty()) {
+            
+            throw new InputKosongException();
+        }
+    }
+     
      public void setDepartmentToDropdown(){
         listDepartment = departmentControl.showListDepartment();
+        
         for (int i = 0; i < listDepartment.size(); i++) {
             DComboBox.addItem(listDepartment.get(i));
         }
@@ -97,7 +92,6 @@ public class DokterView extends javax.swing.JFrame {
      
      public void clearText(){
         DComboBox.setSelectedItem(ABORT);
-        inputId.setText("");
         inputAlamat.setText("");
         inputGender.setText("");
         inputNamaDokter.setText("");
@@ -202,7 +196,7 @@ public class DokterView extends javax.swing.JFrame {
         panelJenisPenyakitLayout.setVerticalGroup(
             panelJenisPenyakitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJenisPenyakitLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -228,11 +222,12 @@ public class DokterView extends javax.swing.JFrame {
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDepartmentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
-        );
 
+                .addContainerGap(11, Short.MAX_VALUE)
+
+                .addContainerGap(13, Short.MAX_VALUE)
+            )
+        );
         panelDokter.setBackground(new java.awt.Color(255, 255, 255));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
 
@@ -254,7 +249,7 @@ public class DokterView extends javax.swing.JFrame {
         panelDokterLayout.setVerticalGroup(
             panelDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDokterLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -280,7 +275,7 @@ public class DokterView extends javax.swing.JFrame {
         panelPasienLayout.setVerticalGroup(
             panelPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPasienLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addContainerGap())
         );
@@ -306,7 +301,7 @@ public class DokterView extends javax.swing.JFrame {
         panelRuanganLayout.setVerticalGroup(
             panelRuanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuanganLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -340,7 +335,7 @@ public class DokterView extends javax.swing.JFrame {
         panelTransaksiLayout.setVerticalGroup(
             panelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addContainerGap())
         );
@@ -361,12 +356,12 @@ public class DokterView extends javax.swing.JFrame {
             .addGroup(panelHistoriTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addContainerGap())
         );
@@ -396,7 +391,7 @@ public class DokterView extends javax.swing.JFrame {
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTampilGajiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -422,7 +417,7 @@ public class DokterView extends javax.swing.JFrame {
         panelHistoriGajiLayout.setVerticalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriGajiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -443,19 +438,19 @@ public class DokterView extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel9)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 61, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelJenisPenyakit, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelTampilGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelHistoriGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(panelJenisPenyakit, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelTampilGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelHistoriGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
@@ -688,7 +683,7 @@ public class DokterView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(inputNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNomorTelepon)
                     .addComponent(labelAlamat))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -740,7 +735,7 @@ public class DokterView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -761,7 +756,6 @@ public class DokterView extends javax.swing.JFrame {
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
         setComponent(true);
         action = "ubah";
-        Boolean value = false;
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void inputIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIdActionPerformed
@@ -775,18 +769,36 @@ public class DokterView extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonBatalActionPerformed
 
     private void buttonTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambah1ActionPerformed
-        setComponent(true);
-        
+        try{
+            int selectedIndex;
+            InputKosongException();
+            
+            selectedIndex = DComboBox.getSelectedIndex();
+            Department selectedDepartment = listDepartment.get(selectedIndex);
+            
+            if(action.equals("Tambah")) {
+                Dokter dk = new Dokter(String.valueOf(selectedIndex), inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
+                        Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
+                dokterControl.insertDataDokter(dk);
+            }
+            else
+            {
+                Dokter dk = new Dokter(inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
+                        Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
+                dokterControl.updateDataDokter(dk);
+            }
+        } catch (InputKosongException e) {
+            JOptionPane.showMessageDialog(this, e.message());
+        }
         clearText();
-        searchField.setText("");
-        action = "Tambah";
-        DComboBox.setSelectedIndex(0);
+        showDokter();
+        setComponent(false);
         
+        setEditDeleteBtn(false);
     }//GEN-LAST:event_buttonTambah1ActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-         setEditDeleteBtn(false);
-        
+        setEditDeleteBtn(false);
         setComponent(false);
         
         try{
@@ -795,42 +807,39 @@ public class DokterView extends javax.swing.JFrame {
             if(dokter.getRowCount() == 0){
                 clearText();
                 setEditDeleteBtn(false);
-                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "Konfirmasi", JOptionPane.DEFAULT_OPTION);
             }else{
                 tabelDaftarDokter.setModel(dokter);
             }
-            
-            clearText();
         }catch (Exception e){
             System.out.println("Error : " + e.getMessage());
         }
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void tabelDaftarDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDaftarDokterMouseClicked
-        int indexDepartement = -1;
-        int indexJenis_Penyakit = -1;
+        int indexDepartment = -1;
         setEditDeleteBtn(true);
+        
         setComponent(false);
         
         int clickedRow = tabelDaftarDokter.getSelectedRow();
         TableModel tableModel = tabelDaftarDokter.getModel();
         
-        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 0).toString());
-        inputId.setText(tableModel.getValueAt(clickedRow, 1).toString());
+        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 6).toString());
+        
         inputAlamat.setText(tableModel.getValueAt(clickedRow, 2).toString());
-        inputGender.setText(tableModel.getValueAt(clickedRow, 3).toString());
-        inputNamaDokter.setText(tableModel.getValueAt(clickedRow, 4).toString());
-        inputNomorTelepon.setText(tableModel.getValueAt(clickedRow, 5).toString());
-        inputBiayaDokter.setText(tableModel.getValueAt(clickedRow, 6).toString());
-        System.out.println(selectedId);
-        for(Dokter d:listDokter){
-            if(d.getNama().equals(tableModel.getValueAt(clickedRow, 0).toString())){
-                indexDepartement = listDokter.indexOf(d);
+        inputGender.setText(tableModel.getValueAt(clickedRow, 4).toString());
+        inputNamaDokter.setText(tableModel.getValueAt(clickedRow, 1).toString());
+        inputNomorTelepon.setText(tableModel.getValueAt(clickedRow, 3).toString());
+        inputBiayaDokter.setText(tableModel.getValueAt(clickedRow, 5).toString());
+        
+        String id_dp = tableModel.getValueAt(clickedRow, 7).toString();
+        for(Department dp : listDepartment){
+            if(dp.getId() == Integer.parseInt(id_dp)) {
+                indexDepartment = listDepartment.indexOf(dp);
             }
         }
-        DComboBox.setSelectedIndex(indexDepartement);
-        
-
+        DComboBox.setSelectedIndex(indexDepartment);
     }//GEN-LAST:event_tabelDaftarDokterMouseClicked
 
     /**

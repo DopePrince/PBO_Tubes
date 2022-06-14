@@ -72,17 +72,18 @@ public class DokterDAO {
             
             if(rs != null){
                 while(rs.next()){
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
-                    );
-                    
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
                     );
-                   
+                    
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan"),
+                        dp
+                    );
+                                        
                     Dokter dk = new Dokter(
                         rs.getString("dk.id"),
                         rs.getString("dk.nama"),
@@ -121,16 +122,16 @@ public class DokterDAO {
             
             if(rs != null){
                 while(rs.next()) {
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama")
+                    );
+                    
                     Jenis_Penyakit j = new Jenis_Penyakit(
                         rs.getInt("j.id"), 
                         rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
-                    );
-                    
-                    Department dp = new Department(
-                        rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("keterangan"),
+                        dp
                     );
                     
                     Dokter dk = new Dokter(
@@ -169,16 +170,16 @@ public class DokterDAO {
             
             if(rs != null){
                 while(rs.next()){
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama")
+                    );
+                    
                     Jenis_Penyakit j = new Jenis_Penyakit(
                         rs.getInt("j.id"), 
                         rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
-                    );
-                    
-                    Department dp = new Department(
-                        rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("keterangan"),
+                        dp
                     );
                    
                     dk = new Dokter(

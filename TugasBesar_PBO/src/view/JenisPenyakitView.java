@@ -5,20 +5,64 @@
 package view;
 
 import java.awt.Color;
+import control.DepartmentControl;
+import control.Jenis_PenyakitControl;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
+import model.Department;
+import model.Jenis_Penyakit;
+import exception.InputKosongException;
+import java.util.List;
+import table.TableDepartment;
+import table.TableJenis_Penyakit;
 
-/**
- *
- * @author henry
- */
 public class JenisPenyakitView extends javax.swing.JFrame {
-
-    /**
-     * Creates new form GajiView
-     */
+    private Jenis_PenyakitControl penyakitControl;
+    String action = "tambah";
+    int selectedId = 0;
+    List<Jenis_Penyakit> listPenyakit;
+    List<Department> listDepartment;
+    
     public JenisPenyakitView() {
         initComponents();
+        penyakitControl = new Jenis_PenyakitControl();
+        InputID.setEnabled(false);
+        showPenyakit();
     }
-
+    
+    public void showPenyakit(){
+        lastID();
+        tabelJenisPenyakit.setModel(penyakitControl.showDataPenyakit(""));
+    }
+    
+    public void inputKosongException() throws InputKosongException{
+        if(inputNama.getText().isEmpty()){
+            throw new InputKosongException();
+        }
+    }
+    
+    public void clearText(){
+        InputID.setText("");
+        inputNama.setText("");
+        inputSearch.setText("");
+    }
+    
+    public void lastID(){
+        listPenyakit =  penyakitControl.showJenis_Penyakit();
+        
+        int i=0;
+        for(Jenis_Penyakit p:listPenyakit){
+            i = p.getId();
+        }
+        InputID.setText(String.valueOf(i+1));
+    }
+    
+    public void resetButton(){
+        buttonTambah.setText("Tambah");
+        buttonTambah.setBackground(new Color(51,102,255));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,17 +101,21 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         labelGajiDokter5 = new javax.swing.JLabel();
-        inputNamaP = new javax.swing.JTextField();
+        inputNama = new javax.swing.JTextField();
         labelGajiDokter6 = new javax.swing.JLabel();
         buttonTambah = new javax.swing.JButton();
         inputKeterangan = new javax.swing.JTextField();
-        buttonEdit = new javax.swing.JButton();
         InputID = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelJenisPenyakit = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
         labelGajiDokter7 = new javax.swing.JLabel();
+        delete = new javax.swing.JLabel();
+        labelGajiDokter8 = new javax.swing.JLabel();
+        comboBoxDepartment = new javax.swing.JComboBox<>();
+        inputSearch = new javax.swing.JTextField();
+        buttonsearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,7 +159,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelJenisPenyakitLayout.setVerticalGroup(
             panelJenisPenyakitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJenisPenyakitLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -145,7 +193,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDepartmentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
@@ -179,7 +227,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelDokterLayout.setVerticalGroup(
             panelDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDokterLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -213,7 +261,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelPasienLayout.setVerticalGroup(
             panelPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPasienLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addContainerGap())
         );
@@ -247,7 +295,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelRuanganLayout.setVerticalGroup(
             panelRuanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuanganLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -289,7 +337,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelTransaksiLayout.setVerticalGroup(
             panelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addContainerGap())
         );
@@ -318,12 +366,12 @@ public class JenisPenyakitView extends javax.swing.JFrame {
             .addGroup(panelHistoriTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addContainerGap())
         );
@@ -361,7 +409,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTampilGajiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -395,7 +443,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelHistoriGajiLayout.setVerticalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriGajiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(11, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -467,7 +515,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
                 .addComponent(panelTampilGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelHistoriGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -483,11 +531,11 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         labelGajiDokter5.setForeground(new java.awt.Color(153, 153, 153));
         labelGajiDokter5.setText("Nama Penyakit");
 
-        inputNamaP.setAlignmentX(50.0F);
-        inputNamaP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        inputNamaP.addActionListener(new java.awt.event.ActionListener() {
+        inputNama.setAlignmentX(50.0F);
+        inputNama.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        inputNama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputNamaPActionPerformed(evt);
+                inputNamaActionPerformed(evt);
             }
         });
 
@@ -513,18 +561,6 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         inputKeterangan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputKeteranganActionPerformed(evt);
-            }
-        });
-
-        buttonEdit.setBackground(new java.awt.Color(255, 204, 0));
-        buttonEdit.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonEdit.setForeground(new java.awt.Color(255, 255, 255));
-        buttonEdit.setText("Edit");
-        buttonEdit.setBorder(null);
-        buttonEdit.setBorderPainted(false);
-        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEditActionPerformed(evt);
             }
         });
 
@@ -565,6 +601,45 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         labelGajiDokter7.setForeground(new java.awt.Color(20, 20, 20));
         labelGajiDokter7.setText("Daftar Jenis Penyakit");
 
+        delete.setForeground(new java.awt.Color(255, 0, 51));
+        delete.setText("Hapus");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+        });
+
+        labelGajiDokter8.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelGajiDokter8.setForeground(new java.awt.Color(153, 153, 153));
+        labelGajiDokter8.setText("Department");
+
+        comboBoxDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxDepartmentActionPerformed(evt);
+            }
+        });
+
+        inputSearch.setAlignmentX(50.0F);
+        inputSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        inputSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputSearchActionPerformed(evt);
+            }
+        });
+
+        buttonsearch.setBackground(new java.awt.Color(51, 102, 255));
+        buttonsearch.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonsearch.setForeground(new java.awt.Color(255, 255, 255));
+        buttonsearch.setText("Search");
+        buttonsearch.setBorder(null);
+        buttonsearch.setBorderPainted(false);
+        buttonsearch.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonsearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -576,27 +651,33 @@ public class JenisPenyakitView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelGajiDokter2)
+                            .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelGajiDokter5)
+                            .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labelGajiDokter6)
+                    .addComponent(inputKeterangan, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelGajiDokter7)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator2)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelGajiDokter2)
-                                .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelGajiDokter5)
-                                .addComponent(inputNamaP, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(labelGajiDokter6)
-                        .addComponent(inputKeterangan, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jSeparator2))
-                    .addComponent(labelGajiDokter7))
+                            .addComponent(delete)))
+                    .addComponent(labelGajiDokter8)
+                    .addComponent(comboBoxDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -615,21 +696,29 @@ public class JenisPenyakitView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelGajiDokter5)
                         .addGap(2, 2, 2)
-                        .addComponent(inputNamaP, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(labelGajiDokter6)
                 .addGap(2, 2, 2)
                 .addComponent(inputKeterangan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(labelGajiDokter8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBoxDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete))
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelGajiDokter7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -646,7 +735,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 671, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -657,20 +746,37 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
-        // TODO add your handling code here:
+        try{
+            inputKosongException();
+            
+            int selectedIndexDepartment = comboBoxDepartment.getSelectedIndex();
+            Department selectedDepartment = listDepartment.get(selectedIndexDepartment);
+            
+            if(action.equals("edit")){
+                Jenis_Penyakit p = new Jenis_Penyakit(Integer.parseInt(InputID.getText()), inputNama.getText(), inputKeterangan.getText(), selectedDepartment);
+                penyakitControl.updateJenis_Penyakit(p);
+            }else if(action.equals("tambah")){
+                Jenis_Penyakit p = new Jenis_Penyakit(inputNama.getText(), inputKeterangan.getText(), selectedDepartment);
+                penyakitControl.insertJenis_Penyakit(p);
+            }
+            
+               
+           clearText();
+           resetButton();
+           showPenyakit();
+           
+       }catch (InputKosongException e){
+           JOptionPane.showMessageDialog(this, e.message());
+       }
     }//GEN-LAST:event_buttonTambahActionPerformed
 
-    private void inputNamaPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaPActionPerformed
+    private void inputNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_inputNamaPActionPerformed
+    }//GEN-LAST:event_inputNamaActionPerformed
 
     private void inputKeteranganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputKeteranganActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputKeteranganActionPerformed
-
-    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonEditActionPerformed
 
     private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
         
@@ -749,8 +855,46 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     }//GEN-LAST:event_InputIDActionPerformed
 
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
-        // TODO add your handling code here:
+        clearText();
+        resetButton();
+        lastID();
+        showPenyakit();
     }//GEN-LAST:event_buttonBatalActionPerformed
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,
+            "Apakah yakin ingin menghapus data ? ", "Konfirmasi",
+            JOptionPane.YES_NO_OPTION);
+
+        switch(getAnswer){
+            case 0:
+
+            try{
+                penyakitControl.deleteJenis_Penyakit(selectedId);
+                clearText();
+                showPenyakit();
+
+            }catch (Exception e){
+                System.out.println("Error : " + e.getMessage());
+            }
+            break;
+            case 1:
+
+            break;
+        }
+    }//GEN-LAST:event_deleteMouseClicked
+
+    private void inputSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputSearchActionPerformed
+
+    private void buttonsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonsearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonsearchActionPerformed
+
+    private void comboBoxDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxDepartmentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxDepartmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -793,10 +937,13 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField InputID;
     private javax.swing.JButton buttonBatal;
-    private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonTambah;
+    private javax.swing.JButton buttonsearch;
+    private javax.swing.JComboBox<Department> comboBoxDepartment;
+    private javax.swing.JLabel delete;
     private javax.swing.JTextField inputKeterangan;
-    private javax.swing.JTextField inputNamaP;
+    private javax.swing.JTextField inputNama;
+    private javax.swing.JTextField inputSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -821,6 +968,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     private javax.swing.JLabel labelGajiDokter5;
     private javax.swing.JLabel labelGajiDokter6;
     private javax.swing.JLabel labelGajiDokter7;
+    private javax.swing.JLabel labelGajiDokter8;
     private javax.swing.JPanel panelDepartment;
     private javax.swing.JPanel panelDokter;
     private javax.swing.JPanel panelHistoriGaji;

@@ -72,10 +72,16 @@ public class PasienDAO {
 // String id, int umur, String nama, String jenis_kelamin, String alamat, String no_telepon, Jenis_Penyakit penyakit           
             if(rs != null){
                 while(rs.next()){
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama")
+                    );
+                    
                     Jenis_Penyakit jp = new Jenis_Penyakit(
-                        rs.getInt("jp.id"), 
+                        rs.getInt("j.id"), 
                         rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan")
+                        rs.getString("keterangan"),
+                        dp
                     );
                     
                     Pasien p = new Pasien(
@@ -116,10 +122,16 @@ public class PasienDAO {
             
             if(rs != null){
                 while(rs.next()){
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama")
+                    );
+                    
                     Jenis_Penyakit jp = new Jenis_Penyakit(
-                        rs.getInt("jp.id"), 
+                        rs.getInt("j.id"), 
                         rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan")
+                        rs.getString("keterangan"),
+                        dp
                     );
                     
                     Pasien p = new Pasien(
@@ -159,10 +171,16 @@ public class PasienDAO {
             
             if(rs != null){
                 while(rs.next()){
+                    Department dp = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama")
+                    );
+                    
                     Jenis_Penyakit jp = new Jenis_Penyakit(
-                        rs.getInt("jp.id"), 
+                        rs.getInt("j.id"), 
                         rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan")
+                        rs.getString("keterangan"),
+                        dp
                     );
                     
                     p = new Pasien(
