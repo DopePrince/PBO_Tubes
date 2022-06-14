@@ -84,8 +84,8 @@ public class TransaksiDAO {
                     
                     Department dp = new Department(
                         rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("dp.nama")
+                        
                     );
                    
                     Dokter dk = new Dokter(
@@ -165,8 +165,8 @@ public class TransaksiDAO {
                     
                     Department dp = new Department(
                         rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("dp.nama")
+                        
                     );
                    
                     Dokter dk = new Dokter(
@@ -242,8 +242,8 @@ public class TransaksiDAO {
                     
                     Department dp = new Department(
                         rs.getInt("dp.id"),
-                        rs.getString("dp.nama"),
-                        j
+                        rs.getString("dp.nama")
+                        
                     );
                    
                     Dokter dk = new Dokter(
