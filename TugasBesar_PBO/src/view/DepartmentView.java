@@ -8,17 +8,35 @@ import java.awt.Color;
 import control.DepartmentControl;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import model.Department;
+import exception.InputKosongException;
+import java.util.List;
+import table.TableDepartment;
+
 
 public class DepartmentView extends javax.swing.JFrame {
     private DepartmentControl departmentControl;
-    String action = null;
-    
+    String action = "tambah";
+    int selectedId = 0;
+    List<Department> listDepartment;
     
     public DepartmentView() {
         initComponents();
         departmentControl = new DepartmentControl();
+        InputID.setEnabled(false);
         showDepartment();
+    }
+    
+    public void showDepartment(){
+        lastID();
+        tabelDepartment.setModel(departmentControl.showDataDepartment(""));
+    }
+    
+    public void inputKosongException() throws InputKosongException{
+        if(inputNama.getText().isEmpty()){
+            throw new InputKosongException();
+        }
     }
     
     public void clearText(){
@@ -26,11 +44,6 @@ public class DepartmentView extends javax.swing.JFrame {
         inputNama.setText("");
         inputSearch.setText("");
     }
-    
-    public void showDepartment(){
-        tabelDepartment.setModel(departmentControl.showDataDepartment(""));
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,7 +84,6 @@ public class DepartmentView extends javax.swing.JFrame {
         labelGajiDokter5 = new javax.swing.JLabel();
         inputNama = new javax.swing.JTextField();
         buttonTambah = new javax.swing.JButton();
-        buttonEdit = new javax.swing.JButton();
         InputID = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -80,6 +92,7 @@ public class DepartmentView extends javax.swing.JFrame {
         labelGajiDokter7 = new javax.swing.JLabel();
         inputSearch = new javax.swing.JTextField();
         buttonSearch = new javax.swing.JButton();
+        delete = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,7 +165,7 @@ public class DepartmentView extends javax.swing.JFrame {
             .addGroup(panelDepartmentLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +343,7 @@ public class DepartmentView extends javax.swing.JFrame {
             .addGroup(panelHistoriTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,7 +381,7 @@ public class DepartmentView extends javax.swing.JFrame {
             .addGroup(panelTampilGajiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,7 +415,7 @@ public class DepartmentView extends javax.swing.JFrame {
             .addGroup(panelHistoriGajiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addContainerGap(101, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         panelHistoriGajiLayout.setVerticalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,18 +529,6 @@ public class DepartmentView extends javax.swing.JFrame {
             }
         });
 
-        buttonEdit.setBackground(new java.awt.Color(255, 204, 0));
-        buttonEdit.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonEdit.setForeground(new java.awt.Color(255, 255, 255));
-        buttonEdit.setText("Edit");
-        buttonEdit.setBorder(null);
-        buttonEdit.setBorderPainted(false);
-        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEditActionPerformed(evt);
-            }
-        });
-
         InputID.setAlignmentX(50.0F);
         InputID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         InputID.addActionListener(new java.awt.event.ActionListener() {
@@ -559,6 +560,11 @@ public class DepartmentView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelDepartmentMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelDepartment);
 
         labelGajiDokter7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -586,6 +592,14 @@ public class DepartmentView extends javax.swing.JFrame {
             }
         });
 
+        delete.setForeground(new java.awt.Color(255, 0, 51));
+        delete.setText("Hapus");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -604,21 +618,23 @@ public class DepartmentView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 636, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelGajiDokter2)
-                    .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelGajiDokter5)
-                    .addComponent(inputNama, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(InputID, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(inputNama, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(delete)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -639,8 +655,8 @@ public class DepartmentView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -649,7 +665,7 @@ public class DepartmentView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -673,16 +689,42 @@ public class DepartmentView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
-        // TODO add your handling code here:
+        try{
+            inputKosongException();
+            
+            if(action.equals("edit")){
+                Department d = new Department(Integer.parseInt(InputID.getText()), inputNama.getText());
+                departmentControl.updateDataDepartment(d);
+            }else if(action.equals("tambah")){
+                Department d = new Department(inputNama.getText());
+                departmentControl.insertDataDepartment(d);
+            }
+            
+               
+           clearText();
+           resetButton();
+           showDepartment();
+           
+       }catch (InputKosongException e){
+           JOptionPane.showMessageDialog(this, e.message());
+       }
     }//GEN-LAST:event_buttonTambahActionPerformed
-
+    
+    public void lastID(){
+        listDepartment =  departmentControl.showListDepartment();
+        
+        int size = listDepartment.size()+1;
+        InputID.setText(String.valueOf(size));
+    }
+    
+    public void resetButton(){
+        buttonTambah.setText("Tambah");
+        buttonTambah.setBackground(new Color(51,102,255));
+    }
+    
     private void inputNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNamaActionPerformed
-
-    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonEditActionPerformed
 
     private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
         
@@ -761,7 +803,10 @@ public class DepartmentView extends javax.swing.JFrame {
     }//GEN-LAST:event_InputIDActionPerformed
 
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
-        // TODO add your handling code here:
+        clearText();
+        resetButton();
+        lastID();
+        showDepartment();
     }//GEN-LAST:event_buttonBatalActionPerformed
 
     private void inputSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSearchActionPerformed
@@ -769,8 +814,65 @@ public class DepartmentView extends javax.swing.JFrame {
     }//GEN-LAST:event_inputSearchActionPerformed
 
     private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
-        // TODO add your handling code here:
+        TableDepartment d = departmentControl.showDataDepartment(inputSearch.getText());
+            
+        if(d.getRowCount() == 0){
+            clearText();
+            JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+        }else{
+            tabelDepartment.setModel(d);
+        }
+
+        clearText();
     }//GEN-LAST:event_buttonSearchActionPerformed
+
+    private void tabelDepartmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDepartmentMouseClicked
+        int index = -1;
+        
+        int clickedRow = tabelDepartment.getSelectedRow();
+        TableModel tableModel = tabelDepartment.getModel();
+        
+        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 0).toString());
+        InputID.setText(tableModel.getValueAt(clickedRow, 0).toString());
+        inputNama.setText(tableModel.getValueAt(clickedRow, 1).toString());
+        
+        listDepartment =  departmentControl.showListDepartment();
+        
+        for(Department d:listDepartment){
+            System.out.println(selectedId + " - " + d.getId());
+            if(selectedId == d.getId()){
+                action = "edit";
+                buttonTambah.setText("Edit");
+                buttonTambah.setBackground(new Color(255, 153, 0));
+                break;
+            }else{
+                action = "tambah";
+            }
+        }
+    }//GEN-LAST:event_tabelDepartmentMouseClicked
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane, 
+                "Apakah yakin ingin menghapus data ? ", "Konfirmasi",
+                JOptionPane.YES_NO_OPTION);
+        
+        switch(getAnswer){
+            case 0:
+                
+                try{
+                    departmentControl.deleteDataDepartment(selectedId);
+                    clearText();
+                    showDepartment();
+                
+                }catch (Exception e){
+                    System.out.println("Error : " + e.getMessage());
+                }
+                break;
+            case 1:
+                
+                break;
+        }
+    }//GEN-LAST:event_deleteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -817,9 +919,9 @@ public class DepartmentView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField InputID;
     private javax.swing.JButton buttonBatal;
-    private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonSearch;
     private javax.swing.JButton buttonTambah;
+    private javax.swing.JLabel delete;
     private javax.swing.JTextField inputNama;
     private javax.swing.JTextField inputSearch;
     private javax.swing.JLabel jLabel1;

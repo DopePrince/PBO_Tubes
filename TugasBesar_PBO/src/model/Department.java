@@ -23,6 +23,10 @@ public class Department {
         this.id = id;
         this.nama = nama;
     }
+    
+    public Department(String nama) {
+        this.nama = nama;
+    }
 
     public int getId() {
         return id;
