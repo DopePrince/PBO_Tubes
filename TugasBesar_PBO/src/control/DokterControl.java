@@ -44,7 +44,7 @@ public class DokterControl {
         dDao.updateDokter(dr);
     }
     
-    public void deleteDataDokter(String id){
+    public void deleteDataDokter(int id){
         dDao.deleteDokter(id);
     }
     

@@ -28,13 +28,13 @@ public class DokterDAO {
     private DbConnection dbCon = new DbConnection();
     private Connection con;
     
-    public void insertDokter(Dokter d){
+    public void insertDokter(Dokter dk){
         con = dbCon.makeConnection();
         
-        String sql = "INSERT INTO dokter(id, id_department, nama, alamat, no_telepon, gender, biaya_dokter) "
-                + "VALUES ('" + d.getId()+ "', '" + d.getDepartment().getId()+ "', '"
-                + d.getNama() + "', '" + d.getAlamat()+ "', '"
-                + d.getNo_telepon() + "', '" + d.getGender() + "', '" + d.getBiaya_dokter() + "')";
+        String sql = "INSERT INTO dokter(id, id_department, nama, alamat, no_telepon, gender, biaya_dokter)"
+                + "VALUES ('" + dk.getId()+ "', '" + dk.getDepartment().getId()+ "', '"
+                + dk.getNama() + "', '" + dk.getAlamat()+ "', '"
+                + dk.getNo_telepon() + "', '" + dk.getGender() + "', '" + dk.getBiaya_dokter() + "')";
         
         System.out.println("Adding Dokter...");
         
@@ -53,14 +53,13 @@ public class DokterDAO {
     public List<Dokter> showDokter(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT dk.*, dp.*, j.* FROM dokter as dk JOIN (department as dp JOIN jenis_penyakit as j ON dp.id = j.id_department) ON dk.id_department = dp.id WHERE (dk.nama LIKE "
+        String sql = "SELECT dk.*, dp.* FROM dokter as dk JOIN department as dp ON dk.id_department = dp.id WHERE (dk.nama LIKE "
                 + "'%" + query + "%'"
                 + "OR dk.alamat LIKE '%" + query + "%'"
                 + "OR dk.no_telepon LIKE '%" + query + "%'"
                 + "OR dk.gender LIKE '%" + query + "%'"
                 + "OR dk.biaya_dokter LIKE '%" + query + "%'"
-                + "OR dp.nama LIKE '%" + query + "%'"
-                + "OR j.nama_penyakit LIKE '%" + query + "%')";
+                + "OR dp.nama LIKE '%" + query + "%')";
         
         System.out.println("Mengambil data Dokter...");
         
@@ -74,13 +73,6 @@ public class DokterDAO {
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                    );
-                    
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
                     );
                                         
                     Dokter dk = new Dokter(
@@ -99,7 +91,7 @@ public class DokterDAO {
             rs.close();
             statement.close();
         }catch(Exception e){
-            System.out.println("Error reading database...");
+            System.out.println("23Error reading database...");
             System.out.println(e);
         }
         dbCon.closeConnection();
@@ -110,7 +102,7 @@ public class DokterDAO {
     public List<Dokter> showDokter(){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM dokter";
+        String sql = "SELECT dk.*, dp.* FROM dokter as dk JOIN department as dp ON dk.id_department = dp.id";
         System.out.println("Mengambil data Dokter...");
         
         List<Dokter> list = new ArrayList();
@@ -124,13 +116,6 @@ public class DokterDAO {
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                    );
-                    
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
                     );
                     
                     Dokter dk = new Dokter(
@@ -172,13 +157,6 @@ public class DokterDAO {
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                    );
-                    
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
                     );
                    
                     dk = new Dokter(
@@ -227,7 +205,7 @@ public class DokterDAO {
         dbCon.closeConnection();
     }
     
-    public void deleteDokter(String id){
+    public void deleteDokter(int id){
         con = dbCon.makeConnection();
         System.out.println(id);
         
