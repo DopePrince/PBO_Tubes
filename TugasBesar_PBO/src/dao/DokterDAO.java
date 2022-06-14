@@ -31,7 +31,7 @@ public class DokterDAO {
     public void insertDokter(Dokter d){
         con = dbCon.makeConnection();
         
-        String sql = "INSERT INTO dokter(id, id_department, nama, alamat, no_telepon, gender, biaya_dokter) "
+        String sql = "INSERT INTO dokter(id, id_department, nama, alamat, no_telepon, gender, biaya_dokter)"
                 + "VALUES ('" + d.getId()+ "', '" + d.getDepartment().getId()+ "', '"
                 + d.getNama() + "', '" + d.getAlamat()+ "', '"
                 + d.getNo_telepon() + "', '" + d.getGender() + "', '" + d.getBiaya_dokter() + "')";
@@ -206,7 +206,7 @@ public class DokterDAO {
         dbCon.closeConnection();
     }
     
-    public void deleteDokter(String id){
+    public void deleteDokter(int id){
         con = dbCon.makeConnection();
         System.out.println(id);
         
