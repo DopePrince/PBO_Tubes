@@ -24,68 +24,30 @@ import table.TableRuangan;
 public class RuanganView extends javax.swing.JFrame {
     private DepartmentControl departmentControl;
     private RuanganControl ruanganControl;
+    String action = "tambah";
+    int selectedId = 0;
+    
     List<Department> listDepartment;
     List<Ruangan> listRuangan;
-
-    String action = null;
-    int selectedId = 0;
     
     /**
      * Creates new form GajiView
      */
     public RuanganView() {
-        try{
-            initComponents();
-            departmentControl = new DepartmentControl();
-            ruanganControl = new RuanganControl();
-            setComponent(false);
-            setEditDeleteBtn(false);
-            showRuangan();
-            setDepartmentToDropdown();
-         
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+        initComponents();
+        departmentControl = new DepartmentControl();
+        ruanganControl = new RuanganControl();
+        InputRuangan.setEnabled(false);
+        showRuangan();
+        setDepartmentToDropdown();
     }
-
-     public void setComponent(boolean value){
-        
-        
-        InputRuangan.setEnabled(value);
-        Inputharga.setEnabled(value);
-        inputTipeR.setEnabled(value);
-        Inputfasilitas.setEnabled(value);
-        DComboBox.setEnabled(value);
-                
-       
-    }
-     
-      public void setEditDeleteBtn(boolean value){
-        buttonBatal.setEnabled(value);
-        buttonEdit.setEnabled(value);
-    }
-      
-      public void showRuangan(){
+    
+    public void showRuangan(){
+        lastID();
         tabelRuangan.setModel(ruanganControl.showDataRuangan(""));
     }
-      
-       public void setDepartmentToDropdown(){
-        listDepartment = departmentControl.showListDepartment();
-        for (int i = 0; i < listDepartment.size(); i++) {
-            DComboBox.addItem(listDepartment.get(i));
-        }
-    }
-        public void clearText(){
-        DComboBox.setSelectedItem(ABORT);
-        InputRuangan.setText("");
-        Inputharga.setText("");
-        inputTipeR.setText("");
-        Inputfasilitas.setText("");
-        
-    }
-      
-     public void inputKosongException() throws InputKosongException{
+    
+    public void inputKosongException() throws InputKosongException{
         if(InputRuangan.getText().isEmpty()){
             throw new InputKosongException();
         }else if(Inputharga.getText().isEmpty()){
@@ -96,6 +58,36 @@ public class RuanganView extends javax.swing.JFrame {
             throw new InputKosongException();
         }
     }
+    
+    public void clearText(){
+        InputRuangan.setText("");
+        Inputharga.setText("");
+        inputTipeR.setText("");
+        Inputfasilitas.setText("");   
+    }
+    
+    public void lastID(){
+        listRuangan =  ruanganControl.showListRuangan();
+        
+        int i=0;
+        for(Ruangan r : listRuangan){
+            i = r.getNo();
+        }
+        InputRuangan.setText(String.valueOf(i+1));
+    }
+    
+    public void resetButton(){
+        buttonTambah.setText("Tambah");
+        buttonTambah.setBackground(new Color(51,102,255));
+    }
+      
+    public void setDepartmentToDropdown(){
+        listDepartment = departmentControl.showListDepartment();
+        for (int i = 0; i < listDepartment.size(); i++) {
+            DComboBox.addItem(listDepartment.get(i));
+        }
+    }
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -138,7 +130,6 @@ public class RuanganView extends javax.swing.JFrame {
         inputTipeR = new javax.swing.JTextField();
         labelharga = new javax.swing.JLabel();
         buttonTambah = new javax.swing.JButton();
-        buttonEdit = new javax.swing.JButton();
         Inputharga = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -152,6 +143,7 @@ public class RuanganView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
         searchBtn1 = new javax.swing.JButton();
+        delete = new javax.swing.JLabel();
 
         searchBtn.setBackground(new java.awt.Color(0, 153, 204));
         searchBtn.setText("Cari");
@@ -198,7 +190,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelJenisPenyakitLayout.setVerticalGroup(
             panelJenisPenyakitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJenisPenyakitLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -232,7 +224,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDepartmentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
@@ -266,7 +258,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelDokterLayout.setVerticalGroup(
             panelDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDokterLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -300,7 +292,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelPasienLayout.setVerticalGroup(
             panelPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPasienLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addContainerGap())
         );
@@ -334,7 +326,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelRuanganLayout.setVerticalGroup(
             panelRuanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuanganLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -376,7 +368,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelTransaksiLayout.setVerticalGroup(
             panelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addContainerGap())
         );
@@ -410,7 +402,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addContainerGap())
         );
@@ -448,7 +440,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTampilGajiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -482,7 +474,7 @@ public class RuanganView extends javax.swing.JFrame {
         panelHistoriGajiLayout.setVerticalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriGajiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -503,19 +495,19 @@ public class RuanganView extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel9)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 61, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelJenisPenyakit, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelTampilGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelHistoriGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(panelJenisPenyakit, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelTampilGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelHistoriGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
@@ -595,18 +587,6 @@ public class RuanganView extends javax.swing.JFrame {
             }
         });
 
-        buttonEdit.setBackground(new java.awt.Color(255, 204, 0));
-        buttonEdit.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonEdit.setForeground(new java.awt.Color(255, 255, 255));
-        buttonEdit.setText("Edit");
-        buttonEdit.setBorder(null);
-        buttonEdit.setBorderPainted(false);
-        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEditActionPerformed(evt);
-            }
-        });
-
         Inputharga.setAlignmentX(50.0F);
         Inputharga.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         Inputharga.addActionListener(new java.awt.event.ActionListener() {
@@ -676,13 +656,22 @@ public class RuanganView extends javax.swing.JFrame {
         });
 
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Dapartmenet");
+        jLabel1.setText("Departmenet");
 
         searchBtn1.setBackground(new java.awt.Color(0, 153, 204));
+        searchBtn1.setForeground(new java.awt.Color(255, 255, 255));
         searchBtn1.setText("Cari");
         searchBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtn1ActionPerformed(evt);
+            }
+        });
+
+        delete.setForeground(new java.awt.Color(255, 0, 51));
+        delete.setText("Hapus");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
             }
         });
 
@@ -698,9 +687,9 @@ public class RuanganView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(delete))
                         .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                         .addComponent(jSeparator2)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -769,8 +758,8 @@ public class RuanganView extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -792,7 +781,7 @@ public class RuanganView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 610, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -803,19 +792,32 @@ public class RuanganView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
-
-        
+        try{
+            inputKosongException();
+            
+            int selectedIndexDepartment = DComboBox.getSelectedIndex();
+            Department selectedDepartment = listDepartment.get(selectedIndexDepartment);
+            
+            if(action.equals("edit")){
+                Ruangan r = new Ruangan(Integer.parseInt(InputRuangan.getText()), inputTipeR.getText(), Double.parseDouble(Inputharga.getText()), Inputfasilitas.getText(), selectedDepartment);
+                ruanganControl.updateDataRuangan(r);
+            }else if(action.equals("tambah")){
+                Ruangan r = new Ruangan(inputTipeR.getText(), Double.parseDouble(Inputharga.getText()), Inputfasilitas.getText(), selectedDepartment);
+                ruanganControl.insertDataRuangan(r);
+            }
+             
+           clearText();
+           resetButton();
+           showRuangan();
+           
+        } catch(InputKosongException e){
+            JOptionPane.showMessageDialog(this, e.message());
+        }
     }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void inputTipeRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTipeRActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputTipeRActionPerformed
-
-    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        setComponent(true);
-        action = "ubah";
-        Boolean value = false;
-    }//GEN-LAST:event_buttonEditActionPerformed
 
     private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
         
@@ -894,26 +896,10 @@ public class RuanganView extends javax.swing.JFrame {
     }//GEN-LAST:event_InputhargaActionPerformed
 
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
-         int getAnswer = JOptionPane.showConfirmDialog(rootPane, 
-                "Apakah yakin ingin menghapus data ? ", "Konfirmasi",
-                JOptionPane.YES_NO_OPTION);
-        
-        switch(getAnswer){
-            case 0:
-                
-                try{
-                    ruanganControl.deleteDataRuangan(selectedId);
-                    clearText();
-                    showRuangan();
-                
-                }catch (Exception e){
-                    System.out.println("Error : " + e.getMessage());
-                }
-                break;
-            case 1:
-                
-                break;
-        }
+        clearText();
+        resetButton();
+        lastID();
+        showRuangan();
     }//GEN-LAST:event_buttonBatalActionPerformed
 
     private void InputRuanganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputRuanganActionPerformed
@@ -925,25 +911,25 @@ public class RuanganView extends javax.swing.JFrame {
     }//GEN-LAST:event_InputfasilitasActionPerformed
 
     private void searchBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtn1ActionPerformed
-        setEditDeleteBtn(false);
-        
-        setComponent(false);
-        
-        try{
-            TableRuangan ruangan = ruanganControl.showDataRuangan(searchField.getText());
-            
-            if(ruangan.getRowCount() == 0){
-                clearText();
-                setEditDeleteBtn(false);
-                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "konfirmasi", JOptionPane.DEFAULT_OPTION);
-            }else{
-                tabelRuangan.setModel(ruangan);
-            }
-            
-            clearText();
-        }catch (Exception e){
-            System.out.println("Error : " + e.getMessage());
-        }
+//        setEditDeleteBtn(false);
+//        
+//        setComponent(false);
+//        
+//        try{
+//            TableRuangan ruangan = ruanganControl.showDataRuangan(searchField.getText());
+//            
+//            if(ruangan.getRowCount() == 0){
+//                clearText();
+//                setEditDeleteBtn(false);
+//                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+//            }else{
+//                tabelRuangan.setModel(ruangan);
+//            }
+//            
+//            clearText();
+//        }catch (Exception e){
+//            System.out.println("Error : " + e.getMessage());
+//        }
     }//GEN-LAST:event_searchBtn1ActionPerformed
 
     private void tabelRuanganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelRuanganMouseClicked
@@ -953,10 +939,11 @@ public class RuanganView extends javax.swing.JFrame {
         TableModel tableModel = tabelRuangan.getModel();
         
         selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 0).toString());
+        
         InputRuangan.setText(tableModel.getValueAt(clickedRow, 0).toString());
-        Inputharga.setText(tableModel.getValueAt(clickedRow, 1).toString());
-        inputTipeR.setText(tableModel.getValueAt(clickedRow, 2).toString());
-        Inputfasilitas.setText(tableModel.getValueAt(clickedRow, 2).toString());
+        Inputharga.setText(tableModel.getValueAt(clickedRow, 2).toString());
+        inputTipeR.setText(tableModel.getValueAt(clickedRow, 1).toString());
+        Inputfasilitas.setText(tableModel.getValueAt(clickedRow, 3).toString());
         
         System.out.println(selectedId);
         for(Department dp:listDepartment){
@@ -971,6 +958,29 @@ public class RuanganView extends javax.swing.JFrame {
     private void DComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DComboBoxActionPerformed
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+        int getAnswer = JOptionPane.showConfirmDialog(rootPane,
+            "Apakah yakin ingin menghapus data ? ", "Konfirmasi",
+            JOptionPane.YES_NO_OPTION);
+
+        switch(getAnswer){
+            case 0:
+
+            try{
+                ruanganControl.deleteDataRuangan(selectedId);
+                clearText();
+                showRuangan();
+
+            }catch (Exception e){
+                System.out.println("Error : " + e.getMessage());
+            }
+            break;
+            case 1:
+
+            break;
+        }
+    }//GEN-LAST:event_deleteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1020,8 +1030,8 @@ public class RuanganView extends javax.swing.JFrame {
     private javax.swing.JTextField Inputfasilitas;
     private javax.swing.JTextField Inputharga;
     private javax.swing.JButton buttonBatal;
-    private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonTambah;
+    private javax.swing.JLabel delete;
     private javax.swing.JTextField inputTipeR;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

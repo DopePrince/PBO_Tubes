@@ -31,27 +31,26 @@ public class TableRuangan extends AbstractTableModel{
      
     @Override
     public Object getValueAt (int rowIndex, int columnIndex){
-        
-            switch (columnIndex){
-        case 0:
-            return list.get(rowIndex).getNo();
-        case 1:
-            return list.get(rowIndex).getTipe();
-        case 2:
-            return list.get(rowIndex).getHarga();
-        case 3:
-            return list.get(rowIndex).getFasilitas();
-        case 4:
+        switch (columnIndex){
+            case 0:
+                return list.get(rowIndex).getNo();
+            case 1:
+                return list.get(rowIndex).getTipe();
+            case 2:
+                return list.get(rowIndex).getHarga();
+            case 3:
+                return list.get(rowIndex).getFasilitas();
+            case 4:
                 return list.get(rowIndex).getDepartment().getNama();
-         default:
-            return null;
-        }
+            default:
+                return null;
+            }
       }    
     @Override
     public String getColumnName (int column){
         switch (column){
             case 0:
-                return "NO";
+                return "No";
             case 1:
                 return "Tipe Ruangan";
             case 2:
@@ -60,8 +59,6 @@ public class TableRuangan extends AbstractTableModel{
                 return "Fasilitas Ruangan";
             case 4:
                 return "Nama Department";
-            
-            
             default:
                 return null;
           }

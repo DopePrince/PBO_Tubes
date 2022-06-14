@@ -32,10 +32,11 @@ public class RuanganDAO {
         con = dbCon.makeConnection();
         
         String sql = "INSERT INTO ruangan(no, id_department, tipe, harga, fasilitas) "
-                + "VALUES ('" + r.getNo()+ "', '" + r.getDepartment().getId()+ "', '"
-                + r.getTipe()+ "', '" + r.getHarga()+ "', '" + r.getFasilitas()+ "')";
+                + "VALUES('" + r.getNo()+ "', '" + r.getDepartment().getId()
+                + "', '" + r.getTipe()+ "', '" + r.getHarga()
+                + "', '" + r.getFasilitas()+ "')";
         
-        System.out.println("Adding Dokter...");
+        System.out.println("Adding Ruangan...");
         
         try{
             Statement statement = con.createStatement();
@@ -52,14 +53,12 @@ public class RuanganDAO {
     public List<Ruangan> showRuangan(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT r.*, dp.*, j.* FROM ruangan as r JOIN (department as dp JOIN jenis_penyakit as j ON as.id_penyakit = j.id)ON dp.id = dk.id_department WHERE (r.no LIKE "
+        String sql = "SELECT dp.*, r.* FROM department as dp JOIN ruangan as r ON dp.id = r.id_department WHERE (r.no LIKE "
                 + "'%" + query + "%'"
-                + "OR r.tipeLIKE '%" + query + "%'"
+                + "OR r.tipe LIKE '%" + query + "%'"
                 + "OR r.harga LIKE '%" + query + "%'"
                 + "OR r.fasilitas LIKE '%" + query + "%'"
-                + "OR dp.nama LIKE '%" + query + "%'"
-                + "OR j.nama_penyakit LIKE '%" + query + "%')";
-        
+                + "OR dp.nama LIKE '%" + query + "%')";
         
         System.out.println("Mengambil data Ruangan...");
         
@@ -73,13 +72,6 @@ public class RuanganDAO {
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                    );
-                    
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
                     );
                    
                     Ruangan r = new Ruangan(
@@ -107,7 +99,7 @@ public class RuanganDAO {
     public List<Ruangan> showRuangan(){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM ruangan";
+        String sql = "SELECT dp.*, r.* FROM ruangan AS r JOIN department AS dp WHERE r.id_department = dp.id";
         System.out.println("Mengambil data Ruangan...");
         
         List<Ruangan> list = new ArrayList();
@@ -123,19 +115,12 @@ public class RuanganDAO {
                         rs.getString("dp.nama")
                     );
                     
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
-                    );
-                    
                     Ruangan r = new Ruangan(
-                        rs.getInt("no"),
-                            rs.getString("tipe"),
-                            rs.getDouble("harga"),
-                            rs.getString("fasilitas"),
-                            dp
+                        Integer.parseInt(rs.getString("no")),
+                        rs.getString("r.tipe"),
+                        rs.getDouble("r.harga"),
+                        rs.getString("r.fasilitas"),
+                        dp
                     );
                     
                     list.add(r);
@@ -200,7 +185,7 @@ public class RuanganDAO {
     public void updateRuangan(Ruangan r){
         con = dbCon.makeConnection();
         
-        String sql = "UPDATE ruangan SET id_department = '" + r.getDepartment().getId() +  "', " 
+        String sql = "UPDATE ruangan SET no = '" + r.getNo() +  "', " 
                 + "tipe = '" + r.getTipe()+ "', "
                 + "harga = '" + r.getHarga() + "', " 
                 + "fasilitas= '" + r.getFasilitas() + "', " 
@@ -224,7 +209,7 @@ public class RuanganDAO {
         con = dbCon.makeConnection();
         System.out.println(no);
         
-        String sql = "DELETE FROM ruangan WHERE no = '" + no + "'";
+        String sql = "DELETE FROM ruangan WHERE no = " + no + "";
         System.out.println("Deleting Ruangan...");
         
         try{

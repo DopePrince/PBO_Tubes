@@ -28,7 +28,14 @@ public class Ruangan {
         this.fasilitas = fasilitas;
         this.department = department;
     }
-
+    
+    public Ruangan(String tipe, double harga, String fasilitas, Department department) {
+        this.tipe = tipe;
+        this.harga = harga;
+        this.fasilitas = fasilitas;
+        this.department = department;
+    }
+    
     public int getNo() {
         return no;
     }
