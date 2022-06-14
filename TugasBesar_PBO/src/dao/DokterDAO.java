@@ -207,14 +207,13 @@ public class DokterDAO {
     public void updateDokter(Dokter dk){
         con = dbCon.makeConnection();
         
-        String sql = "UPDATE dokter SET id_department = '" + dk.getDepartment().getId() +  "', " 
-                + "nama = '" + dk.getNama()+ "', "
-                + "alamat = '" + dk. getAlamat() + "', " 
-                + "no_telepon = '" + dk.getNo_telepon() + "', " 
-                + "gender = '" + dk.getGender() + "'"
-                + "biaya_dokter = '" + dk.getBiaya_dokter()+ "'"
-                + "WHERE id = '" + dk.getId() + "'";
-        
+        String sql = "UPDATE dokter SET id_department = '" + dk.getDepartment().getId() 
+                + "', nama = '" + dk.getNama()
+                + "', alamat = '" + dk. getAlamat() 
+                + "', no_telepon = '" + dk.getNo_telepon() 
+                + "', gender = '" + dk.getGender()
+                + "', biaya_dokter = '" + dk.getBiaya_dokter()
+                + "' WHERE id = '" + dk.getId() + "'";
         System.out.println("Editing Dokter...");
         
         try{
