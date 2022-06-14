@@ -25,8 +25,8 @@ public class Jenis_PenyakitDAO {
     
     public List<Jenis_Penyakit> showJenis_Penyakit (){
         con=dbCon.makeConnection ();
-        
-        String sql = "SELECT dp.*, p.* FROM jenis_penyakit AS p JOIN department AS d WHERE p.id_penyakit = dp.id";
+//        String sql = "SELECT * FROM jenis_penyakit";
+        String sql = "SELECT dp.*, p.* FROM jenis_penyakit AS p JOIN department AS dp WHERE p.id_department = dp.id";
         System.out.println ("Mengambil data jenis penyakit...");
         
         List<Jenis_Penyakit> list = new ArrayList();
@@ -54,7 +54,7 @@ public class Jenis_PenyakitDAO {
             rs.close();
             statement.close();
         }catch(Exception e){
-            System.out.println("Error reading2 database...");
+            System.out.println("test Error reading database...");
             e.printStackTrace();
         }
         dbCon.closeConnection();
@@ -119,7 +119,7 @@ public class Jenis_PenyakitDAO {
         }
     }
     
-    public List<Jenis_Penyakit> showJenis_Penyakit(String query){
+    public List<Jenis_Penyakit> showListJenis_Penyakit(String query){
         con = dbCon.makeConnection();
         
         String sql = "SELECT dp.*, p.* FROM department as dp JOIN jenis_penyakit as p WHERE (p.id LIKE "
@@ -156,7 +156,7 @@ public class Jenis_PenyakitDAO {
             rs.close();
             statement.close();
         }catch(Exception e){
-            System.out.println("Error reading database...");
+            System.out.println("test Error reading database...");
             System.out.println(e);
         }
         dbCon.closeConnection();

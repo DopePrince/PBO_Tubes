@@ -25,6 +25,12 @@ public class Jenis_Penyakit {
         this.keterangan = keterangan;
         this.department = department;
     }
+    
+    public Jenis_Penyakit(String nama_penyakit, String keterangan, Department department) {
+        this.nama_penyakit = nama_penyakit;
+        this.keterangan = keterangan;
+        this.department = department;
+    }
 
     public Department getDepartment() {
         return department;

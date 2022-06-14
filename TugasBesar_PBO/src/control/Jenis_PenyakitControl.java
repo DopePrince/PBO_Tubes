@@ -21,7 +21,7 @@ public class Jenis_PenyakitControl {
     }
     
     public TableJenis_Penyakit showDataPenyakit(String query){
-        List<Jenis_Penyakit> dataPenyakit = jpDao.showJenis_Penyakit(query);
+        List<Jenis_Penyakit> dataPenyakit = jpDao.showListJenis_Penyakit(query);
         TableJenis_Penyakit tablePenyakit = new TableJenis_Penyakit(dataPenyakit);
         
         return tablePenyakit;

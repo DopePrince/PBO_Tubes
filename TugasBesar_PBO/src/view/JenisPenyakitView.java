@@ -22,6 +22,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     String action = "tambah";
     int selectedId = 0;
     List<Jenis_Penyakit> listPenyakit;
+    List<Department> listDepartment;
     
     public JenisPenyakitView() {
         initComponents();
@@ -112,7 +113,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         labelGajiDokter7 = new javax.swing.JLabel();
         delete = new javax.swing.JLabel();
         labelGajiDokter8 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxDepartment = new javax.swing.JComboBox<>();
         inputSearch = new javax.swing.JTextField();
         buttonsearch = new javax.swing.JButton();
 
@@ -612,6 +613,12 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         labelGajiDokter8.setForeground(new java.awt.Color(153, 153, 153));
         labelGajiDokter8.setText("Department");
 
+        comboBoxDepartment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxDepartmentActionPerformed(evt);
+            }
+        });
+
         inputSearch.setAlignmentX(50.0F);
         inputSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         inputSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -666,7 +673,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addComponent(delete)))
                     .addComponent(labelGajiDokter8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -697,7 +704,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelGajiDokter8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboBoxDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -739,7 +746,28 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
-        // TODO add your handling code here:
+        try{
+            inputKosongException();
+            
+            int selectedIndexDepartment = comboBoxDepartment.getSelectedIndex();
+            Department selectedDepartment = listDepartment.get(selectedIndexDepartment);
+            
+            if(action.equals("edit")){
+                Jenis_Penyakit p = new Jenis_Penyakit(Integer.parseInt(InputID.getText()), inputNama.getText(), inputKeterangan.getText(), selectedDepartment);
+                penyakitControl.updateJenis_Penyakit(p);
+            }else if(action.equals("tambah")){
+                Jenis_Penyakit p = new Jenis_Penyakit(inputNama.getText(), inputKeterangan.getText(), selectedDepartment);
+                penyakitControl.insertJenis_Penyakit(p);
+            }
+            
+               
+           clearText();
+           resetButton();
+           showPenyakit();
+           
+       }catch (InputKosongException e){
+           JOptionPane.showMessageDialog(this, e.message());
+       }
     }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void inputNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNamaActionPerformed
@@ -864,6 +892,10 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonsearchActionPerformed
 
+    private void comboBoxDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxDepartmentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxDepartmentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -907,11 +939,11 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     private javax.swing.JButton buttonBatal;
     private javax.swing.JButton buttonTambah;
     private javax.swing.JButton buttonsearch;
+    private javax.swing.JComboBox<Department> comboBoxDepartment;
     private javax.swing.JLabel delete;
     private javax.swing.JTextField inputKeterangan;
     private javax.swing.JTextField inputNama;
     private javax.swing.JTextField inputSearch;
-    private javax.swing.JComboBox<Department> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
