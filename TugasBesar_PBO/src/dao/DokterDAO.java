@@ -28,13 +28,13 @@ public class DokterDAO {
     private DbConnection dbCon = new DbConnection();
     private Connection con;
     
-    public void insertDokter(Dokter d){
+    public void insertDokter(Dokter dk){
         con = dbCon.makeConnection();
         
         String sql = "INSERT INTO dokter(id, id_department, nama, alamat, no_telepon, gender, biaya_dokter)"
-                + "VALUES ('" + d.getId()+ "', '" + d.getDepartment().getId()+ "', '"
-                + d.getNama() + "', '" + d.getAlamat()+ "', '"
-                + d.getNo_telepon() + "', '" + d.getGender() + "', '" + d.getBiaya_dokter() + "')";
+                + "VALUES ('" + dk.getId()+ "', '" + dk.getDepartment().getId()+ "', '"
+                + dk.getNama() + "', '" + dk.getAlamat()+ "', '"
+                + dk.getNo_telepon() + "', '" + dk.getGender() + "', '" + dk.getBiaya_dokter() + "')";
         
         System.out.println("Adding Dokter...");
         
@@ -53,14 +53,13 @@ public class DokterDAO {
     public List<Dokter> showDokter(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT dk.*, dp.*, j.* FROM dokter as dk JOIN (department as dp JOIN jenis_penyakit as j ON dp.id = j.id_department) ON dk.id_department = dp.id WHERE (dk.nama LIKE "
+        String sql = "SELECT dk.*, dp.* FROM dokter as dk JOIN department as dp ON dk.id_department = dp.id WHERE (dk.nama LIKE "
                 + "'%" + query + "%'"
                 + "OR dk.alamat LIKE '%" + query + "%'"
                 + "OR dk.no_telepon LIKE '%" + query + "%'"
                 + "OR dk.gender LIKE '%" + query + "%'"
                 + "OR dk.biaya_dokter LIKE '%" + query + "%'"
-                + "OR dp.nama LIKE '%" + query + "%'"
-                + "OR j.nama_penyakit LIKE '%" + query + "%')";
+                + "OR dp.nama LIKE '%" + query + "%')";
         
         System.out.println("Mengambil data Dokter...");
         

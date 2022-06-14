@@ -945,7 +945,7 @@ public class DokterView extends javax.swing.JFrame {
     
     public void lastID(){
         listDokter =  dokterControl.showListDokter();
-        int i=0;
+        int i=1;
         for(Dokter d:listDokter){
             i = d.getId();
         }
