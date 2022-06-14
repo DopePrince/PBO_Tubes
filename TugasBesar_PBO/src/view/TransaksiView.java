@@ -18,6 +18,7 @@ import javax.swing.table.TableModel;
 
 import model.Pasien;
 import model.Dokter;
+import model.Jenis_Penyakit;
 import model.Ruangan;
 import model.Transaksi;
 import table.TableDokter;
@@ -46,19 +47,17 @@ public class TransaksiView extends javax.swing.JFrame {
         pasienControl = new PasienControl();
         ruanganControl = new RuanganControl();
         dokterControl = new DokterControl();
-        setComponent(false);
-        setEditDeleteBtn(false);
+        transaksiControl = new TransaksiControl();
         setPasienToDropdown();
         setDokterToDropdown();
         setRuanganToDropdown();
-        
+        showTransaksi();
         
     }
     
     public void setComponent(boolean value){
        buttonTambah.setEnabled(value);
        buttonBatal.setEnabled(value);
-       buttonEdit.setEnabled(value);
        
        InputID.setEnabled(value);
        inputBiayaDiagnosis.setEnabled(value);
@@ -67,11 +66,6 @@ public class TransaksiView extends javax.swing.JFrame {
        dokterComboBox.setEnabled(value);
        ruanganComboBox.setEnabled(value);
        
-    }
-   
-    public void setEditDeleteBtn(boolean value){
-        buttonBatal.setEnabled(value);
-        buttonEdit.setEnabled(value);
     }
     
     
@@ -110,8 +104,26 @@ public class TransaksiView extends javax.swing.JFrame {
         }
     }
     
+    public void inputKosongException() throws InputKosongException{
+        if(InputID.getText().isEmpty() || inputBiayaDiagnosis.getText().isEmpty() || inputTanggalTransaksi.getText().isEmpty()){
+            throw new InputKosongException();
+        }
+    }
     
+    public void showTransaksi(){
+        lastID();
+        tabelTransaksi.setModel(transaksiControl.showDataTransaksi(""));
+    }
     
+    public void lastID(){
+        listTransaksi =  transaksiControl.showListTransaksi();
+        
+        int i=1;
+        for(Transaksi t:listTransaksi){
+            i = t.getId();
+        }
+        InputID.setText(String.valueOf(i+1));
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,7 +166,6 @@ public class TransaksiView extends javax.swing.JFrame {
         inputBiayaDiagnosis = new javax.swing.JTextField();
         labelGajiDokter6 = new javax.swing.JLabel();
         buttonTambah = new javax.swing.JButton();
-        buttonEdit = new javax.swing.JButton();
         InputID = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
@@ -163,9 +174,11 @@ public class TransaksiView extends javax.swing.JFrame {
         dokterComboBox = new javax.swing.JComboBox<>();
         pasienComboBox = new javax.swing.JComboBox<>();
         ruanganComboBox = new javax.swing.JComboBox<>();
-        ruanganLabel = new javax.swing.JLabel();
-        pasienLabel = new javax.swing.JLabel();
-        dokterLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelTransaksi = new javax.swing.JTable();
+        labelGajiDokter8 = new javax.swing.JLabel();
+        labelGajiDokter9 = new javax.swing.JLabel();
+        labelGajiDokter10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -209,7 +222,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelJenisPenyakitLayout.setVerticalGroup(
             panelJenisPenyakitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJenisPenyakitLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -243,7 +256,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDepartmentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
@@ -277,7 +290,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelDokterLayout.setVerticalGroup(
             panelDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDokterLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -311,7 +324,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelPasienLayout.setVerticalGroup(
             panelPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPasienLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addContainerGap())
         );
@@ -345,7 +358,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelRuanganLayout.setVerticalGroup(
             panelRuanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuanganLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -387,7 +400,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelTransaksiLayout.setVerticalGroup(
             panelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addContainerGap())
         );
@@ -421,7 +434,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriTransaksiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addContainerGap())
         );
@@ -459,7 +472,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTampilGajiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -493,7 +506,7 @@ public class TransaksiView extends javax.swing.JFrame {
         panelHistoriGajiLayout.setVerticalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriGajiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jLabel15)
                 .addContainerGap())
         );
@@ -514,19 +527,19 @@ public class TransaksiView extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel9)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 59, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelJenisPenyakit, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelTampilGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
-                            .addComponent(panelHistoriGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                            .addComponent(panelJenisPenyakit, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelDepartment, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelTampilGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(panelHistoriGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel10)
@@ -565,7 +578,7 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addComponent(panelTampilGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelHistoriGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -606,18 +619,6 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
 
-        buttonEdit.setBackground(new java.awt.Color(255, 204, 0));
-        buttonEdit.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
-        buttonEdit.setForeground(new java.awt.Color(255, 255, 255));
-        buttonEdit.setText("Edit");
-        buttonEdit.setBorder(null);
-        buttonEdit.setBorderPainted(false);
-        buttonEdit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonEditActionPerformed(evt);
-            }
-        });
-
         InputID.setAlignmentX(50.0F);
         InputID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         InputID.addActionListener(new java.awt.event.ActionListener() {
@@ -647,11 +648,30 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
 
-        ruanganLabel.setText("Ruangan");
+        tabelTransaksi.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tabelTransaksi);
 
-        pasienLabel.setText("Pasien");
+        labelGajiDokter8.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelGajiDokter8.setForeground(new java.awt.Color(153, 153, 153));
+        labelGajiDokter8.setText("Dokter");
 
-        dokterLabel.setText("Dokter");
+        labelGajiDokter9.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelGajiDokter9.setForeground(new java.awt.Color(153, 153, 153));
+        labelGajiDokter9.setText("Ruangan");
+
+        labelGajiDokter10.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelGajiDokter10.setForeground(new java.awt.Color(153, 153, 153));
+        labelGajiDokter10.setText("Pasien");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -662,13 +682,12 @@ public class TransaksiView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                            .addComponent(jSeparator2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
                                 .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(labelGajiDokter2)
@@ -678,10 +697,10 @@ public class TransaksiView extends javax.swing.JFrame {
                                     .addComponent(labelGajiDokter5)
                                     .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(labelGajiDokter6)
-                            .addComponent(jSeparator2)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(labelGajiDokter7)
-                                .addGap(570, 570, 570))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 632, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(labelTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -692,19 +711,18 @@ public class TransaksiView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(dokterComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                    .addComponent(dokterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelGajiDokter8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(pasienLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pasienComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ruanganComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(46, 46, 46))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ruanganLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelGajiDokter9)
+                            .addComponent(labelGajiDokter10))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -727,15 +745,15 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelGajiDokter6)
-                    .addComponent(ruanganLabel))
+                    .addComponent(labelGajiDokter9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ruanganComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pasienLabel)
-                    .addComponent(dokterLabel))
+                    .addComponent(labelGajiDokter8)
+                    .addComponent(labelGajiDokter10))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dokterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -743,13 +761,17 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
-                .addComponent(labelGajiDokter7)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(labelGajiDokter7))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -764,7 +786,7 @@ public class TransaksiView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -776,41 +798,35 @@ public class TransaksiView extends javax.swing.JFrame {
 
     private void buttonTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambahActionPerformed
        try{
-            int selectedIndex;
-            //InputKosongException();
+            int selectedIndexDokter, selectedIndexPasien, selectedIndexRuangan;
+            inputKosongException();
             
-            selectedIndex = dokterComboBox.getSelectedIndex();
-            Dokter selectedDokter = listDokter.get(selectedIndex);
+            selectedIndexDokter = dokterComboBox.getSelectedIndex();
+            selectedIndexPasien = pasienComboBox.getSelectedIndex();
+            selectedIndexRuangan = ruanganComboBox.getSelectedIndex();
+            Dokter selectedDokter = listDokter.get(selectedIndexDokter);
+            Pasien selectedPasien = listPasien.get(selectedIndexPasien);
+            Ruangan selectedRuangan = listRuangan.get(selectedIndexRuangan);
             
             if(action.equals("Tambah")) {
-                Dokter dk = new Dokter(String.valueOf(selectedIndex), inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
-                        Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
-                dokterControl.insertDataDokter(dk);
+                Transaksi t = new Transaksi(selectedId, Double.parseDouble(inputBiayaDiagnosis.getText()), inputTanggalTransaksi.getText(), selectedPasien, selectedDokter, selectedRuangan);
+                transaksiControl.insertDataTransaksi(t);
             }
             else
             {
-                Dokter dk = new Dokter(inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
-                        Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
-                dokterControl.updateDataDokter(dk);
+                Transaksi t = new Transaksi(Double.parseDouble(inputBiayaDiagnosis.getText()), inputTanggalTransaksi.getText(), selectedPasien, selectedDokter, selectedRuangan);
+                transaksiControl.updateDataTransaksi(t);
             }
         } catch (InputKosongException e) {
             JOptionPane.showMessageDialog(this, e.message());
         }
         clearText();
-        showDokter();
-        setComponent(false);
-        
-        setEditDeleteBtn(false);
+        showTransaksi();
     }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void inputBiayaDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBiayaDiagnosisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputBiayaDiagnosisActionPerformed
-
-    private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        setComponent(true);
-        action = "ubah";
-    }//GEN-LAST:event_buttonEditActionPerformed
 
     private void panelJenisPenyakitMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseMoved
         
@@ -889,8 +905,7 @@ public class TransaksiView extends javax.swing.JFrame {
     }//GEN-LAST:event_InputIDActionPerformed
 
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
-        setComponent(false);
-        setEditDeleteBtn(false);
+
         clearText();
     }//GEN-LAST:event_buttonBatalActionPerformed
 
@@ -943,10 +958,8 @@ public class TransaksiView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField InputID;
     private javax.swing.JButton buttonBatal;
-    private javax.swing.JButton buttonEdit;
     private javax.swing.JButton buttonTambah;
     private javax.swing.JComboBox<Dokter> dokterComboBox;
-    private javax.swing.JLabel dokterLabel;
     private javax.swing.JTextField inputBiayaDiagnosis;
     private javax.swing.JTextField inputTanggalTransaksi;
     private javax.swing.JLabel jLabel10;
@@ -965,12 +978,16 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel labelGajiDokter10;
     private javax.swing.JLabel labelGajiDokter2;
     private javax.swing.JLabel labelGajiDokter5;
     private javax.swing.JLabel labelGajiDokter6;
     private javax.swing.JLabel labelGajiDokter7;
+    private javax.swing.JLabel labelGajiDokter8;
+    private javax.swing.JLabel labelGajiDokter9;
     private javax.swing.JLabel labelTransaksi;
     private javax.swing.JPanel panelDepartment;
     private javax.swing.JPanel panelDokter;
@@ -982,8 +999,7 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JPanel panelTampilGaji;
     private javax.swing.JPanel panelTransaksi;
     private javax.swing.JComboBox<Pasien> pasienComboBox;
-    private javax.swing.JLabel pasienLabel;
     private javax.swing.JComboBox<Ruangan> ruanganComboBox;
-    private javax.swing.JLabel ruanganLabel;
+    private javax.swing.JTable tabelTransaksi;
     // End of variables declaration//GEN-END:variables
 }

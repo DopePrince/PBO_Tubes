@@ -108,4 +108,8 @@ public class Dokter {
         System.out.println("Biaya Dokter");
     }
     
+    @Override
+    public String toString(){
+        return nama;
+    }
 }

@@ -29,7 +29,7 @@ public class TableTransaksi extends AbstractTableModel{
     }
     
     public int getColumnCount() {
-        return 5;
+        return 7;
     }
     
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -58,7 +58,7 @@ public class TableTransaksi extends AbstractTableModel{
             case 0:
                 return "Id Transaksi";
             case 1:
-                return "Tgl Transaksi";
+                return "Tanggal Transaksi";
             case 2:
                 return "Nama Pasien";
             case 3:

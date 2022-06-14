@@ -30,6 +30,14 @@ public class Transaksi {
         this.dokter = dokter;
         this.ruangan = ruangan;
     }
+    
+    public Transaksi(double biaya_diagnosis, String tanggal_transaksi, Pasien pasien, Dokter dokter, Ruangan ruangan) {
+        this.biaya_diagnosis = biaya_diagnosis;
+        this.tanggal_transaksi = tanggal_transaksi;
+        this.pasien = pasien;
+        this.dokter = dokter;
+        this.ruangan = ruangan;
+    }
 
     public int getId() {
         return id;
