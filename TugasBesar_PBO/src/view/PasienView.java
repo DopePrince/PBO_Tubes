@@ -786,6 +786,9 @@ public class PasienView extends javax.swing.JFrame {
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
         // TODO add your handling code here:
         clearText();
+        resetButton();
+        lastID();
+        showPasien();
     }//GEN-LAST:event_buttonBatalActionPerformed
 
     private void tabelJenisPenyakitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelJenisPenyakitMouseClicked
@@ -803,16 +806,27 @@ public class PasienView extends javax.swing.JFrame {
         inputGender1.setText(tableModel.getValueAt(clickedRow, 4).toString());
         inputAlamat.setText(tableModel.getValueAt(clickedRow, 5).toString());
         inputNoTelepon.setText(tableModel.getValueAt(clickedRow, 6).toString());
-        System.out.println(selectedId);
 
-        String namaPenyakit = tableModel.getValueAt(clickedRow, 7).toString();
-        for(Jenis_Penyakit jp:listJenis_Penyakit){
-            if(jp.getNama_penyakit().equals(tableModel.getValueAt(clickedRow, 0).toString())){
-                indexJenisPenyakit = listJenis_Penyakit.indexOf(jp);
+        
+        listPasien = pasienControl.showListPasien();
+//        String namaPenyakit = tableModel.getValueAt(clickedRow, 7).toString();
+//        for(Jenis_Penyakit jp:listJenis_Penyakit){
+//            if(jp.getNama_penyakit().equals(tableModel.getValueAt(clickedRow, 0).toString())){
+//                indexJenisPenyakit = listJenis_Penyakit.indexOf(jp);
+//            }
+//        }
+//        jenisPenyakitDropdown.setSelectedIndex(indexJenisPenyakit);
+        for(Pasien p:listPasien){
+            System.out.println(selectedId + " - " +  p.getId());
+            if(selectedId == p.getId()){
+                action = "edit";
+                buttonTambah.setText("Edit");
+                buttonTambah.setBackground(new Color(255, 153, 0));
+                break;
+            }else{
+                action = "tambah";
             }
         }
-        jenisPenyakitDropdown.setSelectedIndex(indexJenisPenyakit);
-
     }//GEN-LAST:event_tabelJenisPenyakitMouseClicked
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
