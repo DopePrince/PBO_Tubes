@@ -51,16 +51,16 @@ public class PasienDAO {
         dbCon.closeConnection();
     }
     
-    public List<Pasien> showPasien(String query){
+    public List<Pasien> showListPasien(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT jp.*, p.* FROM pasien AS p JOIN jenis_penyakit AS jp ON jp.id = p.id_penyakit WHERE (id LIKE "
+        String sql = "SELECT jp.*, p.*,dp.* FROM pasien AS p JOIN (jenis_penyakit AS jp join department AS dp ON jp.id_department = dp.id) ON jp.id = p.id_penyakit WHERE (p.id LIKE "
                 + "'%" + query + "%'"
-                + "OR umur LIKE '%" + query + "%'"
-                + "OR nama LIKE '%" + query + "%'"
-                + "OR gender LIKE '%" + query + "%'"
-                + "OR no_telepon LIKE '%" + query + "%'"
-                + "OR nama_penyakit LIKE '%" + query + "%')";
+                + "OR p.umur LIKE '%" + query + "%'"
+                + "OR p.nama LIKE '%" + query + "%'"
+                + "OR p.gender LIKE '%" + query + "%'"
+                + "OR p.no_telepon LIKE '%" + query + "%'"
+                + "OR jp.nama_penyakit LIKE '%" + query + "%')";
         
         
         System.out.println("Mengambil data Pasien...");
@@ -78,7 +78,7 @@ public class PasienDAO {
                     );
                     
                     Jenis_Penyakit jp = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
+                        rs.getInt("jp.id"), 
                         rs.getString("nama_penyakit"), 
                         rs.getString("keterangan"),
                         dp
@@ -111,7 +111,7 @@ public class PasienDAO {
     public List<Pasien> showPasien(){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM pasien";
+        String sql = "SELECT jp.*, p.* FROM pasien AS p JOIN jenis_penyakit AS jp WHERE p.id = jp.id";
         System.out.println("Mengambil data Pasien...");
         
         List<Pasien> list = new ArrayList();
@@ -128,7 +128,7 @@ public class PasienDAO {
                     );
                     
                     Jenis_Penyakit jp = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
+                        rs.getInt("jp.id"), 
                         rs.getString("nama_penyakit"), 
                         rs.getString("keterangan"),
                         dp
@@ -177,7 +177,7 @@ public class PasienDAO {
                     );
                     
                     Jenis_Penyakit jp = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
+                        rs.getInt("jp.id"), 
                         rs.getString("nama_penyakit"), 
                         rs.getString("keterangan"),
                         dp

@@ -28,7 +28,7 @@ public class PasienControl {
     
     public TablePasien showDataPasien(String query){
         
-        List<Pasien> dataPasien = dDao.showPasien(query);
+        List<Pasien> dataPasien = dDao.showListPasien(query);
         TablePasien tablePasien = new TablePasien(dataPasien);
             
         return tablePasien;
