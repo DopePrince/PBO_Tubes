@@ -8,6 +8,7 @@ package control;
 import dao.DepartmentDAO;
 import java.util.List;
 import model.Department;
+import table.TableDepartment;
 
 /**
  * Kelompok 5 :
@@ -29,6 +30,13 @@ public class DepartmentControl {
         List<Department> dataDepartment = dDao.showDepartment();
         
         return dataDepartment;
+    }
+    
+    public TableDepartment showDataDepartment(String query){
+        List<Department> dataDepartment = dDao.showDepartment(query);
+        TableDepartment tableDepartment = new TableDepartment(dataDepartment);
+        
+        return tableDepartment;
     }
     
     public void updateDataDepartment(Department d, int id){

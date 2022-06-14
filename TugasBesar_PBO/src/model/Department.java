@@ -18,12 +18,10 @@ package model;
 public class Department {
     private int id;
     private String nama;
-    private Jenis_Penyakit jenisPenyakit;
 
-    public Department(int id, String nama, Jenis_Penyakit jenisPenyakit) {
+    public Department(int id, String nama) {
         this.id = id;
         this.nama = nama;
-        this.jenisPenyakit = jenisPenyakit;
     }
 
     public int getId() {
@@ -41,18 +39,9 @@ public class Department {
     public void setNama(String nama) {
         this.nama = nama;
     }
-
-    public Jenis_Penyakit getJenisPenyakit() {
-        return jenisPenyakit;
-    }
-
-    public void setJenisPenyakit(Jenis_Penyakit jenisPenyakit) {
-        this.jenisPenyakit = jenisPenyakit;
-    }
     
     public void showDepartment(){
         System.out.println("Id");
         System.out.println("Nama");
-        System.out.println("Jenis penyakit");
     }
 }
