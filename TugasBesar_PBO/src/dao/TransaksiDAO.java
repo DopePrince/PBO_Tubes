@@ -76,16 +76,16 @@ public class TransaksiDAO {
             
             if(rs != null){
                 while(rs.next()){
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
-                    );
-                    
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                        
+                    );
+                    
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan"),
+                        dp
                     );
                    
                     Dokter dk = new Dokter(
@@ -157,16 +157,16 @@ public class TransaksiDAO {
             
             if(rs != null){
                 while(rs.next()) {
-               Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
-                    );
-                    
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                        
+                    );
+                    
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan"),
+                        dp
                     );
                    
                     Dokter dk = new Dokter(
@@ -234,16 +234,16 @@ public class TransaksiDAO {
             
             if(rs != null){
                 while(rs.next()){
-                   Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
-                    );
-                    
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                        
+                    );
+                    
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan"),
+                        dp
                     );
                    
                     Dokter dk = new Dokter(

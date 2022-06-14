@@ -70,16 +70,16 @@ public class RuanganDAO {
             
             if(rs != null){
                 while(rs.next()){   
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
-                    );
-                         
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                        
+                    );
+                    
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan"),
+                        dp
                     );
                    
                     Ruangan r = new Ruangan(
@@ -118,16 +118,16 @@ public class RuanganDAO {
             
             if(rs != null){
                 while(rs.next()){
-                    Jenis_Penyakit jp = new Jenis_Penyakit(
-                        rs.getInt("jp.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan")
-                    );
-                    
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                        
+                    );
+                    
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan"),
+                        dp
                     );
                     
                     Ruangan r = new Ruangan(
@@ -165,16 +165,16 @@ public class RuanganDAO {
             
             if(rs != null){
                 while(rs.next()){
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan") 
-                    );
-                    
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                       
+                    );
+                    
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("j.id"), 
+                        rs.getString("nama_penyakit"), 
+                        rs.getString("keterangan"),
+                        dp
                     );
                    
                     r = new Ruangan(
