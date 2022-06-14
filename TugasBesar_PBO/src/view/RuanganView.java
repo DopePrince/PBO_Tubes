@@ -945,14 +945,19 @@ public class RuanganView extends javax.swing.JFrame {
         inputTipeR.setText(tableModel.getValueAt(clickedRow, 1).toString());
         Inputfasilitas.setText(tableModel.getValueAt(clickedRow, 3).toString());
         
-        System.out.println(selectedId);
-        for(Department dp:listDepartment){
-            if(dp.getNama().equals(tableModel.getValueAt(clickedRow, 0).toString())){
-                indexDepartment = listDepartment.indexOf(dp);
+        listRuangan = ruanganControl.showListRuangan();
+        
+        for(Ruangan r : listRuangan){
+            System.out.println(selectedId + " - " + r.getNo());
+            if(selectedId == r.getNo()){
+                action = "edit";
+                buttonTambah.setText("Edit");
+                buttonTambah.setBackground(new Color(255, 153, 0));
+                break;
+            }else{
+                action = "tambah";
             }
         }
-        DComboBox.setSelectedIndex(indexDepartment);
-        
     }//GEN-LAST:event_tabelRuanganMouseClicked
 
     private void DComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DComboBoxActionPerformed
