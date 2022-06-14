@@ -775,10 +775,10 @@ public class DokterView extends javax.swing.JFrame {
             Department selectedDepartment = listDepartment.get(selectedIndex);
             
             if(action.equals("Tambah")) {
-                inputId.setText("DOK-" + Integer.toString(dokterControl.generateIDDokter()));
-                
                 Dokter dk = new Dokter(String.valueOf(selectedIndex), inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
                         Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
+                inputId.setText("DOK-" + Integer.toString(dokterControl.generateIDDokter()));
+                
                 dokterControl.insertDataDokter(dk);
             }
             else
