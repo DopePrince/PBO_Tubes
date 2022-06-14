@@ -116,12 +116,10 @@ public class RuanganView extends javax.swing.JFrame {
         panelTransaksi = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         panelHistoriTransaksi = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         panelTampilGaji = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         panelHistoriGaji = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         labelNo = new javax.swing.JLabel();
         ruanganLabel = new javax.swing.JLabel();
@@ -384,27 +382,15 @@ public class RuanganView extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Histori Transaksi");
-        jLabel12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         javax.swing.GroupLayout panelHistoriTransaksiLayout = new javax.swing.GroupLayout(panelHistoriTransaksi);
         panelHistoriTransaksi.setLayout(panelHistoriTransaksiLayout);
         panelHistoriTransaksiLayout.setHorizontalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHistoriTransaksiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(62, Short.MAX_VALUE))
+            .addGap(0, 188, Short.MAX_VALUE)
         );
         panelHistoriTransaksiLayout.setVerticalGroup(
             panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriTransaksiLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addContainerGap())
+            .addGap(0, 38, Short.MAX_VALUE)
         );
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -456,27 +442,15 @@ public class RuanganView extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Histori Gaji");
-        jLabel15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         javax.swing.GroupLayout panelHistoriGajiLayout = new javax.swing.GroupLayout(panelHistoriGaji);
         panelHistoriGaji.setLayout(panelHistoriGajiLayout);
         panelHistoriGajiLayout.setHorizontalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHistoriGajiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel15)
-                .addContainerGap(101, Short.MAX_VALUE))
+            .addGap(0, 188, Short.MAX_VALUE)
         );
         panelHistoriGajiLayout.setVerticalGroup(
             panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHistoriGajiLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jLabel15)
-                .addContainerGap())
+            .addGap(0, 38, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -945,14 +919,19 @@ public class RuanganView extends javax.swing.JFrame {
         inputTipeR.setText(tableModel.getValueAt(clickedRow, 1).toString());
         Inputfasilitas.setText(tableModel.getValueAt(clickedRow, 3).toString());
         
-        System.out.println(selectedId);
-        for(Department dp:listDepartment){
-            if(dp.getNama().equals(tableModel.getValueAt(clickedRow, 0).toString())){
-                indexDepartment = listDepartment.indexOf(dp);
+        listRuangan = ruanganControl.showListRuangan();
+        
+        for(Ruangan r : listRuangan){
+            System.out.println(selectedId + " - " + r.getNo());
+            if(selectedId == r.getNo()){
+                action = "edit";
+                buttonTambah.setText("Edit");
+                buttonTambah.setBackground(new Color(255, 153, 0));
+                break;
+            }else{
+                action = "tambah";
             }
         }
-        DComboBox.setSelectedIndex(indexDepartment);
-        
     }//GEN-LAST:event_tabelRuanganMouseClicked
 
     private void DComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DComboBoxActionPerformed
@@ -1036,10 +1015,8 @@ public class RuanganView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
