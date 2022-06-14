@@ -32,7 +32,7 @@ public class TableDokter extends AbstractTableModel{
     }
     
     public int getColumnCount() {
-        return 6;
+        return 7;
     }
     
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -49,6 +49,10 @@ public class TableDokter extends AbstractTableModel{
                 return list.get(rowIndex).getGender();
             case 5:
                 return list.get(rowIndex).getBiaya_dokter();
+            case 6:
+                return list.get(rowIndex).getId();
+            case 7:
+                return list.get(rowIndex).getDepartment().getId();
             default:
                 return null;
         }
