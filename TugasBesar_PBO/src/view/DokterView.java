@@ -45,7 +45,7 @@ public class DokterView extends javax.swing.JFrame {
         showDokter();
         setDepartmentToDropdown();
     }
-    
+        
     public void setComponent(boolean value){
         buttonTambah1.setEnabled(value);
         buttonBatal.setEnabled(value);
@@ -775,6 +775,8 @@ public class DokterView extends javax.swing.JFrame {
             Department selectedDepartment = listDepartment.get(selectedIndex);
             
             if(action.equals("Tambah")) {
+                inputId.setText("DOK-" + Integer.toString(dokterControl.generateIDDokter()));
+                
                 Dokter dk = new Dokter(String.valueOf(selectedIndex), inputNamaDokter.getText(), inputAlamat.getText(), inputNomorTelepon.getText(), inputGender.getText(), 
                         Float.parseFloat(inputBiayaDokter.getText()), selectedDepartment);
                 dokterControl.insertDataDokter(dk);

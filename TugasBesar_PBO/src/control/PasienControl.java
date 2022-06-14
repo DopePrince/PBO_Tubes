@@ -39,7 +39,23 @@ public class PasienControl {
         
         return dataPasien;
     }
+    
+    public int generateIDPasien(){
+        List<Pasien> dataPasien = dDao.showPasien();
         
+        String current = null;
+        for(int i=0; i < dataPasien.size() ; i++){
+            current = dataPasien.get(i).getId();
+        }
+        
+        if(current == null){
+            return 1;
+        }
+        else{
+            return Integer.parseInt(current.substring(4)) + 1;
+        }
+    }
+    
     public void updateDataPasien(Pasien p){
         dDao.updatePasien(p);
     }
