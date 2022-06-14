@@ -89,4 +89,9 @@ public class Pasien {
         this.penyakit = penyakit;
     }
     
+    @Override
+    public String toString(){
+        return nama;
+    }
+    
 }

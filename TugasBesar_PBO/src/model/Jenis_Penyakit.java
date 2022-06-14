@@ -47,6 +47,10 @@ public class Jenis_Penyakit {
     public void setKeterangan(String keterangan) {
         this.keterangan = keterangan;
     }
+    @Override
+    public String toString(){
+        return nama_penyakit;
+    }
     
     
 }
