@@ -121,14 +121,14 @@ public class Jenis_PenyakitDAO {
     
     public List<Jenis_Penyakit> showListJenis_Penyakit(String query){
         con = dbCon.makeConnection();
-        
-        String sql = "SELECT dp.*, p.* FROM department as dp JOIN jenis_penyakit as p WHERE (p.id LIKE "
+        System.out.println("teset");
+        String sql = "SELECT dp.*, p.* FROM department as dp JOIN jenis_penyakit as p ON dp.id = p.id_department WHERE (p.id LIKE "
                 + "'%" + query + "%'"
                 + "OR p.nama_penyakit LIKE '%" + query + "%'"
                 + "OR dp.nama LIKE '%" + query + "%')";
         
         
-        System.out.println("Mengambil data Jenis Penyakit...");
+        System.out.println("testMengambil data Jenis Penyakit...");
         
         List<Jenis_Penyakit> list = new ArrayList();
         
@@ -137,7 +137,9 @@ public class Jenis_PenyakitDAO {
             ResultSet rs = statement.executeQuery(sql);
             
             if(rs != null){
+                System.out.println("test");
                 while(rs.next()){
+                    System.out.println("test");
                     Department d = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")

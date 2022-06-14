@@ -15,7 +15,7 @@ package model;
 **/
 
 public class Dokter {
-    private String id;
+    private int id;
     private String nama;
     private String alamat;
     private String no_telepon;
@@ -23,7 +23,7 @@ public class Dokter {
     private float biaya_dokter;
     private Department department;
 
-    public Dokter(String id, String nama, String alamat, String no_telepon, String gender, float biaya_dokter, Department department) {
+    public Dokter(int id, String nama, String alamat, String no_telepon, String gender, float biaya_dokter, Department department) {
         this.id = id;
         this.nama = nama;
         this.alamat = alamat;
@@ -42,11 +42,11 @@ public class Dokter {
         this.department = department;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -98,8 +98,6 @@ public class Dokter {
         this.department = department;
     }
     
-    
-    
     public void showDokter(){
         System.out.println("Id Dokter");
         System.out.println("FK Id Department");
@@ -109,4 +107,5 @@ public class Dokter {
         System.out.println("Gender");
         System.out.println("Biaya Dokter");
     }
+    
 }

@@ -32,7 +32,7 @@ public class TableDokter extends AbstractTableModel{
     }
     
     public int getColumnCount() {
-        return 7;
+        return 6;
     }
     
     public Object getValueAt(int rowIndex, int columnIndex) {

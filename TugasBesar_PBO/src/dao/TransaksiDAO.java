@@ -89,7 +89,7 @@ public class TransaksiDAO {
                     );
                    
                     Dokter dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
@@ -170,7 +170,7 @@ public class TransaksiDAO {
                     );
                    
                     Dokter dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
@@ -247,7 +247,7 @@ public class TransaksiDAO {
                     );
                    
                     Dokter dk = new Dokter(
-                        rs.getString("dk.id"),
+                        rs.getInt("dk.id"),
                         rs.getString("dk.nama"),
                         rs.getString("alamat"),
                         rs.getString("no_telepon"),
