@@ -75,13 +75,6 @@ public class DokterDAO {
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
                     );
-                    
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
-                    );
                                         
                     Dokter dk = new Dokter(
                         rs.getInt("dk.id"),
@@ -99,7 +92,7 @@ public class DokterDAO {
             rs.close();
             statement.close();
         }catch(Exception e){
-            System.out.println("Error reading database...");
+            System.out.println("23Error reading database...");
             System.out.println(e);
         }
         dbCon.closeConnection();
@@ -110,7 +103,7 @@ public class DokterDAO {
     public List<Dokter> showDokter(){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM dokter";
+        String sql = "SELECT dk.*, dp.* FROM dokter as dk JOIN department as dp ON dk.id_department = dp.id";
         System.out.println("Mengambil data Dokter...");
         
         List<Dokter> list = new ArrayList();
@@ -124,13 +117,6 @@ public class DokterDAO {
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                    );
-                    
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
                     );
                     
                     Dokter dk = new Dokter(
@@ -172,13 +158,6 @@ public class DokterDAO {
                     Department dp = new Department(
                         rs.getInt("dp.id"),
                         rs.getString("dp.nama")
-                    );
-                    
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
                     );
                    
                     dk = new Dokter(
