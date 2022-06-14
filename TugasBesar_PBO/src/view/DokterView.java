@@ -27,6 +27,7 @@ import model.Dokter;
         
 import table.TableDokter;
 import table.TableJenis_Penyakit;
+import table.TableTransaksi;
 
 
 
@@ -163,6 +164,8 @@ public class DokterView extends javax.swing.JFrame {
         buttonTambah1 = new javax.swing.JButton();
         DComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        searchField = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -556,6 +559,11 @@ public class DokterView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabelDaftarDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelDaftarDokterMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelDaftarDokter);
 
         labelDaftarDokter.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -594,6 +602,14 @@ public class DokterView extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Department");
 
+        searchBtn.setBackground(new java.awt.Color(0, 153, 204));
+        searchBtn.setText("Cari");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -620,17 +636,23 @@ public class DokterView extends javax.swing.JFrame {
                                 .addComponent(labelGender)
                                 .addComponent(inputGender, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(labelAlamat))
-                            .addGap(246, 246, 246)
+                            .addGap(105, 105, 105)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelNamaDokter)
                                 .addComponent(inputNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(labelNomorTelepon)
                                 .addComponent(inputNomorTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputBiayaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelNomorTelepon)
                                 .addComponent(labelBiayaDokter)
-                                .addComponent(inputBiayaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(labelNamaDokter)
+                                    .addGap(102, 102, 102)
+                                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(searchBtn)))
+                            .addGap(101, 101, 101))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addGap(59, 59, 59)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                            .addComponent(jSeparator4)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -648,16 +670,20 @@ public class DokterView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(dokterLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelId)
                         .addGap(3, 3, 3)
                         .addComponent(inputId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelNamaDokter)
-                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelNamaDokter)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(searchBtn)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(inputNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -712,15 +738,15 @@ public class DokterView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 342, Short.MAX_VALUE)
+                    .addGap(0, 347, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 342, Short.MAX_VALUE)))
+                    .addGap(0, 347, Short.MAX_VALUE)))
         );
 
         pack();
@@ -731,7 +757,9 @@ public class DokterView extends javax.swing.JFrame {
     }//GEN-LAST:event_inputNamaDokterActionPerformed
 
     private void buttonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditActionPerformed
-        // TODO add your handling code here:
+        setComponent(true);
+        action = "ubah";
+        Boolean value = false;
     }//GEN-LAST:event_buttonEditActionPerformed
 
     private void inputIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIdActionPerformed
@@ -739,12 +767,69 @@ public class DokterView extends javax.swing.JFrame {
     }//GEN-LAST:event_inputIdActionPerformed
 
     private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
-        // TODO add your handling code here:
+        setComponent(false);
+        setEditDeleteBtn(false);
+        clearText();
     }//GEN-LAST:event_buttonBatalActionPerformed
 
     private void buttonTambah1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTambah1ActionPerformed
-        // TODO add your handling code here:
+        setComponent(true);
+        
+        clearText();
+        searchField.setText("");
+        action = "Tambah";
+        DComboBox.setSelectedIndex(0);
+        
     }//GEN-LAST:event_buttonTambah1ActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+         setEditDeleteBtn(false);
+        
+        setComponent(false);
+        
+        try{
+            TableDokter dokter = dokterControl.showDataDokter(searchField.getText());
+            
+            if(dokter.getRowCount() == 0){
+                clearText();
+                setEditDeleteBtn(false);
+                JOptionPane.showConfirmDialog(null, "Data tidak ditemukan", "konfirmasi", JOptionPane.DEFAULT_OPTION);
+            }else{
+                tabelDaftarDokter.setModel(dokter);
+            }
+            
+            clearText();
+        }catch (Exception e){
+            System.out.println("Error : " + e.getMessage());
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
+
+    private void tabelDaftarDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDaftarDokterMouseClicked
+        int indexDepartement = -1;
+        int indexJenis_Penyakit = -1;
+        setEditDeleteBtn(true);
+        setComponent(false);
+        
+        int clickedRow = tabelDaftarDokter.getSelectedRow();
+        TableModel tableModel = tabelDaftarDokter.getModel();
+        
+        selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 0).toString());
+        inputId.setText(tableModel.getValueAt(clickedRow, 1).toString());
+        inputAlamat.setText(tableModel.getValueAt(clickedRow, 2).toString());
+        inputGender.setText(tableModel.getValueAt(clickedRow, 3).toString());
+        inputNamaDokter.setText(tableModel.getValueAt(clickedRow, 4).toString());
+        inputNomorTelepon.setText(tableModel.getValueAt(clickedRow, 5).toString());
+        inputBiayaDokter.setText(tableModel.getValueAt(clickedRow, 6).toString());
+        System.out.println(selectedId);
+        for(Dokter d:listDokter){
+            if(d.getNama().equals(tableModel.getValueAt(clickedRow, 0).toString())){
+                indexDepartement = listDokter.indexOf(d);
+            }
+        }
+        DComboBox.setSelectedIndex(indexDepartement);
+        
+
+    }//GEN-LAST:event_tabelDaftarDokterMouseClicked
 
     /**
      * @param args the command line arguments
@@ -834,6 +919,8 @@ public class DokterView extends javax.swing.JFrame {
     private javax.swing.JPanel panelRuangan;
     private javax.swing.JPanel panelTampilGaji;
     private javax.swing.JPanel panelTransaksi;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchField;
     private javax.swing.JTable tabelDaftarDokter;
     // End of variables declaration//GEN-END:variables
 }

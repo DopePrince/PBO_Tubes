@@ -4,12 +4,26 @@
  */
 package view;
 
+import control.DepartmentControl;
+import control.DokterControl;
+import control.Jenis_PenyakitControl;
+import java.util.List;
+import model.Department;
+import model.Dokter;
+import model.Jenis_Penyakit;
+
 /**
  *
  * @author henry
  */
 public class GajiView extends javax.swing.JFrame {
-
+    private DepartmentControl departmentControl;
+    private Jenis_PenyakitControl jenis_PenyakitControl;
+    private DokterControl dokterControl;
+    List<Department> listDepartment;
+    List<Jenis_Penyakit> listJenis_Penyakit;
+    List<Dokter> listDokter;
+    
     /**
      * Creates new form GajiView
      */
