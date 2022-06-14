@@ -19,6 +19,7 @@ import table.TableJenis_Penyakit;
 
 public class JenisPenyakitView extends javax.swing.JFrame {
     private Jenis_PenyakitControl penyakitControl;
+    private DepartmentControl departmentControl;
     String action = "tambah";
     int selectedId = 0;
     List<Jenis_Penyakit> listPenyakit;
@@ -27,8 +28,10 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     public JenisPenyakitView() {
         initComponents();
         penyakitControl = new Jenis_PenyakitControl();
+        departmentControl = new DepartmentControl();
         InputID.setEnabled(false);
         showPenyakit();
+        setDepartmentToDropdown();
     }
     
     public void showPenyakit(){
@@ -37,7 +40,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     }
     
     public void inputKosongException() throws InputKosongException{
-        if(inputNama.getText().isEmpty()){
+        if(inputNama.getText().isEmpty() || inputKeterangan.getText().isEmpty() || InputID.getText().isEmpty()){
             throw new InputKosongException();
         }
     }
@@ -61,6 +64,13 @@ public class JenisPenyakitView extends javax.swing.JFrame {
     public void resetButton(){
         buttonTambah.setText("Tambah");
         buttonTambah.setBackground(new Color(51,102,255));
+    }
+    
+    public void setDepartmentToDropdown(){
+        listDepartment = departmentControl.showListDepartment();
+        for (int i = 0; i < listDepartment.size(); i++) {
+            comboBoxDepartment.addItem(listDepartment.get(i));
+        }
     }
     
     /**
