@@ -20,6 +20,13 @@ public class Jenis_PenyakitControl {
         return list;
     }
     
+    public TableJenis_Penyakit showDataPenyakit(String query){
+        List<Jenis_Penyakit> dataPenyakit = jpDao.showJenis_Penyakit(query);
+        TableJenis_Penyakit tablePenyakit = new TableJenis_Penyakit(dataPenyakit);
+        
+        return tablePenyakit;
+    }
+    
     public void insertJenis_Penyakit(Jenis_Penyakit jp){
         jpDao.insertJenis_Penyakit(jp);
     }

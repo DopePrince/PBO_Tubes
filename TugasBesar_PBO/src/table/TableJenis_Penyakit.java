@@ -25,7 +25,7 @@ public class TableJenis_Penyakit extends AbstractTableModel{
      
      @Override
      public int getColumnCount (){
-         return 3;
+         return 4;
     }
      
     @Override
@@ -35,8 +35,10 @@ public class TableJenis_Penyakit extends AbstractTableModel{
         case 0:
             return list.get(rowIndex).getId();
         case 1:
-            return list.get(rowIndex).getNama_penyakit();
+            return list.get(rowIndex).getDepartment().getNama();
         case 2:
+            return list.get(rowIndex).getNama_penyakit();
+        case 3:
             return list.get(rowIndex).getKeterangan();
          default:
             return null;
@@ -48,8 +50,10 @@ public class TableJenis_Penyakit extends AbstractTableModel{
             case 0:
                 return "ID";
             case 1:
-                return "Nama Penyakit";
+                return "Nama Department";
             case 2:
+                return "Nama Penyakit";
+            case 3:
                 return "Keterangan";
             
             default:

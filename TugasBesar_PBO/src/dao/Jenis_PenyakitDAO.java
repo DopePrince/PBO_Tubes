@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import model.Jenis_Penyakit;
+import model.Department;
 /**
  * Kelompok 5 :
  * 200710534 - Nicholas Suharto
@@ -25,7 +26,7 @@ public class Jenis_PenyakitDAO {
     public List<Jenis_Penyakit> showJenis_Penyakit (){
         con=dbCon.makeConnection ();
         
-        String sql = "SELECT * FROM jenis_penyakit";
+        String sql = "SELECT dp.*, p.* FROM jenis_penyakit AS p JOIN department AS d WHERE p.id_penyakit = dp.id";
         System.out.println ("Mengambil data jenis penyakit...");
         
         List<Jenis_Penyakit> list = new ArrayList();
@@ -36,12 +37,17 @@ public class Jenis_PenyakitDAO {
             
             if (rs != null){
                 while (rs.next()){
+                    Department d = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama")
+                    );
+                    
                     Jenis_Penyakit jp = new Jenis_Penyakit (                   
-                    Integer.parseInt(rs.getString("id")),
-                    rs.getString ("nama_penyakit"),
-                    rs.getString("keterangan")
-        
-                );
+                        Integer.parseInt(rs.getString("p.id")),
+                        rs.getString ("p.nama_penyakit"),
+                        rs.getString("p.keterangan"),
+                        d
+                    );
                 list.add(jp);
                 }
             }
@@ -49,7 +55,7 @@ public class Jenis_PenyakitDAO {
             statement.close();
         }catch(Exception e){
             System.out.println("Error reading2 database...");
-            System.out.println(e);
+            e.printStackTrace();
         }
         dbCon.closeConnection();
         return list;
@@ -113,4 +119,48 @@ public class Jenis_PenyakitDAO {
         }
     }
     
+    public List<Jenis_Penyakit> showJenis_Penyakit(String query){
+        con = dbCon.makeConnection();
+        
+        String sql = "SELECT dp.*, p.* FROM department as dp JOIN jenis_penyakit as p WHERE (p.id LIKE "
+                + "'%" + query + "%'"
+                + "OR p.nama_penyakit LIKE '%" + query + "%'"
+                + "OR dp.nama LIKE '%" + query + "%')";
+        
+        
+        System.out.println("Mengambil data Jenis Penyakit...");
+        
+        List<Jenis_Penyakit> list = new ArrayList();
+        
+        try{
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            if(rs != null){
+                while(rs.next()){
+                    Department d = new Department(
+                        rs.getInt("dp.id"),
+                        rs.getString("dp.nama")
+                    );
+
+                    Jenis_Penyakit j = new Jenis_Penyakit(
+                        rs.getInt("p.id"), 
+                        rs.getString("p.nama_penyakit"),
+                        rs.getString("p.keterangan"),
+                        d
+                    );
+                    
+                    list.add(j);
+                }
+            }
+            rs.close();
+            statement.close();
+        }catch(Exception e){
+            System.out.println("Error reading database...");
+            System.out.println(e);
+        }
+        dbCon.closeConnection();
+        
+        return list;
+    }
 }
