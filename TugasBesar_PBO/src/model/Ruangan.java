@@ -76,4 +76,8 @@ public class Ruangan {
         this.department = department;
     }  
     
+    @Override
+    public String toString(){
+        return tipe;
+    }
 }
