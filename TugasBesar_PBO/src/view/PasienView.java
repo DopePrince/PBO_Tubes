@@ -186,6 +186,17 @@ public class PasienView extends javax.swing.JFrame {
 
         panelJenisPenyakit.setBackground(new java.awt.Color(224, 224, 224));
         panelJenisPenyakit.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelJenisPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelJenisPenyakitMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelJenisPenyakitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelJenisPenyakitMouseExited(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -205,13 +216,24 @@ public class PasienView extends javax.swing.JFrame {
         panelJenisPenyakitLayout.setVerticalGroup(
             panelJenisPenyakitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJenisPenyakitLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
 
         panelDepartment.setBackground(new java.awt.Color(224, 224, 224));
         panelDepartment.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelDepartmentMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelDepartmentMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelDepartmentMouseExited(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 102, 102));
@@ -231,13 +253,24 @@ public class PasienView extends javax.swing.JFrame {
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDepartmentLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
 
         panelDokter.setBackground(new java.awt.Color(224, 224, 224));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelDokterMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelDokterMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelDokterMouseExited(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
@@ -257,7 +290,7 @@ public class PasienView extends javax.swing.JFrame {
         panelDokterLayout.setVerticalGroup(
             panelDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDokterLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -283,13 +316,24 @@ public class PasienView extends javax.swing.JFrame {
         panelPasienLayout.setVerticalGroup(
             panelPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPasienLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addContainerGap())
         );
 
         panelRuangan.setBackground(new java.awt.Color(224, 224, 224));
         panelRuangan.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelRuangan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRuanganMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelRuanganMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelRuanganMouseExited(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(102, 102, 102));
@@ -304,12 +348,12 @@ public class PasienView extends javax.swing.JFrame {
             .addGroup(panelRuanganLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         panelRuanganLayout.setVerticalGroup(
             panelRuanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuanganLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -324,6 +368,17 @@ public class PasienView extends javax.swing.JFrame {
 
         panelTransaksi.setBackground(new java.awt.Color(224, 224, 224));
         panelTransaksi.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTransaksiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelTransaksiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelTransaksiMouseExited(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
@@ -338,12 +393,12 @@ public class PasienView extends javax.swing.JFrame {
             .addGroup(panelTransaksiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         panelTransaksiLayout.setVerticalGroup(
             panelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTransaksiLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addContainerGap())
         );
@@ -368,6 +423,17 @@ public class PasienView extends javax.swing.JFrame {
 
         panelTampilGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelTampilGaji.setPreferredSize(new java.awt.Dimension(170, 30));
+        panelTampilGaji.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTampilGajiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelTampilGajiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelTampilGajiMouseExited(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(102, 102, 102));
@@ -387,7 +453,7 @@ public class PasienView extends javax.swing.JFrame {
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTampilGajiLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -848,6 +914,90 @@ public class PasienView extends javax.swing.JFrame {
             break;
         }
     }//GEN-LAST:event_deleteMouseClicked
+
+    private void panelJenisPenyakitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseEntered
+        panelJenisPenyakit.setBackground(Color.white);
+    }//GEN-LAST:event_panelJenisPenyakitMouseEntered
+
+    private void panelDepartmentMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseEntered
+        panelDepartment.setBackground(Color.white);
+    }//GEN-LAST:event_panelDepartmentMouseEntered
+
+    private void panelDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseEntered
+        panelDokter.setBackground(Color.white);
+    }//GEN-LAST:event_panelDokterMouseEntered
+
+    private void panelRuanganMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseEntered
+        panelRuangan.setBackground(Color.white);
+    }//GEN-LAST:event_panelRuanganMouseEntered
+
+    private void panelTransaksiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseEntered
+        panelTransaksi.setBackground(Color.white);
+    }//GEN-LAST:event_panelTransaksiMouseEntered
+
+    private void panelTampilGajiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseEntered
+        panelTampilGaji.setBackground(Color.white);
+    }//GEN-LAST:event_panelTampilGajiMouseEntered
+
+    private void panelJenisPenyakitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseExited
+        panelJenisPenyakit.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelJenisPenyakitMouseExited
+
+    private void panelDepartmentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseExited
+        panelDepartment.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelDepartmentMouseExited
+
+    private void panelDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseExited
+        panelDokter.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelDokterMouseExited
+
+    private void panelRuanganMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseExited
+        panelRuangan.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelRuanganMouseExited
+
+    private void panelTransaksiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseExited
+        panelTransaksi.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelTransaksiMouseExited
+
+    private void panelTampilGajiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseExited
+        panelTampilGaji.setBackground(Color.getColor("E0E0E0"));
+    }//GEN-LAST:event_panelTampilGajiMouseExited
+
+    private void panelJenisPenyakitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseClicked
+        JenisPenyakitView jv = new JenisPenyakitView();
+        this.dispose();
+        jv.setVisible(true);
+    }//GEN-LAST:event_panelJenisPenyakitMouseClicked
+
+    private void panelDepartmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseClicked
+        DokterView dv = new DokterView();
+        this.dispose();
+        dv.setVisible(true);
+    }//GEN-LAST:event_panelDepartmentMouseClicked
+
+    private void panelDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseClicked
+        DokterView dv = new DokterView();
+        this.dispose();
+        dv.setVisible(true);
+    }//GEN-LAST:event_panelDokterMouseClicked
+
+    private void panelRuanganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseClicked
+        RuanganView rv = new RuanganView();
+        this.dispose();
+        rv.setVisible(true);
+    }//GEN-LAST:event_panelRuanganMouseClicked
+
+    private void panelTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseClicked
+        TransaksiView tv = new TransaksiView();
+        this.dispose();
+        tv.setVisible(true);
+    }//GEN-LAST:event_panelTransaksiMouseClicked
+
+    private void panelTampilGajiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseClicked
+        GajiView gv = new GajiView();
+        this.dispose();
+        gv.setVisible(true);
+    }//GEN-LAST:event_panelTampilGajiMouseClicked
 
     /**
      * @param args the command line arguments
