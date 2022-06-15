@@ -56,14 +56,14 @@ public class TransaksiDAO {
     public List<Transaksi> showTransaksi(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT j.*, p.*, t.*, dp.* FROM department AS dp JOIN (jenis_penyakit as j JOIN (pasien p JOIN transaksi as t ON p.id = t.id_pasien) ON j.id = p.id_pasien) ON dp.id = j.id_department WHERE (p.umur LIKE "
+        String sql = "SELECT j.*, p.*, t.*, dp.* FROM department AS dp JOIN (jenis_penyakit as j JOIN (pasien p JOIN transaksi as t ON p.id = t.id_pasien) ON j.id = p.id_penyakit) ON dp.id = j.id_department WHERE (p.umur LIKE "
                 + "'%" + query + "%'"
                 + "OR p.nama LIKE '%" + query + "%'"
                 + "OR p.gender LIKE '%" + query + "%'"
-                + "OR p.alamat`r LIKE '%" + query + "%'"
+                + "OR p.alamat LIKE '%" + query + "%'"
                 + "OR p.no_telepon LIKE '%" + query + "%'"
                 + "OR j.id LIKE '%" + query + "%'"
-                + "OR j.nama_penyakit LIKE '%" + query + "%')"
+                + "OR j.nama_penyakit LIKE '%" + query + "%'"
                 + "OR j.keterangan LIKE '%" + query + "%')";
         
         
@@ -146,7 +146,7 @@ public class TransaksiDAO {
     public List<Transaksi> showTransaksi(){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT j.*, p.*, t.* FROM jenis_penyakit as j JOIN (pasien p JOIN transaksi as t ON p.id = t.id_pasien) ON j.id = p.id_pasien";
+        String sql = "SELECT dp.*, j.*, p.*, t.* FROM department as dp JOIN (jenis_penyakit as j JOIN (pasien p JOIN transaksi as t ON p.id = t.id_pasien) ON j.id = p.id_penyakit) ON dp.id = j.id_department";
         System.out.println("Mengambil data Transaksi...");
         
         List<Transaksi> list = new ArrayList();
@@ -224,7 +224,7 @@ public class TransaksiDAO {
     public Transaksi searchTransaksi(int id){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM transaksi WHERE id = '" + id + "'";
+        String sql = "SELECT dp.*, j.*, p.*, t.* FROM department as dp JOIN (jenis_penyakit as j JOIN (pasien p JOIN transaksi as t ON p.id = t.id_pasien) ON j.id = p.id_penyakit) ON dp.id = j.id_department WHERE id = '" + id + "'";
         System.out.println("Searching Transaksi...");
         Transaksi tr = null;
         

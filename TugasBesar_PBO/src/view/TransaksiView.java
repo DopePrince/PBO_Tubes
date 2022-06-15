@@ -61,13 +61,13 @@ public class TransaksiView extends javax.swing.JFrame {
        
        InputID.setEnabled(value);
        inputBiayaDiagnosis.setEnabled(value);
-       inputTanggalTransaksi.setEnabled(value);
+       inputSearch.setEnabled(value);
        pasienComboBox.setEnabled(value);
        dokterComboBox.setEnabled(value);
        ruanganComboBox.setEnabled(value);
        
     }
-    
+   
     
     public void clearText(){
         pasienComboBox.setSelectedItem(ABORT);
@@ -76,7 +76,7 @@ public class TransaksiView extends javax.swing.JFrame {
 
         InputID.setText("");
         inputBiayaDiagnosis.setText("");
-        inputTanggalTransaksi.setText("");
+        inputSearch.setText("");
         
     }
     
@@ -105,14 +105,9 @@ public class TransaksiView extends javax.swing.JFrame {
     }
     
     public void inputKosongException() throws InputKosongException{
-        if(InputID.getText().isEmpty() || inputBiayaDiagnosis.getText().isEmpty() || inputTanggalTransaksi.getText().isEmpty()){
+        if(InputID.getText().isEmpty() || inputSearch.getText().isEmpty() || inputBiayaDiagnosis.getText().isEmpty()){
             throw new InputKosongException();
         }
-    }
-    
-    public void showTransaksi(){
-        lastID();
-        tabelTransaksi.setModel(transaksiControl.showDataTransaksi(""));
     }
     
     public void lastID(){
@@ -123,6 +118,11 @@ public class TransaksiView extends javax.swing.JFrame {
             i = t.getId();
         }
         InputID.setText(String.valueOf(i+1));
+    }
+    
+    public void showTransaksi(){
+        lastID();
+        tabelTransaksi.setModel(transaksiControl.showDataTransaksi(""));
     }
     
     /**
@@ -166,17 +166,20 @@ public class TransaksiView extends javax.swing.JFrame {
         buttonTambah = new javax.swing.JButton();
         InputID = new javax.swing.JTextField();
         buttonBatal = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
         labelGajiDokter7 = new javax.swing.JLabel();
-        inputTanggalTransaksi = new javax.swing.JTextField();
+        inputSearch = new javax.swing.JTextField();
         dokterComboBox = new javax.swing.JComboBox<>();
         pasienComboBox = new javax.swing.JComboBox<>();
         ruanganComboBox = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabelTransaksi = new javax.swing.JTable();
         labelGajiDokter8 = new javax.swing.JLabel();
         labelGajiDokter9 = new javax.swing.JLabel();
         labelGajiDokter10 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelTransaksi = new javax.swing.JTable();
+        jSeparator2 = new javax.swing.JSeparator();
+        inputTanggalTransaksi1 = new javax.swing.JTextField();
+        labelGajiDokter11 = new javax.swing.JLabel();
+        buttonSearch = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -414,17 +417,6 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelHistoriTransaksiLayout = new javax.swing.GroupLayout(panelHistoriTransaksi);
-        panelHistoriTransaksi.setLayout(panelHistoriTransaksiLayout);
-        panelHistoriTransaksiLayout.setHorizontalGroup(
-            panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 188, Short.MAX_VALUE)
-        );
-        panelHistoriTransaksiLayout.setVerticalGroup(
-            panelHistoriTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
-
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
         jLabel13.setText("Gaji Dokter");
@@ -453,7 +445,7 @@ public class TransaksiView extends javax.swing.JFrame {
             .addGroup(panelTampilGajiLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel14)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,17 +466,6 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout panelHistoriGajiLayout = new javax.swing.GroupLayout(panelHistoriGaji);
-        panelHistoriGaji.setLayout(panelHistoriGajiLayout);
-        panelHistoriGajiLayout.setHorizontalGroup(
-            panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 188, Short.MAX_VALUE)
-        );
-        panelHistoriGajiLayout.setVerticalGroup(
-            panelHistoriGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -501,7 +482,7 @@ public class TransaksiView extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel9)))
-                        .addGap(0, 61, Short.MAX_VALUE))
+                        .addGap(0, 59, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -511,13 +492,14 @@ public class TransaksiView extends javax.swing.JFrame {
                             .addComponent(panelPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addComponent(panelRuangan, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addComponent(panelTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                            .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))
                             .addComponent(panelTampilGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addComponent(panelHistoriGaji, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel13))
+                                .addComponent(jLabel10)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -545,14 +527,14 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel13)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelHistoriTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelTampilGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(35, 35, 35)
                 .addComponent(panelHistoriGaji, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -622,6 +604,18 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
 
+        labelGajiDokter8.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelGajiDokter8.setForeground(new java.awt.Color(153, 153, 153));
+        labelGajiDokter8.setText("Dokter");
+
+        labelGajiDokter9.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelGajiDokter9.setForeground(new java.awt.Color(153, 153, 153));
+        labelGajiDokter9.setText("Nomor Ruangan");
+
+        labelGajiDokter10.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
+        labelGajiDokter10.setForeground(new java.awt.Color(153, 153, 153));
+        labelGajiDokter10.setText("Pasien");
+
         tabelTransaksi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -635,71 +629,91 @@ public class TransaksiView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tabelTransaksi);
 
-        labelGajiDokter8.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        labelGajiDokter8.setForeground(new java.awt.Color(153, 153, 153));
-        labelGajiDokter8.setText("Dokter");
+        inputTanggalTransaksi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputTanggalTransaksi1ActionPerformed(evt);
+            }
+        });
 
-        labelGajiDokter9.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        labelGajiDokter9.setForeground(new java.awt.Color(153, 153, 153));
-        labelGajiDokter9.setText("Ruangan");
+        labelGajiDokter11.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        labelGajiDokter11.setForeground(new java.awt.Color(20, 20, 20));
+        labelGajiDokter11.setText("Daftar Jenis Penyakit");
 
-        labelGajiDokter10.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
-        labelGajiDokter10.setForeground(new java.awt.Color(153, 153, 153));
-        labelGajiDokter10.setText("Pasien");
+        buttonSearch.setBackground(new java.awt.Color(51, 102, 255));
+        buttonSearch.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        buttonSearch.setForeground(new java.awt.Color(255, 255, 255));
+        buttonSearch.setText("Search");
+        buttonSearch.setBorder(null);
+        buttonSearch.setBorderPainted(false);
+        buttonSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        buttonSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSearchActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
-                            .addComponent(jSeparator2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelGajiDokter2)
+                            .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(buttonEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelGajiDokter2)
-                                            .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(labelGajiDokter5)
-                                            .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(labelGajiDokter6)
-                                    .addComponent(labelGajiDokter7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                                .addComponent(inputTanggalTransaksi1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(labelGajiDokter6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(labelTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelGajiDokter7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelGajiDokter11)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(labelTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(dokterComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                    .addComponent(labelGajiDokter8))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pasienComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ruanganComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(46, 46, 46))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(dokterComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 418, Short.MAX_VALUE)
+                                .addComponent(ruanganComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pasienComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(labelGajiDokter5)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buttonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelGajiDokter9)
-                            .addComponent(labelGajiDokter10))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jScrollPane1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelGajiDokter8)
+                                    .addComponent(labelGajiDokter9)
+                                    .addComponent(labelGajiDokter10))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,46 +721,50 @@ public class TransaksiView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(labelTransaksi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelGajiDokter2)
-                        .addGap(3, 3, 3)
-                        .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(labelGajiDokter5)
-                        .addGap(2, 2, 2)
-                        .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelGajiDokter6)
-                    .addComponent(labelGajiDokter9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputTanggalTransaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ruanganComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelGajiDokter8)
-                    .addComponent(labelGajiDokter10))
+                    .addComponent(labelGajiDokter2)
+                    .addComponent(labelGajiDokter6))
+                .addGap(3, 3, 3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(InputID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputTanggalTransaksi1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelGajiDokter8)
                 .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dokterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pasienComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(dokterComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(labelGajiDokter9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ruanganComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelGajiDokter10)
+                .addGap(5, 5, 5)
+                .addComponent(pasienComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelGajiDokter5)
+                .addGap(2, 2, 2)
+                .addComponent(inputBiayaDiagnosis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
+                        .addGap(10, 10, 10)
                         .addComponent(labelGajiDokter7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelGajiDokter11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -762,7 +780,7 @@ public class TransaksiView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -785,19 +803,27 @@ public class TransaksiView extends javax.swing.JFrame {
             Ruangan selectedRuangan = listRuangan.get(selectedIndexRuangan);
             
             if(action.equals("Tambah")) {
-                Transaksi t = new Transaksi(selectedId, Double.parseDouble(inputBiayaDiagnosis.getText()), inputTanggalTransaksi.getText(), selectedPasien, selectedDokter, selectedRuangan);
+                Transaksi t = new Transaksi(Integer.parseInt(InputID.getText()), 
+                        Double.parseDouble(inputBiayaDiagnosis.getText()), 
+                        inputSearch.getText(), 
+                        selectedPasien, 
+                        selectedDokter, 
+                        selectedRuangan);
                 transaksiControl.insertDataTransaksi(t);
             }
-            else
-            {
-                Transaksi t = new Transaksi(Double.parseDouble(inputBiayaDiagnosis.getText()), inputTanggalTransaksi.getText(), selectedPasien, selectedDokter, selectedRuangan);
+            else{
+                Transaksi t = new Transaksi( 
+                        Double.parseDouble(inputBiayaDiagnosis.getText()), 
+                        inputSearch.getText(), 
+                        selectedPasien, 
+                        selectedDokter, 
+                        selectedRuangan);
                 transaksiControl.updateDataTransaksi(t);
             }
         } catch (InputKosongException e) {
             JOptionPane.showMessageDialog(this, e.message());
         }
         clearText();
-        showTransaksi();
     }//GEN-LAST:event_buttonTambahActionPerformed
 
     private void inputBiayaDiagnosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBiayaDiagnosisActionPerformed
@@ -889,6 +915,14 @@ public class TransaksiView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pasienComboBoxActionPerformed
 
+    private void buttonSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonSearchActionPerformed
+
+    private void inputTanggalTransaksi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputTanggalTransaksi1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputTanggalTransaksi1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -934,10 +968,12 @@ public class TransaksiView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField InputID;
     private javax.swing.JButton buttonBatal;
+    private javax.swing.JButton buttonSearch;
     private javax.swing.JButton buttonTambah;
     private javax.swing.JComboBox<Dokter> dokterComboBox;
     private javax.swing.JTextField inputBiayaDiagnosis;
-    private javax.swing.JTextField inputTanggalTransaksi;
+    private javax.swing.JTextField inputSearch;
+    private javax.swing.JTextField inputTanggalTransaksi1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
@@ -956,6 +992,7 @@ public class TransaksiView extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelGajiDokter10;
+    private javax.swing.JLabel labelGajiDokter11;
     private javax.swing.JLabel labelGajiDokter2;
     private javax.swing.JLabel labelGajiDokter5;
     private javax.swing.JLabel labelGajiDokter6;
