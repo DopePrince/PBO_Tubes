@@ -167,7 +167,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelJenisPenyakitLayout.setVerticalGroup(
             panelJenisPenyakitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelJenisPenyakitLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
@@ -175,6 +175,9 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelDepartment.setBackground(new java.awt.Color(224, 224, 224));
         panelDepartment.setPreferredSize(new java.awt.Dimension(170, 30));
         panelDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelDepartmentMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelDepartmentMouseEntered(evt);
             }
@@ -201,7 +204,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelDepartmentLayout.setVerticalGroup(
             panelDepartmentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDepartmentLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
@@ -209,6 +212,9 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelDokter.setBackground(new java.awt.Color(224, 224, 224));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
         panelDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelDokterMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelDokterMouseEntered(evt);
             }
@@ -235,7 +241,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelDokterLayout.setVerticalGroup(
             panelDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDokterLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addContainerGap())
         );
@@ -243,6 +249,9 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelPasien.setBackground(new java.awt.Color(224, 224, 224));
         panelPasien.setPreferredSize(new java.awt.Dimension(170, 30));
         panelPasien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPasienMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPasienMouseEntered(evt);
             }
@@ -269,7 +278,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelPasienLayout.setVerticalGroup(
             panelPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPasienLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addContainerGap())
         );
@@ -277,6 +286,9 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelRuangan.setBackground(new java.awt.Color(224, 224, 224));
         panelRuangan.setPreferredSize(new java.awt.Dimension(170, 30));
         panelRuangan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRuanganMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelRuanganMouseEntered(evt);
             }
@@ -303,7 +315,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelRuanganLayout.setVerticalGroup(
             panelRuanganLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRuanganLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -319,6 +331,9 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelTransaksi.setBackground(new java.awt.Color(224, 224, 224));
         panelTransaksi.setPreferredSize(new java.awt.Dimension(170, 30));
         panelTransaksi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTransaksiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelTransaksiMouseEntered(evt);
             }
@@ -345,7 +360,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelTransaksiLayout.setVerticalGroup(
             panelTransaksiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTransaksiLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel11)
                 .addContainerGap())
         );
@@ -379,6 +394,9 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelTampilGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelTampilGaji.setPreferredSize(new java.awt.Dimension(170, 30));
         panelTampilGaji.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTampilGajiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelTampilGajiMouseEntered(evt);
             }
@@ -405,7 +423,7 @@ public class JenisPenyakitView extends javax.swing.JFrame {
         panelTampilGajiLayout.setVerticalGroup(
             panelTampilGajiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTampilGajiLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -911,6 +929,42 @@ public class JenisPenyakitView extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_tabelJenisPenyakitMouseClicked
+
+    private void panelDepartmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseClicked
+        DepartmentView dv = new DepartmentView();
+        this.dispose();
+        dv.setVisible(true);
+    }//GEN-LAST:event_panelDepartmentMouseClicked
+
+    private void panelDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseClicked
+        DokterView dv = new DokterView();
+        this.dispose();
+        dv.setVisible(true);
+    }//GEN-LAST:event_panelDokterMouseClicked
+
+    private void panelPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseClicked
+         PasienView pv = new PasienView();
+        this.dispose();
+        pv.setVisible(true);
+    }//GEN-LAST:event_panelPasienMouseClicked
+
+    private void panelRuanganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseClicked
+        RuanganView rv = new RuanganView();
+        this.dispose();
+        rv.setVisible(true);
+    }//GEN-LAST:event_panelRuanganMouseClicked
+
+    private void panelTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTransaksiMouseClicked
+        TransaksiView tv = new TransaksiView();
+        this.dispose();
+        tv.setVisible(true);
+    }//GEN-LAST:event_panelTransaksiMouseClicked
+
+    private void panelTampilGajiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseClicked
+        GajiView gv = new GajiView();
+        this.dispose();
+        gv.setVisible(true);
+    }//GEN-LAST:event_panelTampilGajiMouseClicked
 
     /**
      * @param args the command line arguments
