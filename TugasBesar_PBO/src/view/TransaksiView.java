@@ -200,6 +200,9 @@ public class TransaksiView extends javax.swing.JFrame {
             }
         });
         panelJenisPenyakit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelJenisPenyakitMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 panelJenisPenyakitMouseExited(evt);
             }
@@ -231,6 +234,9 @@ public class TransaksiView extends javax.swing.JFrame {
         panelDepartment.setBackground(new java.awt.Color(224, 224, 224));
         panelDepartment.setPreferredSize(new java.awt.Dimension(170, 30));
         panelDepartment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelDepartmentMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelDepartmentMouseEntered(evt);
             }
@@ -265,6 +271,9 @@ public class TransaksiView extends javax.swing.JFrame {
         panelDokter.setBackground(new java.awt.Color(224, 224, 224));
         panelDokter.setPreferredSize(new java.awt.Dimension(170, 30));
         panelDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelDokterMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelDokterMouseEntered(evt);
             }
@@ -299,6 +308,9 @@ public class TransaksiView extends javax.swing.JFrame {
         panelPasien.setBackground(new java.awt.Color(224, 224, 224));
         panelPasien.setPreferredSize(new java.awt.Dimension(170, 30));
         panelPasien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPasienMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPasienMouseEntered(evt);
             }
@@ -333,6 +345,9 @@ public class TransaksiView extends javax.swing.JFrame {
         panelRuangan.setBackground(new java.awt.Color(224, 224, 224));
         panelRuangan.setPreferredSize(new java.awt.Dimension(170, 30));
         panelRuangan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelRuanganMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelRuanganMouseEntered(evt);
             }
@@ -424,6 +439,9 @@ public class TransaksiView extends javax.swing.JFrame {
         panelTampilGaji.setBackground(new java.awt.Color(224, 224, 224));
         panelTampilGaji.setPreferredSize(new java.awt.Dimension(170, 30));
         panelTampilGaji.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelTampilGajiMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelTampilGajiMouseEntered(evt);
             }
@@ -923,6 +941,43 @@ public class TransaksiView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputTanggalTransaksi1ActionPerformed
 
+    private void panelJenisPenyakitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelJenisPenyakitMouseClicked
+        JenisPenyakitView jp = new JenisPenyakitView();
+        this.dispose();
+        jp.setVisible(true);
+    }//GEN-LAST:event_panelJenisPenyakitMouseClicked
+
+    private void panelDepartmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDepartmentMouseClicked
+        DepartmentView dv = new DepartmentView();
+        this.dispose();
+        dv.setVisible(true);
+    }//GEN-LAST:event_panelDepartmentMouseClicked
+
+    private void panelDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelDokterMouseClicked
+       DokterView dkv = new DokterView();
+        this.dispose();
+        dkv.setVisible(true);
+    }//GEN-LAST:event_panelDokterMouseClicked
+
+    private void panelPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseClicked
+        PasienView p = new PasienView ();
+        this.dispose();
+        p.setVisible(true);
+    }//GEN-LAST:event_panelPasienMouseClicked
+
+    private void panelRuanganMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelRuanganMouseClicked
+        RuanganView r = new RuanganView();
+        this.dispose();
+        r.setVisible(true);
+    }//GEN-LAST:event_panelRuanganMouseClicked
+
+    private void panelTampilGajiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelTampilGajiMouseClicked
+        GajiView gv = new GajiView();
+        this.dispose();
+        gv.setVisible(true);
+    }//GEN-LAST:event_panelTampilGajiMouseClicked
+
+    
     /**
      * @param args the command line arguments
      */

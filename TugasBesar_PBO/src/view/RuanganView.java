@@ -274,6 +274,9 @@ public class RuanganView extends javax.swing.JFrame {
         panelPasien.setBackground(new java.awt.Color(224, 224, 224));
         panelPasien.setPreferredSize(new java.awt.Dimension(170, 30));
         panelPasien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelPasienMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelPasienMouseEntered(evt);
             }
@@ -1014,6 +1017,12 @@ public class RuanganView extends javax.swing.JFrame {
         this.dispose();
         gv.setVisible(true);
     }//GEN-LAST:event_panelTampilGajiMouseClicked
+
+    private void panelPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelPasienMouseClicked
+        PasienView p = new PasienView ();
+        this.dispose();
+        p.setVisible(true);
+    }//GEN-LAST:event_panelPasienMouseClicked
 
     /**
      * @param args the command line arguments
