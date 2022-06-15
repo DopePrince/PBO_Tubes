@@ -56,7 +56,13 @@ public class TransaksiDAO {
     public List<Transaksi> showTransaksi(String query){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT j.*, p.*, t.*, dp.* FROM department AS dp JOIN (jenis_penyakit as j JOIN (pasien p JOIN transaksi as t ON p.id = t.id_pasien) ON j.id = p.id_penyakit) ON dp.id = j.id_department WHERE (p.umur LIKE "
+        String sql = "SELECT dp.*, jp.*, p.*, t.*, dk.*, r.* "
+                + "FROM department as dp "
+                + "JOIN jenis_penyakit as jP ON `jp`.`id_department` = `dp`.`id` "
+                + "JOIN pasien as p ON `p`.`id_penyakit` = `jp`.`id` "
+                + "JOIN transaksi as t ON `t`.`id_pasien` = `p`.`id` "
+                + "LEFT JOIN dokter dk  ON `dk`.`id_department` = `dp`.`id`" 
+                + "LEFT JOIN `ruangan` AS `r` ON `r`.`id_department` = `dp`.`id` WHERE (p.umur LIKE "
                 + "'%" + query + "%'"
                 + "OR p.nama LIKE '%" + query + "%'"
                 + "OR p.gender LIKE '%" + query + "%'"
@@ -146,7 +152,13 @@ public class TransaksiDAO {
     public List<Transaksi> showTransaksi(){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT dp.*, j.*, p.*, t.* FROM department as dp JOIN (jenis_penyakit as j JOIN (pasien p JOIN transaksi as t ON p.id = t.id_pasien) ON j.id = p.id_penyakit) ON dp.id = j.id_department";
+        String sql = "SELECT dp.*, jp.*, p.*, t.*, dk.*, r.* "
+                + "FROM department as dp "
+                + "JOIN jenis_penyakit as jP ON `jp`.`id_department` = `dp`.`id` "
+                + "JOIN pasien as p ON `p`.`id_penyakit` = `jp`.`id` "
+                + "JOIN transaksi as t ON `t`.`id_pasien` = `p`.`id` "
+                + "LEFT JOIN dokter dk  ON `dk`.`id_department` = `dp`.`id`" 
+                + "LEFT JOIN `ruangan` AS `r` ON `r`.`id_department` = `dp`.`id`";
         System.out.println("Mengambil data Transaksi...");
         
         List<Transaksi> list = new ArrayList();
