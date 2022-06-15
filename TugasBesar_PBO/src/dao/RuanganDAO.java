@@ -75,10 +75,10 @@ public class RuanganDAO {
                     );
                    
                     Ruangan r = new Ruangan(
-                        rs.getInt("r.no"),
-                        rs.getString("tipe"),
-                        rs.getFloat("harga"),
-                        rs.getString("fasilitas"),
+                        Integer.parseInt(rs.getString("r.no")),
+                        rs.getString("r.tipe"),
+                        rs.getFloat("r.harga"),
+                        rs.getString("r.fasilitas"),
                         dp
                     );
                     
@@ -116,7 +116,7 @@ public class RuanganDAO {
                     );
                     
                     Ruangan r = new Ruangan(
-                        Integer.parseInt(rs.getString("no")),
+                        Integer.parseInt(rs.getString("r.no")),
                         rs.getString("r.tipe"),
                         rs.getDouble("r.harga"),
                         rs.getString("r.fasilitas"),
@@ -136,60 +136,16 @@ public class RuanganDAO {
         
         return list;
     }
-    
-    public Ruangan searchRuangan(int no){
-        con = dbCon.makeConnection();
         
-        String sql = "SELECT * FROM ruangan WHERE no = '" + no + "'";
-        System.out.println("Searching Ruangan...");
-        Ruangan r = null;
-        
-        try{
-            Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
-            
-            if(rs != null){
-                while(rs.next()){
-                    Department dp = new Department(
-                        rs.getInt("dp.id"),
-                        rs.getString("dp.nama")
-                    );
-                    
-                    Jenis_Penyakit j = new Jenis_Penyakit(
-                        rs.getInt("j.id"), 
-                        rs.getString("nama_penyakit"), 
-                        rs.getString("keterangan"),
-                        dp
-                    );
-                   
-                    r = new Ruangan(
-                        rs.getInt("r.no"),
-                        rs.getString("tipe"),
-                        rs.getFloat("harga"),
-                        rs.getString("fasilitas"),
-                        dp
-                    );
-                }
-            }
-            rs.close();
-            statement.close();
-        }catch(Exception e){
-            System.out.println("Error reading database...");
-            System.out.println(e);
-        }
-        dbCon.closeConnection();
-        
-        return r;
-    }
-    
     public void updateRuangan(Ruangan r){
         con = dbCon.makeConnection();
         
-        String sql = "UPDATE ruangan SET no = '" + r.getNo() +  "', " 
-                + "tipe = '" + r.getTipe()+ "', "
-                + "harga = '" + r.getHarga() + "', " 
-                + "fasilitas= '" + r.getFasilitas() + "', " 
-                + "WHERE no = '" + r.getNo() + "'";
+        String sql = "UPDATE ruangan SET no = '" + r.getNo()
+                + "', id = '" + r.getDepartment().getId()
+                + "', tipe = '" + r.getTipe()
+                + "', harga = '" + r.getHarga() 
+                + "', fasilitas= '" + r.getFasilitas() 
+                + "' WHERE no = '" + r.getNo() + "'";
         
         System.out.println("Editing Ruangan...");
         
@@ -209,7 +165,7 @@ public class RuanganDAO {
         con = dbCon.makeConnection();
         System.out.println(no);
         
-        String sql = "DELETE FROM ruangan WHERE no = " + no + "";
+        String sql = "DELETE FROM ruangan WHERE no = '" + no + "'";
         System.out.println("Deleting Ruangan...");
         
         try{

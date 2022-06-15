@@ -60,6 +60,7 @@ public class RuanganView extends javax.swing.JFrame {
     }
     
     public void clearText(){
+        DComboBox.setSelectedItem(ABORT);
         InputRuangan.setText("");
         Inputharga.setText("");
         inputTipeR.setText("");
@@ -914,12 +915,19 @@ public class RuanganView extends javax.swing.JFrame {
         
         selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 0).toString());
         
-        InputRuangan.setText(tableModel.getValueAt(clickedRow, 0).toString());
         Inputharga.setText(tableModel.getValueAt(clickedRow, 2).toString());
         inputTipeR.setText(tableModel.getValueAt(clickedRow, 1).toString());
         Inputfasilitas.setText(tableModel.getValueAt(clickedRow, 3).toString());
         
         listRuangan = ruanganControl.showListRuangan();
+        
+        String id_dp = tableModel.getValueAt(clickedRow, 0).toString();
+        for(Department dp : listDepartment){
+            if(dp.getId() == Integer.parseInt(id_dp)) {
+                indexDepartment = listDepartment.indexOf(dp);
+            }
+        }
+        DComboBox.setSelectedIndex(indexDepartment);
         
         for(Ruangan r : listRuangan){
             System.out.println(selectedId + " - " + r.getNo());
@@ -932,6 +940,7 @@ public class RuanganView extends javax.swing.JFrame {
                 action = "tambah";
             }
         }
+       
     }//GEN-LAST:event_tabelRuanganMouseClicked
 
     private void DComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DComboBoxActionPerformed
