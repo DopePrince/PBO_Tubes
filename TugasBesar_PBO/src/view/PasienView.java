@@ -791,13 +791,19 @@ public class PasienView extends javax.swing.JFrame {
         TableModel tableModel = tabelJenisPenyakit.getModel();
 
         selectedId = Integer.parseInt(tableModel.getValueAt(clickedRow, 0).toString());
-        InputID.setText(tableModel.getValueAt(clickedRow, 1).toString());
+        InputID.setText(tableModel.getValueAt(clickedRow, 0).toString());
         inputUmur1.setText(tableModel.getValueAt(clickedRow, 2).toString());
-        inputNama.setText(tableModel.getValueAt(clickedRow, 3).toString());
-        inputGender1.setText(tableModel.getValueAt(clickedRow, 4).toString());
-        inputAlamat.setText(tableModel.getValueAt(clickedRow, 5).toString());
-        inputNoTelepon.setText(tableModel.getValueAt(clickedRow, 6).toString());
-
+        inputNama.setText(tableModel.getValueAt(clickedRow, 1).toString());
+        inputGender1.setText(tableModel.getValueAt(clickedRow, 3).toString());
+        inputAlamat.setText(tableModel.getValueAt(clickedRow, 4).toString());
+        inputNoTelepon.setText(tableModel.getValueAt(clickedRow, 5).toString());
+        
+        for(Jenis_Penyakit p:listJenis_Penyakit){
+            if(String.valueOf(p.getId()).equals(tableModel.getValueAt(clickedRow, 0).toString())){
+                indexJenisPenyakit = listJenis_Penyakit.indexOf(p);
+            }
+        }
+        jenisPenyakitDropdown.setSelectedIndex(indexJenisPenyakit);
         
         listPasien = pasienControl.showListPasien();
 //        String namaPenyakit = tableModel.getValueAt(clickedRow, 7).toString();

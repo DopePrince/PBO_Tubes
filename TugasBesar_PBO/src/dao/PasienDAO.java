@@ -111,7 +111,7 @@ public class PasienDAO {
     public List<Pasien> showPasien(){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT jp.*, p.* FROM pasien AS p JOIN jenis_penyakit AS jp WHERE p.id = jp.id";
+        String sql = "SELECT jp.*, p.*, dp.* FROM pasien AS p JOIN (jenis_penyakit AS jp JOIN department AS dp ON jp.id_department = dp.id) ON p.id_penyakit = jp.id";
         System.out.println("Mengambil data Pasien...");
         
         List<Pasien> list = new ArrayList();
@@ -161,7 +161,7 @@ public class PasienDAO {
     public Pasien searchPasien(int id){
         con = dbCon.makeConnection();
         
-        String sql = "SELECT jp.*, p.* FROM pasien AS p JOIN jenis_penyakit AS jp ON jp.id = p.id_penyakit WHERE p.id = '" + id + "'";
+        String sql = "SELECT jp.*, p.*, dp.* FROM pasien AS p JOIN (jenis_penyakit AS jp JOIN department AS dp ON jp.id_department = dp.id) ON p.id_penyakit = jp.id WHERE p.id = '" + id + "'";
         System.out.println("Searching Pasien...");
         Pasien p = null;
         

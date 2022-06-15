@@ -31,22 +31,24 @@ public class TablePasien extends AbstractTableModel{
     }
     
     public int getColumnCount() {
-        return 6;
+        return 7;
     }
     
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch(columnIndex) {
             case 0:
-                return list.get(rowIndex).getNama();
+                return list.get(rowIndex).getId();
             case 1:
-                return list.get(rowIndex).getUmur();
+                return list.get(rowIndex).getNama();
             case 2:
-                return list.get(rowIndex).getJenis_kelamin();
+                return list.get(rowIndex).getUmur();
             case 3:
-                return list.get(rowIndex).getAlamat();
+                return list.get(rowIndex).getJenis_kelamin();
             case 4:
-                return list.get(rowIndex).getNo_telepon();
+                return list.get(rowIndex).getAlamat();
             case 5:
+                return list.get(rowIndex).getNo_telepon();
+            case 6:
                 return list.get(rowIndex).getPenyakit().getNama_penyakit();
             default:
                 return null;
@@ -56,16 +58,18 @@ public class TablePasien extends AbstractTableModel{
     public String getColumnName(int column) {
         switch(column) {
             case 0:
-                return "Nama";
+                return "ID";
             case 1:
-                return "Umur";
+                return "Nama";
             case 2:
-                return "Gender";
+                return "Umur";
             case 3:
-                return "Alamat";
+                return "Gender";
             case 4:
-                return "No Telpon";
+                return "Alamat";
             case 5:
+                return "No Telpon";
+            case 6:
                 return "Diagnosa";
             default:
                 return null;
